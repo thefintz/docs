@@ -1,0 +1,10 @@
+site_name: Cartera
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
