@@ -1,0 +1,21 @@
+name: Build and deploy
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: docker compose run --rm mkdocs build
+
+      - uses: JamesIves/github-pages-deploy-action@4.0.0
+        if: github.ref == 'refs/heads/master'
+        with:
+          branch: gh-pages
+          folder: ./site
+          single-commit: true
+          silent: false
