@@ -1,10 +1,28 @@
 site_name: Fintz
 
+repo_url: https://github.com/thefintz/docs-api
+
 theme:
   name: material
+  language: pt
+
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+
   palette:
-    scheme: slate
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
 
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+
+plugins:
+  - search:
+      lang: pt
