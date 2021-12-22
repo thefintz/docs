@@ -9,7 +9,7 @@ cadastradas na receita federal. Os dados são atualizados mensalmente
 
 ### `GET /empresas/{cnpj}`
 
-Retorna, de foma paginada, todas as empresas.
+Retorna os dados da empresa com o CNPJ.
 
 **URL Params:**
 
@@ -30,25 +30,39 @@ $ http GET '/empresas/00000000'
 }
 ```
 
-### `GET /empresas/{cnpj}/socios`
+### `GET /b3/{ticker}`
 
-Retorna, de forma paginada, todos os sócios da empresa.
+Retorna os dados de uma empresa listada na bolsa.
+
+**URL params:**
+
+- `ticker`: um `string`, _case insensitive_ com o ticker da empresa desejada.
+Exemplo: `PETR3` ou `PETR4`.
 
 **Exemplo:**
 
 ```bash
-$ http GET /empresas/09346601/socios
+$ http GET '/b3/PETR4'
 {
-    "cnpj_basico": "09346601",
-    "identificador_de_socio": "2",
-    "nome_do_socio": "DANIEL SONDER",
-    "cnpj_cpf_do_socio": "***092178**",
-    "qualificacao_do_socio": "10",
-    "data_de_entrada_sociedade": "20130821",
-    "pais": null,
-    "representante_legal": "***000000**",
-    "nome_do_representante": "",
-    "qualificacao_do_representante": "0",
-    "faixa_etaria": "5"
+    # TODO
 }
 ```
+
+### `GET /b3?cnae={cnae}`
+
+Retorna lista de empresas listadas na bolsa que possuem o determinado [CNAE][1].
+
+**Query params:**
+
+- `cnae`: um `string` de dígitos contendo o código CNAE para ser pesquisado.
+
+**Exemplo:**
+
+```bash
+$ http GET '/b3?cnae=0111301'
+{
+    # TODO
+}
+```
+
+[1]: https://cnae.ibge.gov.br/
