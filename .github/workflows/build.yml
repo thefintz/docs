@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: docker compose run --rm mkdocs build
+      - run: docker compose run --rm -u 0 mkdocs build
 
       - uses: JamesIves/github-pages-deploy-action@4.0.0
         if: github.ref == 'refs/heads/master'
