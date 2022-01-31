@@ -118,12 +118,12 @@ Retorna uma lista de empresas negociadas na bolsa e informações gerais
 
 **Query Params:**
 
-- `cnpj`: um `string` de 14 dígitos, filtra ações da B3 por cnpj da empresa.
+- `cnpj`: um `string` de 14 dígitos ou apenas os 8 primeiros dígitos de um CNPJ, filtra ações da B3 por CNPJ da empresa.
 
 **Exemplo:**
 
 ```bash
-$ http GET '/b3/acoes?cnpj=3000167000101'
+$ http GET '/b3/acoes?cnpj=33000167'
 [
   {
     "codigoCVM": "9512",
