@@ -43,6 +43,7 @@ $ http GET '/empresas?listadaB3=true&cnae=1033301'
   },
   {...}
 ]
+```
   
 ### `GET /empresas/{cnpj}`
 
