@@ -1,15 +1,13 @@
 # Introdução
 
-Este é o site de documentação de nosso serviço de dados. Para acessar a rede
-social, acesse [cartera.com.br][1].
+## Bem vindo à documentação da Fintz!
 
-## Serviços
-
-A Fintz fornece o acesso mais fácil aos dados de investimentos do Brasil.
-Com nossos serviços, você terá acesso a dados da bolsa, fundos de
-investimentos, CNPJ de empresas, sócios e muito mais!
-
-Para começar, basta seguir nossa documentação :)
+Com a Fintz você tem acesso fácil e rápido aos diversos dados dos mercado financeiro.
 
 
-[1]: https://cartera.com.br
+Os desenvolvedores usam a API da Fintz para acessar dados limpos e padronizados de ações, fundos, empresas, tesouro, emissões de credíto e mais. 
+
+Caso tenha dúvidas em como a Fintz pode te ajudar, ou apenas queira marcar uma demo, basta [entrar em contato][contatoFintz] e vamos te auxiliar.
+
+
+[contatoFintz]: https://fintz.com.br/#/contato
