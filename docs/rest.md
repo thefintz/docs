@@ -1,6 +1,6 @@
 # Endpoints
 
-Esta página irá listar os endpoints existentes em nossos serviços.
+Todos os endpoints tem a URL_BASE = "https://fintz.herokuapp.com/api"
 
 ## Empresas
 
@@ -20,7 +20,7 @@ e os secundários.
 **Exemplo:**
 
 ```bash
-$ http GET '/empresas?listadaB3=true&cnae=1033301'
+$ http GET '{URL_BASE}/empresas?listadaB3=true&cnae=1033301'
 [
   {
     "estabelecimentos": [...],
@@ -56,7 +56,7 @@ Retorna os dados da empresa com o CNPJ, além dos dados do estabelecimento matri
 **Exemplo:**
 
 ```bash
-$ http GET '/empresas/44174296'
+$ http GET '{URL_BASE}/empresas/44174296'
 {
   "estabelecimentos": [
     {
@@ -123,7 +123,7 @@ Retorna uma lista de empresas negociadas na bolsa e informações gerais
 **Exemplo:**
 
 ```bash
-$ http GET '/b3/acoes?cnpj=33000167'
+$ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
 [
   {
     "codigoCVM": "9512",
@@ -184,7 +184,7 @@ Exemplo: `PETR3` ou `PETR4`.
 **Exemplo:**
 
 ```bash
-$ http GET '/b3/acoes/PETR3/fundamentos'
+$ http GET '{URL_BASE}/b3/acoes/PETR3/fundamentos'
 {
   "data": "2022-01-19T00:00:00Z",
   "papel": "PETR3",
