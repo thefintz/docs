@@ -2,44 +2,48 @@
 
 Todos os endpoints tem a URL_BASE = "https://fintz.herokuapp.com/api"
 
-## Empresas
+## Empresas e estabelecimentos
 
 Permite o usuário consultar dados de todas empresas brasileiras
-cadastradas na receita federal através do CNPJ. Os dados são atualizados mensalmente
+cadastradas na receita federal através do CNPJ. Os dados são atualizados mensalmente.
 
 ### `GET /empresas`
 
-Retorna uma lista de empresas e seus estabelecimentos filtrados por parâmetros
+Retorna uma lista de empresas, contendo informações comuns da empresa entre seus estabelecimentos (matriz e filiais), filtrados por parâmetros
 
 **Query Params:**
 
 - `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado entre o cnae principal
 e os secundários.
-- `listadaB3`: um `boolean`, filtra empresas listadas ou não na B3 
+- `listadaB3`: um `boolean`, filtra por empresas listadas na B3
 
 **Exemplo:**
 
 ```bash
-$ http GET '{URL_BASE}/empresas?listadaB3=true&cnae=1033301'
+$ http GET '{URL_BASE}/empresas?listadaB3=true&cnae=4711302'
 [
   {
-    "estabelecimentos": [...],
     "listadaB3": true,
-    "natureza": {
+    "cnpjBasico": "47960950",
+    "capitalSocial": 12552162000,
+    "nomeEmpresarial": "MAGAZINE LUIZA S/A",
+    "naturezaJuridica": {
       "codigo": "2046",
       "descricao": "Sociedade Anônima Aberta"
     },
-    "qualificacao": {	
+    "qualificacaoResponsavel": {
       "codigo": "10",
       "descricao": "Diretor"
     },
-    "porte": {	
+    "porte": {
       "codigo": "05",
       "descricao": "DEMAIS"
     },
-    "capitalSocial": 14874743000,
-    "nomeEmpresarial": "AMERICANAS S.A.",
-    "cnpjBasico": "00776574"
+    "cnpjsEstabelecimentos": [
+      "47960950056500",
+      ...
+      "47960950052601"
+    ]
   },
   {...}
 ]
@@ -47,7 +51,8 @@ $ http GET '{URL_BASE}/empresas?listadaB3=true&cnae=1033301'
   
 ### `GET /empresas/{cnpj}`
 
-Retorna os dados da empresa com o CNPJ, além dos dados do estabelecimento matriz e das filiais.
+Retorna os dados da empresa comuns entre todos os estabelecimentos,
+além de uma lista com todos os CNPJs dos estabelecimentos.
 
 **URL Params:**
 
@@ -58,47 +63,15 @@ Retorna os dados da empresa com o CNPJ, além dos dados do estabelecimento matri
 ```bash
 $ http GET '{URL_BASE}/empresas/44174296'
 {
-  "estabelecimentos": [
-    {
-      "identificadorMatrizFilial": {
-        "codigo": "1",
-        "descricao": "MATRIZ"
-      },
-      "situacaoCadastral": {
-        "codigo": "02",
-        "descricao": "ATIVA"
-      },
-      "nomeFantasia": "CARTERA",
-      "dataSituacaoCadastral": "2020-11-01T00:00:00Z",
-      "motivoSituacaoCadastral": {
-        "codigo": "00",
-        "descricao": "SEM MOTIVO"
-      },
-      "nomeCidadeExterior": null,
-      "dataInicioAtividade": "2020-11-01T00:00:00Z",
-      "situacaoEspecial": null,
-      "dataSituacaoEspecial": null,
-      "pais": null,
-      "cnaesSecundarios": [
-        "6201501",
-        "6201502",
-        "6202300",
-        "6204000",
-        "6209100",
-        "8599603"
-      ],
-      "endereco": {...},
-      "contato": {...},
-      "cnaePrincipal": "6203100",
-      "cnpj": "44174296000132"
-    }
-  ],
   "listadaB3": false,
-  "natureza": {
+  "cnpjBasico": "44174296",
+  "capitalSocial": 100000,
+  "nomeEmpresarial": "CARTERA SOFTWARE LTDA",
+  "naturezaJuridica": {
     "codigo": "2062",
     "descricao": "Sociedade Empresária Limitada"
   },
-  "qualificacao": {
+  "qualificacaoResponsavel": {
     "codigo": "49",
     "descricao": "Sócio-Administrador"
   },
@@ -106,13 +79,114 @@ $ http GET '{URL_BASE}/empresas/44174296'
     "codigo": "01",
     "descricao": "MICRO EMPRESA"
   },
-  "capitalSocial": 100000,
-  "nomeEmpresarial": "CARTERA SOFTWARE LTDA",
-  "cnpjBasico": "44174296"
+  "cnpjsEstabelecimentos": [
+    "44174296000132"
+  ]
 }
 ```
 
-### GET /b3/acoes
+### `GET /estabelecimentos/{cnpj}`
+
+Retorna os dados de um estabelecimento, como dados de endereço, contato, CNAEs, situação cadastral, entre outros
+
+**URL Params:**
+
+- `cnpj`: um `string` contendo os 14 dígitos, sem pontuação, do CNPJ do estabelecimento.
+
+**Exemplo:**
+
+```bash
+$ http GET '{URL_BASE}/estabelecimentos/44174296000132'
+{
+  "cnpj": "44174296000132",
+  "nomeFantasia": "CARTERA",
+  "identificadorMatrizFilial": {
+    "codigo": "1",
+    "descricao": "MATRIZ"
+  },
+  "cnaePrincipal": {
+    "codigo": "6203100",
+    "descricao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
+  },
+  "cnaesSecundarios": [
+    "6201501",
+    "6201502",
+    "6202300",
+    "6204000",
+    "6209100",
+    "8599603"
+  ],
+  "situacaoCadastral": {
+    "codigo": "02",
+    "descricao": "ATIVA"
+  },
+  "dataSituacaoCadastral": "2020-11-01T03:00:00Z",
+  "motivoSituacaoCadastral": {
+    "codigo": "00",
+    "descricao": "SEM MOTIVO"
+  },
+  "nomeCidadeExterior": null,
+  "pais": null,
+  "dataInicioAtividade": "2020-11-01T03:00:00Z",
+  "situacaoEspecial": null,
+  "dataSituacaoEspecial": null,
+  "endereco": {...},
+  "contato": {
+    "telefone1": "4191875540",
+    "email": "BUENO@CARTERA.COM.BR"
+  }
+}
+```
+
+### `GET /estabelecimentos/{cnpj}/cnaes`
+
+Retorna detalhes dos cnaes principal e secundários de um estabelecimento, como subclasse, classe, grupo,
+divisão e seção, além de observações.
+
+**URL Params:**
+
+- `cnpj`: um `string` contendo os 14 dígitos, sem pontuação, do CNPJ do estabelecimento.
+
+**Exemplo:**
+
+```bash
+$ http GET '{URL_BASE}/estabelecimentos/44174296000132/cnaes'
+{
+  "cnaePrincipal": {
+    "subclasseId": "6203100",
+    "subclasseDescricao": "DESENVOLVIMENTO E LICENCIAMENTO DE PROGRAMAS DE COMPUTADOR NÃO-CUSTOMIZÁVEIS",
+    "classeId": "62031",
+    "classeDescricao": "DESENVOLVIMENTO E LICENCIAMENTO DE PROGRAMAS DE COMPUTADOR NÃO-CUSTOMIZÁVEIS",
+    "classeObservacoes": "Esta classe compreende - o desenvolvimento de sistemas ou programas de computador...",
+    "grupoId": "620",
+    "grupoDescricao": "ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO",
+    "divisaoId": "62",
+    "divisaoDescricao": "ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO",
+    "secaoId": "J",
+    "secaoDescricao": "INFORMAÇÃO E COMUNICAÇÃO"
+  },
+  "cnaesSecundarios": [
+    {
+      "subclasseId": "6201502",
+      "subclasseDescricao": "WEB DESIGN",
+      "classeId": "62015",
+      "classeDescricao": "DESENVOLVIMENTO DE PROGRAMAS DE COMPUTADOR SOB ENCOMENDA",
+      "classeObservacoes": "Esta classe compreende - o desenvolvimento de sistemas para atender às...",
+      "grupoId": "620",
+      "grupoDescricao": "ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO",
+      "divisaoId": "62",
+      "divisaoDescricao": "ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO",
+      "secaoId": "J",
+      "secaoDescricao": "INFORMAÇÃO E COMUNICAÇÃO"
+    },
+    {...}
+  ]
+}
+```
+
+## B3
+
+### `GET /b3/acoes`
 
 Retorna uma lista de empresas negociadas na bolsa e informações gerais
 
@@ -142,8 +216,8 @@ $ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
     "instituicaoComum": "BRADESCO",
     "instituicaoPreferencial": "BRADESCO",
     "codigo": "PETR3",
-    "ultimaData": "2022-01-26T23:31:05Z",
-    "temEmissões": false,
+    "ultimaData": "2022-02-01T02:30:05Z",
+    "temEmissoes": false,
     "temBdr": false,
     "tipoBdr": null,
     "categoriaDescritivelBVMF": null,
@@ -172,6 +246,7 @@ $ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
   }
 ]
 ```
+
 ### `GET /b3/acoes/{ticker}/fundamentos`
 
 Retorna os fundamentos e indicadores de uma empresa listada na bolsa pelo ticker.
