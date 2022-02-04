@@ -15,15 +15,15 @@ Retorna uma lista de empresas, contendo informações comuns da empresa entre se
 
 - `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado entre o cnae principal
 e os secundários.
-- `listadaB3`: um `boolean`, filtra por empresas listadas na B3
+- `negociadaB3`: um `boolean`, filtra por empresas negociadas na B3
 
 **Exemplo:**
 
 ```bash
-$ http GET '{URL_BASE}/empresas?listadaB3=true&cnae=4711302'
+$ http GET '{URL_BASE}/empresas?negociadaB3=true&cnae=4711302'
 [
   {
-    "listadaB3": true,
+    "negociadaB3": true,
     "cnpjBasico": "47960950",
     "capitalSocial": 12552162000,
     "nomeEmpresarial": "MAGAZINE LUIZA S/A",
@@ -63,7 +63,7 @@ além de uma lista com todos os CNPJs dos estabelecimentos.
 ```bash
 $ http GET '{URL_BASE}/empresas/44174296'
 {
-  "listadaB3": false,
+  "negociadaB3": false,
   "cnpjBasico": "44174296",
   "capitalSocial": 100000,
   "nomeEmpresarial": "CARTERA SOFTWARE LTDA",
