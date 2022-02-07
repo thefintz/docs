@@ -85,6 +85,61 @@ $ http GET '{URL_BASE}/empresas/44174296'
 }
 ```
 
+### `GET /estabelecimentos`
+
+Retorna uma lista de estabelecimentos, filtrados por parâmetros
+
+**Query Params:**
+
+- `cnae`: um `string`, filtra estabelecimentos que contém o [CNAE][1] específicado entre o cnae principal
+  e os secundários.
+- `negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
+
+**Exemplo:**
+
+```bash
+$ http GET '{URL_BASE}/estabelecimentos?negociadaB3=true&cnae=4711302'
+[
+  {
+    "cnpj": "47508411000156",
+    "cnaesSecundarios": [
+      "4711302",
+      ...
+    ],
+    "empresa": {
+      "negociadaB3": true,
+      ...
+    },
+    "identificadorMatrizFilial": {
+      "codigo": "1",
+      "descricao": "MATRIZ"
+    },
+    "nomeFantasia": null,
+    "situacaoCadastral": {
+      "codigo": "02",
+      "descricao": "ATIVA"
+    },
+    "dataSituacaoCadastral": "2004-11-01T03:00:00Z",
+    "motivoSituacaoCadastral": {
+      "codigo": "00",
+      "descricao": "SEM MOTIVO"
+    },
+    "nomeCidadeExterior": null,
+    "pais": null,
+    "dataInicioAtividade": "1980-11-01T03:00:00Z",
+    "situacaoEspecial": null,
+    "dataSituacaoEspecial": null,
+    "cnaePrincipal": {
+      "codigo": "4789099",
+      "descricao": "Comércio varejista de outros produtos não especificados anteriormente"
+    },
+    "endereco": {...},
+    "contato": {...}
+  },
+  {...}
+]
+```
+
 ### `GET /estabelecimentos/{cnpj}`
 
 Retorna os dados de um estabelecimento, como dados de endereço, contato, CNAEs, situação cadastral, entre outros
@@ -100,10 +155,6 @@ $ http GET '{URL_BASE}/estabelecimentos/44174296000132'
 {
   "cnpj": "44174296000132",
   "nomeFantasia": "CARTERA",
-  "identificadorMatrizFilial": {
-    "codigo": "1",
-    "descricao": "MATRIZ"
-  },
   "cnaePrincipal": {
     "codigo": "6203100",
     "descricao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
@@ -116,25 +167,36 @@ $ http GET '{URL_BASE}/estabelecimentos/44174296000132'
     "6209100",
     "8599603"
   ],
+  "empresa": {
+    "negociadaB3": false,
+    "naturezaJuridica": {...},
+    "qualificacaoResponsavel": {...},
+    "cnpjBasico": "44174296",
+    "capitalSocial": 100000,
+    "nomeEmpresarial": "CARTERA SOFTWARE LTDA",
+    "porte": {...},
+    "cnpjsEstabelecimentos": [...]
+  },
+  "identificadorMatrizFilial": {
+    "codigo": "1",
+    "descricao": "MATRIZ"
+  },
   "situacaoCadastral": {
     "codigo": "02",
     "descricao": "ATIVA"
   },
-  "dataSituacaoCadastral": "2020-11-01T03:00:00Z",
   "motivoSituacaoCadastral": {
     "codigo": "00",
     "descricao": "SEM MOTIVO"
   },
+  "dataSituacaoCadastral": "2020-11-01T03:00:00Z",
   "nomeCidadeExterior": null,
   "pais": null,
   "dataInicioAtividade": "2020-11-01T03:00:00Z",
   "situacaoEspecial": null,
   "dataSituacaoEspecial": null,
   "endereco": {...},
-  "contato": {
-    "telefone1": "4191875540",
-    "email": "BUENO@CARTERA.COM.BR"
-  }
+  "contato": {...}
 }
 ```
 
