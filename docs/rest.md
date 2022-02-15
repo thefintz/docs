@@ -309,9 +309,9 @@ $ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
 ]
 ```
 
-### `GET /b3/acoes/{ticker}/fundamentos`
+### `GET /b3/acoes/{ticker}/indicadores`
 
-Retorna os fundamentos e indicadores de uma empresa listada na bolsa pelo ticker.
+Retorna os indicadores fundamentalistas de uma empresa listada na bolsa pelo ticker.
 
 **URL params:**
 
@@ -321,7 +321,7 @@ Exemplo: `PETR3` ou `PETR4`.
 **Exemplo:**
 
 ```bash
-$ http GET '{URL_BASE}/b3/acoes/PETR3/fundamentos'
+$ http GET '{URL_BASE}/b3/acoes/PETR3/indicadores'
 {
   "data": "2022-01-19T00:00:00Z",
   "papel": "PETR3",
