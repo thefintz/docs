@@ -332,20 +332,38 @@ $ http GET '{URL_BASE}/b3/acoes/PETR3/indicadores'
   "valorDaFirma": 708584000000,
   "valorDeMercado": 446774000000,
   "ultimoBalancoProcessado": "2021-09-30T00:00:00Z",
-  "dy": 0.165,
-  "vpa": 28.29,
-  "lpa": 10.35,
-  "roic": 0.196,
-  "roe": 0.366,
-  "liquidezCorrente": 1.2,
-  "margemEbit": 0.44,
-  "margemBruta": 0.511,
-  "margemLiquida": 0.346,
-  "evEbitda": 2.98,
+  "dy": "0.165",
+  "vpa": "28.29",
+  "lpa": "10.35",
+  "roic": "0.196",
+  "roe": "0.366",
+  "liquidezCorrente": "1.2",
+  "margemEbit": "0.44",
+  "margemBruta": "0.511",
+  "margemLiquida": "0.346",
+  "evEbitda": "2.98",
   "receitaLiquida12Meses": 393450000000,
-  "pl": 3.31,
-  "pvp": 1.21,
-  "pebit": 2.58
+  "pl": "3.31",
+  "pvp": "1.21",
+  "pebit": "2.58"
+}
+```
+
+### `GET /b3/acoes/{ticker}/logo`
+
+Retorna uma url da logo de uma empresa listada na bolsa pelo ticker.
+
+**URL params:**
+
+- `ticker`: um `string`, _case insensitive_ com o ticker da empresa desejada.
+  Exemplo: `PETR3` ou `PETR4`.
+
+**Exemplo:**
+
+```bash
+$ http GET '{URL_BASE}/b3/acoes/PETR3/logo'
+{
+  "url": "https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main/imgs/PETR3.png"
 }
 ```
 
