@@ -15,10 +15,10 @@ Retorna uma lista de empresas, contendo informações comuns da empresa entre se
 
 - `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado entre o cnae principal
 e os secundários. É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
-  - `cnae=41`: busca pela divisão `41 - Construção de edificios`
-  - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
-  - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
-  - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
+    - `cnae=41`: busca pela divisão `41 - Construção de edificios`
+    - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
+    - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
+    - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
 - `negociadaB3`: um `boolean`, filtra por empresas negociadas na B3
 
 **Exemplo:**
@@ -97,10 +97,10 @@ Retorna uma lista de estabelecimentos, filtrados por parâmetros
 
 - `cnae`: um `string`, filtra estabelecimentos que contém o [CNAE][1] específicado entre o cnae principal
   e os secundários. É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
-  - `cnae=41`: busca pela divisão `41 - Construção de edificios`
-  - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
-  - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
-  - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
+    - `cnae=41`: busca pela divisão `41 - Construção de edificios`
+    - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
+    - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
+    - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
 - `negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
 
 **Exemplo:**
