@@ -104,7 +104,7 @@ Retorna uma lista de estabelecimentos, filtrados por parâmetros
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
     - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
-- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca os estabelecimento
+- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca os estabelecimentos
 que contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
     - `cnaes=62,631`
 -`negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
