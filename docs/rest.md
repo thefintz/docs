@@ -107,7 +107,7 @@ Retorna uma lista de estabelecimentos, filtrados por parâmetros
 - `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca os estabelecimentos
 que contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
     - `cnaes=62,631`
--`negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
+- `negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
 
 **Exemplo:**
 
