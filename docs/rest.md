@@ -328,7 +328,7 @@ $ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
 
 Retorna os indicadores fundamentalistas de uma empresa listada na bolsa pelo ticker.
 
-**URL params:**
+**URL Params:**
 
 - `ticker`: um `string`, _case insensitive_ com o ticker da empresa desejada.
 Exemplo: `PETR3` ou `PETR4`.
@@ -366,9 +366,9 @@ $ http GET '{URL_BASE}/b3/acoes/PETR3/indicadores'
 
 ### `GET /b3/acoes/indicadores`
 
-Retorna uma lista de indicadores de empresas listadas na bolsa filtradas por paramêtros.
+Retorna uma lista de indicadores de empresas listadas na bolsa, filtradas por paramêtros.
 
-**URL params:**
+**Query Params:**
 
 - `tickers`: uma lista `string`, _case insensitive_ com os tickers das empresas desejadas separados por vírgulas.
   Exemplo: `PETR3,MGLU3,BBAS3`.
