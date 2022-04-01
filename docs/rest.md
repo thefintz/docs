@@ -1,6 +1,6 @@
 # Endpoints
 
-Todos os endpoints tem a URL_BASE = `https://fintz.herokuapp.com/api
+Todos os endpoints tem a URL_BASE = `https://fintz.herokuapp.com/api`
 
 ## Empresas e estabelecimentos
 
