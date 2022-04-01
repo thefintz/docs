@@ -1,6 +1,6 @@
 # Endpoints
 
-Todos os endpoints tem a URL_BASE = "https://fintz.herokuapp.com/api"
+Todos os endpoints tem a URL_BASE = `https://fintz.herokuapp.com/api
 
 ## Empresas e estabelecimentos
 
@@ -13,12 +13,15 @@ Retorna uma lista de empresas, contendo informações comuns da empresa entre se
 
 **Query Params:**
 
-- `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado entre o cnae principal
-e os secundários. É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
+- `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado no cnae principal.
+É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
     - `cnae=41`: busca pela divisão `41 - Construção de edificios`
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
     - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
+- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca as empresas que o estabelecimento matriz
+contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
+    - `cnaes=62,631`
 - `negociadaB3`: um `boolean`, filtra por empresas negociadas na B3
 
 **Exemplo:**
@@ -95,13 +98,16 @@ Retorna uma lista de estabelecimentos, filtrados por parâmetros
 
 **Query Params:**
 
-- `cnae`: um `string`, filtra estabelecimentos que contém o [CNAE][1] específicado entre o cnae principal
-  e os secundários. É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
+- `cnae`: um `string`, filtra estabelecimentos que contém o [CNAE][1] específicado no cnae principal.
+É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
     - `cnae=41`: busca pela divisão `41 - Construção de edificios`
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
     - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
-- `negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
+- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca os estabelecimento
+que contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
+    - `cnaes=62,631`
+-`negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
 
 **Exemplo:**
 
@@ -263,6 +269,7 @@ Retorna uma lista de empresas negociadas na bolsa e informações gerais
 **Query Params:**
 
 - `cnpj`: um `string` de 14 dígitos ou apenas os 8 primeiros dígitos de um CNPJ, filtra ações da B3 por CNPJ da empresa.
+- `cnpjs`: uma lista de `string` de 14 dígitos ou apenas os 8 primeiros dígitos de CNPJs, separados por vírgulas.
 
 **Exemplo:**
 
@@ -355,6 +362,49 @@ $ http GET '{URL_BASE}/b3/acoes/PETR3/indicadores'
   "pvp": "1.21",
   "pebit": "2.58"
 }
+```
+
+### `GET /b3/acoes/indicadores`
+
+Retorna uma lista de indicadores de empresas listadas na bolsa filtradas por paramêtros.
+
+**URL params:**
+
+- `tickers`: uma lista `string`, _case insensitive_ com os tickers das empresas desejadas separados por vírgulas.
+  Exemplo: `PETR3,MGLU3,BBAS3`.
+
+**Exemplo:**
+
+```bash
+$ http GET '{URL_BASE}/b3/acoes/indicadores?tickers=PETR3,MGLU3'
+[
+    {
+        "empresa": "MAGAZ LUIZA ON NM",
+        "ticker": "MGLU3",
+        "valorDaFirma": 4.68083E10,
+        "valorDeMercado": 4.4138E10,
+        "receitaLiquida12Meses": 3.52782E10,
+        "setor": "Comercio",
+        "subsetor": "Eletrodomesticos",
+        "tipoDoAtivo": "ON NM",
+        "dataUltimaCotacao": "2022-03-25T03:00:00Z",
+        "ultimoBalancoProcessado": "2021-12-31T03:00:00Z",
+        "dy": "0.002",
+        "pl": "74.73",
+        "pvp": "3.92",
+        "pebit": "167.34",
+        "vpa": "1.67",
+        "lpa": "0.09",
+        "roic": "0.011",
+        "roe": "0.052",
+        "liquidezCorrente": "1.61",
+        "margemEbit": "0.007",
+        "margemBruta": "0.241",
+        "margemLiquida": "0.017",
+        "evEbitda": "43.31",
+        "data": "2022-03-25T03:00:00Z"
+    }, {...}
+]
 ```
 
 ### `GET /b3/acoes/{ticker}/logo`
