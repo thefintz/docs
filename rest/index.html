@@ -1,0 +1,997 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Endpoints - Fintz</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#endpoints" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fintz" class="md-header__button md-logo" aria-label="Fintz" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fintz
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Endpoints
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/thefintz/docs-api/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fintz" class="md-nav__button md-logo" aria-label="Fintz" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Fintz
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/thefintz/docs-api/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introdução
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Endpoints
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Endpoints
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empresas-e-estabelecimentos" class="md-nav__link">
+    Empresas e estabelecimentos
+  </a>
+  
+    <nav class="md-nav" aria-label="Empresas e estabelecimentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-empresas" class="md-nav__link">
+    GET /empresas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-empresascnpj" class="md-nav__link">
+    GET /empresas/{cnpj}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentos" class="md-nav__link">
+    GET /estabelecimentos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentoscnpj" class="md-nav__link">
+    GET /estabelecimentos/{cnpj}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentoscnpjcnaes" class="md-nav__link">
+    GET /estabelecimentos/{cnpj}/cnaes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b3" class="md-nav__link">
+    B3
+  </a>
+  
+    <nav class="md-nav" aria-label="B3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoes" class="md-nav__link">
+    GET /b3/acoes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoestickerindicadores" class="md-nav__link">
+    GET /b3/acoes/{ticker}/indicadores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoesindicadores" class="md-nav__link">
+    GET /b3/acoes/indicadores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoestickerlogo" class="md-nav__link">
+    GET /b3/acoes/{ticker}/logo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empresas-e-estabelecimentos" class="md-nav__link">
+    Empresas e estabelecimentos
+  </a>
+  
+    <nav class="md-nav" aria-label="Empresas e estabelecimentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-empresas" class="md-nav__link">
+    GET /empresas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-empresascnpj" class="md-nav__link">
+    GET /empresas/{cnpj}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentos" class="md-nav__link">
+    GET /estabelecimentos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentoscnpj" class="md-nav__link">
+    GET /estabelecimentos/{cnpj}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-estabelecimentoscnpjcnaes" class="md-nav__link">
+    GET /estabelecimentos/{cnpj}/cnaes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b3" class="md-nav__link">
+    B3
+  </a>
+  
+    <nav class="md-nav" aria-label="B3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoes" class="md-nav__link">
+    GET /b3/acoes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoestickerindicadores" class="md-nav__link">
+    GET /b3/acoes/{ticker}/indicadores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoesindicadores" class="md-nav__link">
+    GET /b3/acoes/indicadores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-b3acoestickerlogo" class="md-nav__link">
+    GET /b3/acoes/{ticker}/logo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/thefintz/docs-api/edit/master/docs/rest.md" title="Editar esta página" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="endpoints">Endpoints</h1>
+<p>Todos os endpoints tem a URL_BASE = <code>https://fintz.herokuapp.com/api</code></p>
+<h2 id="empresas-e-estabelecimentos">Empresas e estabelecimentos</h2>
+<p>Permite o usuário consultar dados de todas empresas brasileiras
+cadastradas na receita federal através do CNPJ. Os dados são atualizados mensalmente.</p>
+<h3 id="get-empresas"><code>GET /empresas</code></h3>
+<p>Retorna uma lista de empresas, contendo informações comuns da empresa entre seus estabelecimentos (matriz e filiais), filtrados por parâmetros</p>
+<p><strong>Query Params:</strong></p>
+<ul>
+<li><code>cnae</code>: um <code>string</code>, sem pontuação, que filtra empresas que o estabelecimento matriz contém o <a href="https://cnae.ibge.gov.br/">CNAE</a> específicado no cnae principal.
+É possível também filtrar por toda a <a href="https://cnae.ibge.gov.br/?view=estrutura">estrutura</a> dos cnaes enviando apenas o início da <code>string</code>, exemplos:<ul>
+<li><code>cnae=41</code>: busca pela divisão <code>41 - Construção de edificios</code></li>
+<li><code>cnae=411</code>: busca pelo grupo <code>41.1 Incorporação de empreendimentos imobiliários</code></li>
+<li><code>cnae=41107</code>: busca pela classe <code>41.10-7 Incorporação de empreendimentos imobiliários</code></li>
+<li><code>cnae=4110700</code>: busca pela subclasse <code>4110-7/00 Incorporação de empreendimentos imobiliários</code></li>
+</ul>
+</li>
+<li><code>cnaes</code>: uma lista de <code>string</code>, sem pontuação, com o comportamento similar ao <code>cnae</code>, porém busca as empresas que o estabelecimento matriz
+contém qualquer um dos <a href="https://cnae.ibge.gov.br/">CNAEs</a> específicados no cnae principal. Exemplo:<ul>
+<li><code>cnaes=62,631</code></li>
+</ul>
+</li>
+<li><code>negociadaB3</code>: um <code>boolean</code>, filtra por empresas negociadas na B3</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/empresas?negociadaB3=true&amp;cnae=4711302&#39;</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;negociadaB3&quot;</span>: true,
+    <span class="s2">&quot;cnpjBasico&quot;</span>: <span class="s2">&quot;47960950&quot;</span>,
+    <span class="s2">&quot;capitalSocial&quot;</span>: <span class="m">12552162000</span>,
+    <span class="s2">&quot;nomeEmpresarial&quot;</span>: <span class="s2">&quot;MAGAZINE LUIZA S/A&quot;</span>,
+    <span class="s2">&quot;naturezaJuridica&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;2046&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sociedade Anônima Aberta&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;qualificacaoResponsavel&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;10&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Diretor&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;porte&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;05&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;DEMAIS&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;cnpjsEstabelecimentos&quot;</span>: <span class="o">[</span>
+      <span class="s2">&quot;47960950056500&quot;</span>,
+      ...
+      <span class="s2">&quot;47960950052601&quot;</span>
+    <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>...<span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="get-empresascnpj"><code>GET /empresas/{cnpj}</code></h3>
+<p>Retorna os dados da empresa comuns entre todos os estabelecimentos,
+além de uma lista com todos os CNPJs dos estabelecimentos.</p>
+<p><strong>URL Params:</strong></p>
+<ul>
+<li><code>cnpj</code>: um <code>string</code> contendo os 14 dígitos ou apenas os 8 primeiros dígitos, sem pontuação, do CNPJ da empresa.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/empresas/44174296&#39;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;negociadaB3&quot;</span>: false,
+  <span class="s2">&quot;cnpjBasico&quot;</span>: <span class="s2">&quot;44174296&quot;</span>,
+  <span class="s2">&quot;capitalSocial&quot;</span>: <span class="m">100000</span>,
+  <span class="s2">&quot;nomeEmpresarial&quot;</span>: <span class="s2">&quot;CARTERA SOFTWARE LTDA&quot;</span>,
+  <span class="s2">&quot;naturezaJuridica&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;2062&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sociedade Empresária Limitada&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;qualificacaoResponsavel&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;49&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sócio-Administrador&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;porte&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;01&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;MICRO EMPRESA&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;cnpjsEstabelecimentos&quot;</span>: <span class="o">[</span>
+    <span class="s2">&quot;44174296000132&quot;</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="get-estabelecimentos"><code>GET /estabelecimentos</code></h3>
+<p>Retorna uma lista de estabelecimentos, filtrados por parâmetros</p>
+<p><strong>Query Params:</strong></p>
+<ul>
+<li><code>cnae</code>: um <code>string</code>, sem pontuação, que filtra estabelecimentos que contém o <a href="https://cnae.ibge.gov.br/">CNAE</a> específicado no cnae principal.
+É possível também filtrar por toda a <a href="https://cnae.ibge.gov.br/?view=estrutura">estrutura</a> dos cnaes enviando apenas o início da <code>string</code>, exemplos:<ul>
+<li><code>cnae=41</code>: busca pela divisão <code>41 - Construção de edificios</code></li>
+<li><code>cnae=411</code>: busca pelo grupo <code>41.1 Incorporação de empreendimentos imobiliários</code></li>
+<li><code>cnae=41107</code>: busca pela classe <code>41.10-7 Incorporação de empreendimentos imobiliários</code></li>
+<li><code>cnae=4110700</code>: busca pela subclasse <code>4110-7/00 Incorporação de empreendimentos imobiliários</code></li>
+</ul>
+</li>
+<li><code>cnaes</code>: uma lista de <code>string</code>, sem pontuação, com comportamento similar ao <code>cnae</code>, porém busca os estabelecimentos
+que contém qualquer um dos <a href="https://cnae.ibge.gov.br/">CNAEs</a> específicados no cnae principal. Exemplo:<ul>
+<li><code>cnaes=62,631</code></li>
+</ul>
+</li>
+<li><code>negociadaB3</code>: um <code>boolean</code>, filtra estabelecimentos que a empresa é negociada na B3</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/estabelecimentos?negociadaB3=true&amp;cnae=4711302&#39;</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;cnaesSecundarios&quot;</span>: <span class="o">[</span>
+      <span class="s2">&quot;4619200&quot;</span>,
+      <span class="s2">&quot;8299702&quot;</span>
+    <span class="o">]</span>,
+    <span class="s2">&quot;empresa&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;negociadaB3&quot;</span>: true,
+      <span class="s2">&quot;cnpjBasico&quot;</span>: <span class="s2">&quot;06057223&quot;</span>,
+      <span class="s2">&quot;capitalSocial&quot;</span>: <span class="m">786730240</span>,
+      <span class="s2">&quot;nomeEmpresarial&quot;</span>: <span class="s2">&quot;SENDAS DISTRIBUIDORA S/A&quot;</span>,
+      <span class="s2">&quot;naturezaJuridica&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;2046&quot;</span>,
+        <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sociedade Anônima Aberta&quot;</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;qualificacaoResponsavel&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;10&quot;</span>,
+        <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Diretor&quot;</span>
+      <span class="o">}</span>,
+      <span class="s2">&quot;porte&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;05&quot;</span>,
+        <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;DEMAIS&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;identificadorMatrizFilial&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;1&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;MATRIZ&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;nomeFantasia&quot;</span>: <span class="s2">&quot;ASSAI ATACADISTA&quot;</span>,
+    <span class="s2">&quot;situacaoCadastral&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;02&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;ATIVA&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;dataSituacaoCadastral&quot;</span>: <span class="s2">&quot;2003-10-31T02:00:00Z&quot;</span>,
+    <span class="s2">&quot;motivoSituacaoCadastral&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;00&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;SEM MOTIVO&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;nomeCidadeExterior&quot;</span>: null,
+    <span class="s2">&quot;pais&quot;</span>: null,
+    <span class="s2">&quot;dataInicioAtividade&quot;</span>: <span class="s2">&quot;2003-12-01T02:00:00Z&quot;</span>,
+    <span class="s2">&quot;situacaoEspecial&quot;</span>: null,
+    <span class="s2">&quot;dataSituacaoEspecial&quot;</span>: null,
+    <span class="s2">&quot;cnpj&quot;</span>: <span class="s2">&quot;06057223000171&quot;</span>,
+    <span class="s2">&quot;cnaePrincipal&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;4711302&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Comércio varejista de mercadorias em geral, com predominância de produtos alimentícios - supermercados&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;endereco&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;tipoDeLogradouro&quot;</span>: <span class="s2">&quot;AVENIDA&quot;</span>,
+      <span class="s2">&quot;logradouro&quot;</span>: <span class="s2">&quot;AYRTON SENNA&quot;</span>,
+      <span class="s2">&quot;numero&quot;</span>: <span class="s2">&quot;06000&quot;</span>,
+      <span class="s2">&quot;complemento&quot;</span>: <span class="s2">&quot;      LOT 2 PAL 48959           ANEXO A&quot;</span>,
+      <span class="s2">&quot;bairro&quot;</span>: <span class="s2">&quot;JACAREPAGUA&quot;</span>,
+      <span class="s2">&quot;cep&quot;</span>: <span class="s2">&quot;22775005&quot;</span>,
+      <span class="s2">&quot;uf&quot;</span>: <span class="s2">&quot;RJ&quot;</span>,
+      <span class="s2">&quot;municipio&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;6001&quot;</span>,
+        <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;RIO DE JANEIRO&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;contato&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;email&quot;</span>: <span class="s2">&quot;PARALEGAL@ASSAI.COM.BR&quot;</span>,
+      <span class="s2">&quot;telefone1&quot;</span>: <span class="s2">&quot;1134115000&quot;</span>,
+      <span class="s2">&quot;telefone2&quot;</span>: null,
+      <span class="s2">&quot;fax&quot;</span>: <span class="s2">&quot;1138860599&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="get-estabelecimentoscnpj"><code>GET /estabelecimentos/{cnpj}</code></h3>
+<p>Retorna os dados de um estabelecimento, como dados de endereço, contato, CNAEs, situação cadastral, entre outros</p>
+<p><strong>URL Params:</strong></p>
+<ul>
+<li><code>cnpj</code>: um <code>string</code> contendo os 14 dígitos, sem pontuação, do CNPJ do estabelecimento.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/estabelecimentos/44174296000132&#39;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;cnaesSecundarios&quot;</span>: <span class="o">[</span>
+    <span class="s2">&quot;6201501&quot;</span>
+  <span class="o">]</span>,
+  <span class="s2">&quot;empresa&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;negociadaB3&quot;</span>: false,
+    <span class="s2">&quot;cnpjBasico&quot;</span>: <span class="s2">&quot;44174296&quot;</span>,
+    <span class="s2">&quot;capitalSocial&quot;</span>: <span class="m">100000</span>,
+    <span class="s2">&quot;nomeEmpresarial&quot;</span>: <span class="s2">&quot;CARTERA SOFTWARE LTDA&quot;</span>,
+    <span class="s2">&quot;naturezaJuridica&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;2062&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sociedade Empresária Limitada&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;qualificacaoResponsavel&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;49&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Sócio-Administrador&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;porte&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;01&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;MICRO EMPRESA&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;identificadorMatrizFilial&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;1&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;MATRIZ&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;nomeFantasia&quot;</span>: <span class="s2">&quot;CARTERA&quot;</span>,
+  <span class="s2">&quot;situacaoCadastral&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;02&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;ATIVA&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;dataSituacaoCadastral&quot;</span>: <span class="s2">&quot;2020-11-01T03:00:00Z&quot;</span>,
+  <span class="s2">&quot;motivoSituacaoCadastral&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;00&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;SEM MOTIVO&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;nomeCidadeExterior&quot;</span>: null,
+  <span class="s2">&quot;pais&quot;</span>: null,
+  <span class="s2">&quot;dataInicioAtividade&quot;</span>: <span class="s2">&quot;2020-11-01T03:00:00Z&quot;</span>,
+  <span class="s2">&quot;situacaoEspecial&quot;</span>: null,
+  <span class="s2">&quot;dataSituacaoEspecial&quot;</span>: null,
+  <span class="s2">&quot;cnpj&quot;</span>: <span class="s2">&quot;44174296000132&quot;</span>,
+  <span class="s2">&quot;cnaePrincipal&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;6203100&quot;</span>,
+    <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;Desenvolvimento e licenciamento de programas de computador não-customizáveis&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;endereco&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;tipoDeLogradouro&quot;</span>: <span class="s2">&quot;RODOVIA&quot;</span>,
+    <span class="s2">&quot;logradouro&quot;</span>: <span class="s2">&quot;&quot;</span>,
+    <span class="s2">&quot;numero&quot;</span>: <span class="s2">&quot;&quot;</span>,
+    <span class="s2">&quot;complemento&quot;</span>: <span class="s2">&quot;&quot;</span>,
+    <span class="s2">&quot;bairro&quot;</span>: <span class="s2">&quot;ITACORUBI&quot;</span>,
+    <span class="s2">&quot;cep&quot;</span>: <span class="s2">&quot;88034101&quot;</span>,
+    <span class="s2">&quot;uf&quot;</span>: <span class="s2">&quot;SC&quot;</span>,
+    <span class="s2">&quot;municipio&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;8105&quot;</span>,
+      <span class="s2">&quot;descricao&quot;</span>: <span class="s2">&quot;FLORIANOPOLIS&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;contato&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;email&quot;</span>: <span class="s2">&quot;BUENO@CARTERA.COM.BR&quot;</span>,
+    <span class="s2">&quot;telefone1&quot;</span>: <span class="s2">&quot;4191875540&quot;</span>,
+    <span class="s2">&quot;telefone2&quot;</span>: null,
+    <span class="s2">&quot;fax&quot;</span>: null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="get-estabelecimentoscnpjcnaes"><code>GET /estabelecimentos/{cnpj}/cnaes</code></h3>
+<p>Retorna detalhes dos cnaes principal e secundários de um estabelecimento, como subclasse, classe, grupo,
+divisão e seção, além de observações.</p>
+<p><strong>URL Params:</strong></p>
+<ul>
+<li><code>cnpj</code>: um <code>string</code> contendo os 14 dígitos, sem pontuação, do CNPJ do estabelecimento.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/estabelecimentos/44174296000132/cnaes&#39;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;cnaePrincipal&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;subclasseId&quot;</span>: <span class="s2">&quot;6203100&quot;</span>,
+    <span class="s2">&quot;subclasseDescricao&quot;</span>: <span class="s2">&quot;DESENVOLVIMENTO E LICENCIAMENTO DE PROGRAMAS DE COMPUTADOR NÃO-CUSTOMIZÁVEIS&quot;</span>,
+    <span class="s2">&quot;classeId&quot;</span>: <span class="s2">&quot;62031&quot;</span>,
+    <span class="s2">&quot;classeDescricao&quot;</span>: <span class="s2">&quot;DESENVOLVIMENTO E LICENCIAMENTO DE PROGRAMAS DE COMPUTADOR NÃO-CUSTOMIZÁVEIS&quot;</span>,
+    <span class="s2">&quot;classeObservacoes&quot;</span>: <span class="s2">&quot;Esta classe compreende - o desenvolvimento de sistemas ou programas de computador...&quot;</span>,
+    <span class="s2">&quot;grupoId&quot;</span>: <span class="s2">&quot;620&quot;</span>,
+    <span class="s2">&quot;grupoDescricao&quot;</span>: <span class="s2">&quot;ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO&quot;</span>,
+    <span class="s2">&quot;divisaoId&quot;</span>: <span class="s2">&quot;62&quot;</span>,
+    <span class="s2">&quot;divisaoDescricao&quot;</span>: <span class="s2">&quot;ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO&quot;</span>,
+    <span class="s2">&quot;secaoId&quot;</span>: <span class="s2">&quot;J&quot;</span>,
+    <span class="s2">&quot;secaoDescricao&quot;</span>: <span class="s2">&quot;INFORMAÇÃO E COMUNICAÇÃO&quot;</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;cnaesSecundarios&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&quot;subclasseId&quot;</span>: <span class="s2">&quot;6201502&quot;</span>,
+      <span class="s2">&quot;subclasseDescricao&quot;</span>: <span class="s2">&quot;WEB DESIGN&quot;</span>,
+      <span class="s2">&quot;classeId&quot;</span>: <span class="s2">&quot;62015&quot;</span>,
+      <span class="s2">&quot;classeDescricao&quot;</span>: <span class="s2">&quot;DESENVOLVIMENTO DE PROGRAMAS DE COMPUTADOR SOB ENCOMENDA&quot;</span>,
+      <span class="s2">&quot;classeObservacoes&quot;</span>: <span class="s2">&quot;Esta classe compreende - o desenvolvimento de sistemas para atender às...&quot;</span>,
+      <span class="s2">&quot;grupoId&quot;</span>: <span class="s2">&quot;620&quot;</span>,
+      <span class="s2">&quot;grupoDescricao&quot;</span>: <span class="s2">&quot;ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO&quot;</span>,
+      <span class="s2">&quot;divisaoId&quot;</span>: <span class="s2">&quot;62&quot;</span>,
+      <span class="s2">&quot;divisaoDescricao&quot;</span>: <span class="s2">&quot;ATIVIDADES DOS SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO&quot;</span>,
+      <span class="s2">&quot;secaoId&quot;</span>: <span class="s2">&quot;J&quot;</span>,
+      <span class="s2">&quot;secaoDescricao&quot;</span>: <span class="s2">&quot;INFORMAÇÃO E COMUNICAÇÃO&quot;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>...<span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="b3">B3</h2>
+<h3 id="get-b3acoes"><code>GET /b3/acoes</code></h3>
+<p>Retorna uma lista de empresas negociadas na bolsa e informações gerais</p>
+<p><strong>Query Params:</strong></p>
+<ul>
+<li><code>cnpj</code>: um <code>string</code> de 14 dígitos ou apenas os 8 primeiros dígitos de um CNPJ, filtra ações da B3 por CNPJ da empresa.</li>
+<li><code>cnpjs</code>: uma lista de <code>string</code> de 14 dígitos ou apenas os 8 primeiros dígitos de CNPJs, separados por vírgulas.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/b3/acoes?cnpj=33000167&#39;</span>
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;codigoCVM&quot;</span>: <span class="s2">&quot;9512&quot;</span>,
+    <span class="s2">&quot;empresaEmissora&quot;</span>: <span class="s2">&quot;PETR&quot;</span>,
+    <span class="s2">&quot;nomeEmpresa&quot;</span>: <span class="s2">&quot;PETROLEO BRASILEIRO S.A. PETROBRAS&quot;</span>,
+    <span class="s2">&quot;nomeNegociacao&quot;</span>: <span class="s2">&quot;PETROBRAS&quot;</span>,
+    <span class="s2">&quot;cnpj&quot;</span>: <span class="s2">&quot;33000167000101&quot;</span>,
+    <span class="s2">&quot;classificacaoIndustria&quot;</span>: <span class="s2">&quot;Petróleo. Gás e Biocombustíveis / Petróleo. Gás e Biocombustíveis / Exploração. Refino e Distribuição&quot;</span>,
+    <span class="s2">&quot;classificacaoIndustriaEng&quot;</span>: null,
+    <span class="s2">&quot;atividade&quot;</span>: <span class="s2">&quot;Pesquisa. lavra. refinação. processamento. comércio e transporte de petróleo. de seus derivados. de gás natural e de outros hidrocarbonetos fluidos. além das atividades vinculadas à energia.&quot;</span>,
+    <span class="s2">&quot;website&quot;</span>: <span class="s2">&quot;www.petrobras.com.br&quot;</span>,
+    <span class="s2">&quot;temCotacao&quot;</span>: null,
+    <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;A&quot;</span>,
+    <span class="s2">&quot;indicatorMercado&quot;</span>: <span class="s2">&quot;17&quot;</span>,
+    <span class="s2">&quot;mercado&quot;</span>: <span class="s2">&quot;BOVESPA NIVEL 2&quot;</span>,
+    <span class="s2">&quot;instituicaoComum&quot;</span>: <span class="s2">&quot;BRADESCO&quot;</span>,
+    <span class="s2">&quot;instituicaoPreferencial&quot;</span>: <span class="s2">&quot;BRADESCO&quot;</span>,
+    <span class="s2">&quot;codigo&quot;</span>: <span class="s2">&quot;PETR3&quot;</span>,
+    <span class="s2">&quot;ultimaData&quot;</span>: <span class="s2">&quot;2022-02-01T02:30:05Z&quot;</span>,
+    <span class="s2">&quot;temEmissoes&quot;</span>: false,
+    <span class="s2">&quot;temBdr&quot;</span>: false,
+    <span class="s2">&quot;tipoBdr&quot;</span>: null,
+    <span class="s2">&quot;categoriaDescritivelBVMF&quot;</span>: null,
+    <span class="s2">&quot;outrosCodigos&quot;</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">&quot;isin&quot;</span>: <span class="s2">&quot;BRPETRACNOR9&quot;</span>,
+        <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;PETR3&quot;</span>,
+        <span class="s2">&quot;codeCvm&quot;</span>: <span class="s2">&quot;9512&quot;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">&quot;isin&quot;</span>: <span class="s2">&quot;BRPETRACNPR6&quot;</span>,
+        <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;PETR4&quot;</span>,
+        <span class="s2">&quot;codeCvm&quot;</span>: <span class="s2">&quot;9512&quot;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">&quot;isin&quot;</span>: <span class="s2">&quot;BRPETRDBS001&quot;</span>,
+        <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;PETR-DEB61&quot;</span>,
+        <span class="s2">&quot;codeCvm&quot;</span>: <span class="s2">&quot;9512&quot;</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">&quot;isin&quot;</span>: <span class="s2">&quot;BRPETRDBS092&quot;</span>,
+        <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;PETR-DEB62&quot;</span>,
+        <span class="s2">&quot;codeCvm&quot;</span>: <span class="s2">&quot;9512&quot;</span>
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="get-b3acoestickerindicadores"><code>GET /b3/acoes/{ticker}/indicadores</code></h3>
+<p>Retorna os indicadores fundamentalistas de uma empresa listada na bolsa pelo ticker.</p>
+<p><strong>URL Params:</strong></p>
+<ul>
+<li><code>ticker</code>: um <code>string</code>, <em>case insensitive</em> com o ticker da empresa desejada.
+Exemplo: <code>PETR3</code> ou <code>PETR4</code>.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/b3/acoes/PETR3/indicadores&#39;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;data&quot;</span>: <span class="s2">&quot;2022-01-19T00:00:00Z&quot;</span>,
+  <span class="s2">&quot;ticker&quot;</span>: <span class="s2">&quot;PETR3&quot;</span>,
+  <span class="s2">&quot;empresa&quot;</span>: <span class="s2">&quot;PETROBRAS ON&quot;</span>,
+  <span class="s2">&quot;setor&quot;</span>: <span class="s2">&quot;Petroleo, Gas e Biocombustiveis&quot;</span>,
+  <span class="s2">&quot;subsetor&quot;</span>: <span class="s2">&quot;Exploracao, Refino e Distribuicao&quot;</span>,
+  <span class="s2">&quot;tipoDoAtivo&quot;</span>: <span class="s2">&quot;ON&quot;</span>,
+  <span class="s2">&quot;valorDaFirma&quot;</span>: <span class="m">708584000000</span>,
+  <span class="s2">&quot;valorDeMercado&quot;</span>: <span class="m">446774000000</span>,
+  <span class="s2">&quot;ultimoBalancoProcessado&quot;</span>: <span class="s2">&quot;2021-09-30T00:00:00Z&quot;</span>,
+  <span class="s2">&quot;dy&quot;</span>: <span class="s2">&quot;0.165&quot;</span>,
+  <span class="s2">&quot;vpa&quot;</span>: <span class="s2">&quot;28.29&quot;</span>,
+  <span class="s2">&quot;lpa&quot;</span>: <span class="s2">&quot;10.35&quot;</span>,
+  <span class="s2">&quot;roic&quot;</span>: <span class="s2">&quot;0.196&quot;</span>,
+  <span class="s2">&quot;roe&quot;</span>: <span class="s2">&quot;0.366&quot;</span>,
+  <span class="s2">&quot;liquidezCorrente&quot;</span>: <span class="s2">&quot;1.2&quot;</span>,
+  <span class="s2">&quot;margemEbit&quot;</span>: <span class="s2">&quot;0.44&quot;</span>,
+  <span class="s2">&quot;margemBruta&quot;</span>: <span class="s2">&quot;0.511&quot;</span>,
+  <span class="s2">&quot;margemLiquida&quot;</span>: <span class="s2">&quot;0.346&quot;</span>,
+  <span class="s2">&quot;evEbitda&quot;</span>: <span class="s2">&quot;2.98&quot;</span>,
+  <span class="s2">&quot;receitaLiquida12Meses&quot;</span>: <span class="m">393450000000</span>,
+  <span class="s2">&quot;pl&quot;</span>: <span class="s2">&quot;3.31&quot;</span>,
+  <span class="s2">&quot;pvp&quot;</span>: <span class="s2">&quot;1.21&quot;</span>,
+  <span class="s2">&quot;pebit&quot;</span>: <span class="s2">&quot;2.58&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="get-b3acoesindicadores"><code>GET /b3/acoes/indicadores</code></h3>
+<p>Retorna uma lista de indicadores de empresas listadas na bolsa, filtradas por paramêtros.</p>
+<p><strong>Query Params:</strong></p>
+<ul>
+<li><code>tickers</code>: uma lista <code>string</code>, <em>case insensitive</em> com os tickers das empresas desejadas separados por vírgulas.
+  Exemplo: <code>PETR3,MGLU3,BBAS3</code>.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/b3/acoes/indicadores?tickers=PETR3,MGLU3&#39;</span>
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;empresa&quot;</span>: <span class="s2">&quot;MAGAZ LUIZA ON NM&quot;</span>,
+        <span class="s2">&quot;ticker&quot;</span>: <span class="s2">&quot;MGLU3&quot;</span>,
+        <span class="s2">&quot;valorDaFirma&quot;</span>: <span class="m">4</span>.68083E10,
+        <span class="s2">&quot;valorDeMercado&quot;</span>: <span class="m">4</span>.4138E10,
+        <span class="s2">&quot;receitaLiquida12Meses&quot;</span>: <span class="m">3</span>.52782E10,
+        <span class="s2">&quot;setor&quot;</span>: <span class="s2">&quot;Comercio&quot;</span>,
+        <span class="s2">&quot;subsetor&quot;</span>: <span class="s2">&quot;Eletrodomesticos&quot;</span>,
+        <span class="s2">&quot;tipoDoAtivo&quot;</span>: <span class="s2">&quot;ON NM&quot;</span>,
+        <span class="s2">&quot;dataUltimaCotacao&quot;</span>: <span class="s2">&quot;2022-03-25T03:00:00Z&quot;</span>,
+        <span class="s2">&quot;ultimoBalancoProcessado&quot;</span>: <span class="s2">&quot;2021-12-31T03:00:00Z&quot;</span>,
+        <span class="s2">&quot;dy&quot;</span>: <span class="s2">&quot;0.002&quot;</span>,
+        <span class="s2">&quot;pl&quot;</span>: <span class="s2">&quot;74.73&quot;</span>,
+        <span class="s2">&quot;pvp&quot;</span>: <span class="s2">&quot;3.92&quot;</span>,
+        <span class="s2">&quot;pebit&quot;</span>: <span class="s2">&quot;167.34&quot;</span>,
+        <span class="s2">&quot;vpa&quot;</span>: <span class="s2">&quot;1.67&quot;</span>,
+        <span class="s2">&quot;lpa&quot;</span>: <span class="s2">&quot;0.09&quot;</span>,
+        <span class="s2">&quot;roic&quot;</span>: <span class="s2">&quot;0.011&quot;</span>,
+        <span class="s2">&quot;roe&quot;</span>: <span class="s2">&quot;0.052&quot;</span>,
+        <span class="s2">&quot;liquidezCorrente&quot;</span>: <span class="s2">&quot;1.61&quot;</span>,
+        <span class="s2">&quot;margemEbit&quot;</span>: <span class="s2">&quot;0.007&quot;</span>,
+        <span class="s2">&quot;margemBruta&quot;</span>: <span class="s2">&quot;0.241&quot;</span>,
+        <span class="s2">&quot;margemLiquida&quot;</span>: <span class="s2">&quot;0.017&quot;</span>,
+        <span class="s2">&quot;evEbitda&quot;</span>: <span class="s2">&quot;43.31&quot;</span>,
+        <span class="s2">&quot;data&quot;</span>: <span class="s2">&quot;2022-03-25T03:00:00Z&quot;</span>
+    <span class="o">}</span>, <span class="o">{</span>...<span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h3 id="get-b3acoestickerlogo"><code>GET /b3/acoes/{ticker}/logo</code></h3>
+<p>Retorna uma url da logo de uma empresa listada na bolsa pelo ticker.</p>
+<p><strong>URL params:</strong></p>
+<ul>
+<li><code>ticker</code>: um <code>string</code>, <em>case insensitive</em> com o ticker da empresa desejada.
+  Exemplo: <code>PETR3</code> ou <code>PETR4</code>.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="highlight"><pre><span></span><code>$ http GET <span class="s1">&#39;{URL_BASE}/b3/acoes/PETR3/logo&#39;</span>
+<span class="o">{</span>
+  <span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main/imgs/PETR3.png&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Introdução" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Introdução
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>
