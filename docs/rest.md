@@ -13,13 +13,13 @@ Retorna uma lista de empresas, contendo informações comuns da empresa entre se
 
 **Query Params:**
 
-- `cnae`: um `string`, filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado no cnae principal.
+- `cnae`: um `string`, sem pontuação, que filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado no cnae principal.
 É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
     - `cnae=41`: busca pela divisão `41 - Construção de edificios`
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
     - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
-- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca as empresas que o estabelecimento matriz
+- `cnaes`: uma lista de `string`, sem pontuação, com o comportamento similar ao `cnae`, porém busca as empresas que o estabelecimento matriz
 contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
     - `cnaes=62,631`
 - `negociadaB3`: um `boolean`, filtra por empresas negociadas na B3
@@ -98,13 +98,13 @@ Retorna uma lista de estabelecimentos, filtrados por parâmetros
 
 **Query Params:**
 
-- `cnae`: um `string`, filtra estabelecimentos que contém o [CNAE][1] específicado no cnae principal.
+- `cnae`: um `string`, sem pontuação, que filtra estabelecimentos que contém o [CNAE][1] específicado no cnae principal.
 É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
     - `cnae=41`: busca pela divisão `41 - Construção de edificios`
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
     - `cnae=4110700`: busca pela subclasse `4110-7/00 Incorporação de empreendimentos imobiliários`
-- `cnaes`: uma lista de `string`, mesmo comportamento de `cnae`, porém busca os estabelecimentos
+- `cnaes`: uma lista de `string`, sem pontuação, com comportamento similar ao `cnae`, porém busca os estabelecimentos
 que contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo:
     - `cnaes=62,631`
 - `negociadaB3`: um `boolean`, filtra estabelecimentos que a empresa é negociada na B3
@@ -115,42 +115,72 @@ que contém qualquer um dos [CNAEs][1] específicados no cnae principal. Exemplo
 $ http GET '{URL_BASE}/estabelecimentos?negociadaB3=true&cnae=4711302'
 [
   {
-    "cnpj": "47508411000156",
     "cnaesSecundarios": [
-      "4711302",
-      ...
+      "4619200",
+      "8299702"
     ],
     "empresa": {
       "negociadaB3": true,
-      ...
+      "cnpjBasico": "06057223",
+      "capitalSocial": 786730240,
+      "nomeEmpresarial": "SENDAS DISTRIBUIDORA S/A",
+      "naturezaJuridica": {
+        "codigo": "2046",
+        "descricao": "Sociedade Anônima Aberta"
+      },
+      "qualificacaoResponsavel": {
+        "codigo": "10",
+        "descricao": "Diretor"
+      },
+      "porte": {
+        "codigo": "05",
+        "descricao": "DEMAIS"
+      }
     },
     "identificadorMatrizFilial": {
       "codigo": "1",
       "descricao": "MATRIZ"
     },
-    "nomeFantasia": null,
+    "nomeFantasia": "ASSAI ATACADISTA",
     "situacaoCadastral": {
       "codigo": "02",
       "descricao": "ATIVA"
     },
-    "dataSituacaoCadastral": "2004-11-01T03:00:00Z",
+    "dataSituacaoCadastral": "2003-10-31T02:00:00Z",
     "motivoSituacaoCadastral": {
       "codigo": "00",
       "descricao": "SEM MOTIVO"
     },
     "nomeCidadeExterior": null,
     "pais": null,
-    "dataInicioAtividade": "1980-11-01T03:00:00Z",
+    "dataInicioAtividade": "2003-12-01T02:00:00Z",
     "situacaoEspecial": null,
     "dataSituacaoEspecial": null,
+    "cnpj": "06057223000171",
     "cnaePrincipal": {
-      "codigo": "4789099",
-      "descricao": "Comércio varejista de outros produtos não especificados anteriormente"
+      "codigo": "4711302",
+      "descricao": "Comércio varejista de mercadorias em geral, com predominância de produtos alimentícios - supermercados"
     },
-    "endereco": {...},
-    "contato": {...}
-  },
-  {...}
+    "endereco": {
+      "tipoDeLogradouro": "AVENIDA",
+      "logradouro": "AYRTON SENNA",
+      "numero": "06000",
+      "complemento": "      LOT 2 PAL 48959           ANEXO A",
+      "bairro": "JACAREPAGUA",
+      "cep": "22775005",
+      "uf": "RJ",
+      "municipio": {
+        "codigo": "6001",
+        "descricao": "RIO DE JANEIRO"
+      }
+    },
+    "contato": {
+      "email": "PARALEGAL@ASSAI.COM.BR",
+      "telefone1": "1134115000",
+      "telefone2": null,
+      "fax": "1138860599"
+    }
+  }
 ]
 ```
 
@@ -167,50 +197,70 @@ Retorna os dados de um estabelecimento, como dados de endereço, contato, CNAEs,
 ```bash
 $ http GET '{URL_BASE}/estabelecimentos/44174296000132'
 {
-  "cnpj": "44174296000132",
-  "nomeFantasia": "CARTERA",
-  "cnaePrincipal": {
-    "codigo": "6203100",
-    "descricao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
-  },
   "cnaesSecundarios": [
-    "6201501",
-    "6201502",
-    "6202300",
-    "6204000",
-    "6209100",
-    "8599603"
+    "6201501"
   ],
   "empresa": {
     "negociadaB3": false,
-    "naturezaJuridica": {...},
-    "qualificacaoResponsavel": {...},
     "cnpjBasico": "44174296",
     "capitalSocial": 100000,
     "nomeEmpresarial": "CARTERA SOFTWARE LTDA",
-    "porte": {...},
-    "cnpjsEstabelecimentos": [...]
+    "naturezaJuridica": {
+      "codigo": "2062",
+      "descricao": "Sociedade Empresária Limitada"
+    },
+    "qualificacaoResponsavel": {
+      "codigo": "49",
+      "descricao": "Sócio-Administrador"
+    },
+    "porte": {
+      "codigo": "01",
+      "descricao": "MICRO EMPRESA"
+    }
   },
   "identificadorMatrizFilial": {
     "codigo": "1",
     "descricao": "MATRIZ"
   },
+  "nomeFantasia": "CARTERA",
   "situacaoCadastral": {
     "codigo": "02",
     "descricao": "ATIVA"
   },
+  "dataSituacaoCadastral": "2020-11-01T03:00:00Z",
   "motivoSituacaoCadastral": {
     "codigo": "00",
     "descricao": "SEM MOTIVO"
   },
-  "dataSituacaoCadastral": "2020-11-01T03:00:00Z",
   "nomeCidadeExterior": null,
   "pais": null,
   "dataInicioAtividade": "2020-11-01T03:00:00Z",
   "situacaoEspecial": null,
   "dataSituacaoEspecial": null,
-  "endereco": {...},
-  "contato": {...}
+  "cnpj": "44174296000132",
+  "cnaePrincipal": {
+    "codigo": "6203100",
+    "descricao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
+  },
+  "endereco": {
+    "tipoDeLogradouro": "RODOVIA",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "ITACORUBI",
+    "cep": "88034101",
+    "uf": "SC",
+    "municipio": {
+      "codigo": "8105",
+      "descricao": "FLORIANOPOLIS"
+    }
+  },
+  "contato": {
+    "email": "BUENO@CARTERA.COM.BR",
+    "telefone1": "4191875540",
+    "telefone2": null,
+    "fax": null
+  }
 }
 ```
 
