@@ -1,10 +1,23 @@
 site_name: Fintz
 
-repo_url: https://github.com/thefintz/docs-api
+# repo_url: https://github.com/thefintz/docs-api
+
+nav:
+  - Bem vindo: index.md
+  - Primeiros passos: quickstart.md
+  - Endpoints:
+    - Empresas e CNPJ: empresas.md
+    - Bolsa B3: bolsa_b3.md
+    # - Fundos de Investimento: fundos.md
+    # - Fatos Relevantes: fatos_relevantes.md
+    - Títulos Públicos: titulos_publicos.md
+    - Criptomoedas: criptomoedas.md
+  - Glossário: glossario.md
 
 theme:
   name: material
   language: pt
+  locale: pt_BR
 
   logo: assets/logo.png
   favicon: assets/favicon.ico
@@ -13,11 +26,11 @@ theme:
     - scheme: slate
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: Ativar modo claro
     - scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        name: Ativar modo escuro
 
 markdown_extensions:
   - pymdownx.highlight
