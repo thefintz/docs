@@ -1,8 +1,13 @@
-# Endpoints
+[CNAE]: https://cnae.ibge.gov.br/
+[CNAE_ESTRUTURA]: https://cnae.ibge.gov.br/?view=estrutura
 
-Todos os endpoints tem a URL_BASE = `https://fintz.herokuapp.com/api`
 
-## Empresas e estabelecimentos
+# Empresas
+
+Todos os endpoints desta página tem a seguinte url base:
+> `URL_BASE` = `https://fintz.herokuapp.com/api`
+
+## Empresas
 
 Permite o usuário consultar dados de todas empresas brasileiras
 cadastradas na receita federal através do CNPJ. Os dados são atualizados mensalmente.
@@ -11,10 +16,10 @@ cadastradas na receita federal através do CNPJ. Os dados são atualizados mensa
 
 Retorna uma lista de empresas, contendo informações comuns da empresa entre seus estabelecimentos (matriz e filiais), filtrados por parâmetros
 
-**Query Params:**
+**Parâmetros**
 
-- `cnae`: um `string`, sem pontuação, que filtra empresas que o estabelecimento matriz contém o [CNAE][1] específicado no cnae principal.
-É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
+- `cnae`: um `string`, sem pontuação, que filtra empresas que o estabelecimento matriz contém o [CNAE][CNAE] específicado no cnae principal.
+É possível também filtrar por toda a [estrutura][CNAE_ESTRUTURA] dos cnaes enviando apenas o início da `string`, exemplos:
     - `cnae=41`: busca pela divisão `41 - Construção de edificios`
     - `cnae=411`: busca pelo grupo `41.1 Incorporação de empreendimentos imobiliários`
     - `cnae=41107`: busca pela classe `41.10-7 Incorporação de empreendimentos imobiliários`
@@ -92,11 +97,12 @@ $ http GET '{URL_BASE}/empresas/44174296'
 }
 ```
 
+## Estabelecimentos
 ### `GET /estabelecimentos`
 
 Retorna uma lista de estabelecimentos, filtrados por parâmetros
 
-**Query Params:**
+**Parâmetros**
 
 - `cnae`: um `string`, sem pontuação, que filtra estabelecimentos que contém o [CNAE][1] específicado no cnae principal.
 É possível também filtrar por toda a [estrutura][2] dos cnaes enviando apenas o início da `string`, exemplos:
@@ -310,21 +316,24 @@ $ http GET '{URL_BASE}/estabelecimentos/44174296000132/cnaes'
 }
 ```
 
-## B3
+## Buscar ação na bolsa por CNPJ
 
-### `GET /b3/acoes`
+Retorna o código de negociação da empresa (se negociada na bolsa) e informações gerais
 
-Retorna uma lista de empresas negociadas na bolsa e informações gerais
-
-**Query Params:**
+**Parâmetros**
 
 - `cnpj`: um `string` de 14 dígitos ou apenas os 8 primeiros dígitos de um CNPJ, filtra ações da B3 por CNPJ da empresa.
 - `cnpjs`: uma lista de `string` de 14 dígitos ou apenas os 8 primeiros dígitos de CNPJs, separados por vírgulas.
 
-**Exemplo:**
+**Exemplo de chamada:**
 
 ```bash
-$ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
+curl '{URL_BASE}/b3/acoes?cnpj=33000167'
+```
+
+**Resposta:**
+
+```json
 [
   {
     "codigoCVM": "9512",
@@ -373,107 +382,3 @@ $ http GET '{URL_BASE}/b3/acoes?cnpj=33000167'
   }
 ]
 ```
-
-### `GET /b3/acoes/{ticker}/indicadores`
-
-Retorna os indicadores fundamentalistas de uma empresa listada na bolsa pelo ticker.
-
-**URL Params:**
-
-- `ticker`: um `string`, _case insensitive_ com o ticker da empresa desejada.
-Exemplo: `PETR3` ou `PETR4`.
-
-**Exemplo:**
-
-```bash
-$ http GET '{URL_BASE}/b3/acoes/PETR3/indicadores'
-{
-  "data": "2022-01-19T00:00:00Z",
-  "ticker": "PETR3",
-  "empresa": "PETROBRAS ON",
-  "setor": "Petroleo, Gas e Biocombustiveis",
-  "subsetor": "Exploracao, Refino e Distribuicao",
-  "tipoDoAtivo": "ON",
-  "valorDaFirma": 708584000000,
-  "valorDeMercado": 446774000000,
-  "ultimoBalancoProcessado": "2021-09-30T00:00:00Z",
-  "dy": "0.165",
-  "vpa": "28.29",
-  "lpa": "10.35",
-  "roic": "0.196",
-  "roe": "0.366",
-  "liquidezCorrente": "1.2",
-  "margemEbit": "0.44",
-  "margemBruta": "0.511",
-  "margemLiquida": "0.346",
-  "evEbitda": "2.98",
-  "receitaLiquida12Meses": 393450000000,
-  "pl": "3.31",
-  "pvp": "1.21",
-  "pebit": "2.58"
-}
-```
-
-### `GET /b3/acoes/indicadores`
-
-Retorna uma lista de indicadores de empresas listadas na bolsa, filtradas por paramêtros.
-
-**Query Params:**
-
-- `tickers`: uma lista `string`, _case insensitive_ com os tickers das empresas desejadas separados por vírgulas.
-  Exemplo: `PETR3,MGLU3,BBAS3`.
-
-**Exemplo:**
-
-```bash
-$ http GET '{URL_BASE}/b3/acoes/indicadores?tickers=PETR3,MGLU3'
-[
-    {
-        "empresa": "MAGAZ LUIZA ON NM",
-        "ticker": "MGLU3",
-        "valorDaFirma": 4.68083E10,
-        "valorDeMercado": 4.4138E10,
-        "receitaLiquida12Meses": 3.52782E10,
-        "setor": "Comercio",
-        "subsetor": "Eletrodomesticos",
-        "tipoDoAtivo": "ON NM",
-        "dataUltimaCotacao": "2022-03-25T03:00:00Z",
-        "ultimoBalancoProcessado": "2021-12-31T03:00:00Z",
-        "dy": "0.002",
-        "pl": "74.73",
-        "pvp": "3.92",
-        "pebit": "167.34",
-        "vpa": "1.67",
-        "lpa": "0.09",
-        "roic": "0.011",
-        "roe": "0.052",
-        "liquidezCorrente": "1.61",
-        "margemEbit": "0.007",
-        "margemBruta": "0.241",
-        "margemLiquida": "0.017",
-        "evEbitda": "43.31",
-        "data": "2022-03-25T03:00:00Z"
-    }, {...}
-]
-```
-
-### `GET /b3/acoes/{ticker}/logo`
-
-Retorna uma url da logo de uma empresa listada na bolsa pelo ticker.
-
-**URL params:**
-
-- `ticker`: um `string`, _case insensitive_ com o ticker da empresa desejada.
-  Exemplo: `PETR3` ou `PETR4`.
-
-**Exemplo:**
-
-```bash
-$ http GET '{URL_BASE}/b3/acoes/PETR3/logo'
-{
-  "url": "https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main/imgs/PETR3.png"
-}
-```
-
-[1]: https://cnae.ibge.gov.br/
-[2]: https://cnae.ibge.gov.br/?view=estrutura
