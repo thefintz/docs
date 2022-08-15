@@ -1,0 +1,753 @@
+{
+	"info": {
+		"_postman_id": "387756f0-6066-4ce9-b27b-fc499fccd23d",
+		"name": "Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bolsa B3",
+			"item": [
+				{
+					"name": "1. Cotação atual por ticker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/acoes/TAEE11/preco",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"acoes",
+								"TAEE11",
+								"preco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Cotação histórica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/ativos/cotacoes?tickers=PETR4,TAEE11&dataPregStart=2022-08-01&dataPregEnd=2022-08-03",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"ativos",
+								"cotacoes"
+							],
+							"query": [
+								{
+									"key": "tickers",
+									"value": "PETR4,TAEE11"
+								},
+								{
+									"key": "dataPregStart",
+									"value": "2022-08-01"
+								},
+								{
+									"key": "dataPregEnd",
+									"value": "2022-08-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Indicadores por ticker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/acoes/PETR3/indicadores",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"acoes",
+								"PETR3",
+								"indicadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Indicadores por lista de tickers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_LOGOS}}/imgs/TSLA34.png",
+							"host": [
+								"{{URL_BASE_LOGOS}}"
+							],
+							"path": [
+								"imgs",
+								"TSLA34.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Proventos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/proventos?ticker=PETR3&size=3&sort=dataCom,desc",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"proventos"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "PETR3"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "dataCom,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Logos e ícones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/acoes/indicadores?tickers=PETR3,MGLU3",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"acoes",
+								"indicadores"
+							],
+							"query": [
+								{
+									"key": "tickers",
+									"value": "PETR3,MGLU3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fluxo de valuation",
+			"item": [
+				{
+					"name": "1 - Buscar CNAE por CNPJ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/empresas/{{CNPJ_A}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"{{CNPJ_A}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Buscar empresas por CNAE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/empresas?negociadaB3=true&cnae={{CNAE}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"empresas"
+							],
+							"query": [
+								{
+									"key": "negociadaB3",
+									"value": "true"
+								},
+								{
+									"key": "cnae",
+									"value": "{{CNAE}}",
+									"description": "6203100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Buscar ticker por CNPJ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/acoes?cnpj={{CNPJ_B}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"acoes"
+							],
+							"query": [
+								{
+									"key": "cnpj",
+									"value": "{{CNPJ_B}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Buscar indicadores de empresa negociada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/b3/acoes/{{TICKER}}/indicadores",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"b3",
+								"acoes",
+								"{{TICKER}}",
+								"indicadores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fundos",
+			"item": [
+				{
+					"name": "1. Buscar dados cadastrais",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_FUNDOS}}/funds/{{CNPJ_FUNDO}}/info",
+							"host": [
+								"{{URL_BASE_FUNDOS}}"
+							],
+							"path": [
+								"funds",
+								"{{CNPJ_FUNDO}}",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Buscar dados diários",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_FUNDOS}}/funds/{{CNPJ_FUNDO}}/info/daily",
+							"host": [
+								"{{URL_BASE_FUNDOS}}"
+							],
+							"path": [
+								"funds",
+								"{{CNPJ_FUNDO}}",
+								"info",
+								"daily"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Buscar rentabilidade por mes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_FUNDOS}}/funds/{{CNPJ_FUNDO}}/variation/monthly?months=12",
+							"host": [
+								"{{URL_BASE_FUNDOS}}"
+							],
+							"path": [
+								"funds",
+								"{{CNPJ_FUNDO}}",
+								"variation",
+								"monthly"
+							],
+							"query": [
+								{
+									"key": "months",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Buscar rentabilidade por ano",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_FUNDOS}}/funds/{{CNPJ_FUNDO}}/variation/yearly?years=4",
+							"host": [
+								"{{URL_BASE_FUNDOS}}"
+							],
+							"path": [
+								"funds",
+								"{{CNPJ_FUNDO}}",
+								"variation",
+								"yearly"
+							],
+							"query": [
+								{
+									"key": "years",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Buscar rentabilidade por data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_FUNDOS}}/funds/{{CNPJ_FUNDO}}/returns?start=2019-01-01&end=2022-01-01",
+							"host": [
+								"{{URL_BASE_FUNDOS}}"
+							],
+							"path": [
+								"funds",
+								"{{CNPJ_FUNDO}}",
+								"returns"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2019-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2022-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Futuros de soja e mini dólar",
+			"item": [
+				{
+					"name": "1. Buscar informações disponíveis sobre futuros",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/demos/b3/futuros",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"demos",
+								"b3",
+								"futuros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Buscar cotações de futuros de dólar por Ticker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/demos/b3/futuros/DOLJ2022/cotacoes?startDate=2022-03-02",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"demos",
+								"b3",
+								"futuros",
+								"DOLJ2022",
+								"cotacoes"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2022-03-02"
+								},
+								{
+									"key": "endDate",
+									"value": "2022-01-28",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Buscar cotações de futuros de soja CME Group por Ticker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/api/demos/b3/futuros/SJCK2022/cotacoes?startDate=2022-01-01",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"api",
+								"demos",
+								"b3",
+								"futuros",
+								"SJCK2022",
+								"cotacoes"
+							],
+							"query": [
+								{
+									"key": "endDate",
+									"value": "2022-01-28",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2022-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Índices",
+			"item": [
+				{
+					"name": "1. Lista de índices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_INDICES}}/indexes",
+							"host": [
+								"{{URL_BASE_INDICES}}"
+							],
+							"path": [
+								"indexes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Buscar índice entre datas",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_INDICES}}/indexes/ibov/profitability?start=2022-08-01&end=2022-08-05",
+							"host": [
+								"{{URL_BASE_INDICES}}"
+							],
+							"path": [
+								"indexes",
+								"ibov",
+								"profitability"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2022-08-01"
+								},
+								{
+									"key": "end",
+									"value": "2022-08-05"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Buscar índice mensal",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_INDICES}}/indexes/ibov/performance/monthly?months=3",
+							"host": [
+								"{{URL_BASE_INDICES}}"
+							],
+							"path": [
+								"indexes",
+								"ibov",
+								"performance",
+								"monthly"
+							],
+							"query": [
+								{
+									"key": "months",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Buscar índice anual",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_INDICES}}/indexes/ibov/performance/yearly?years=4",
+							"host": [
+								"{{URL_BASE_INDICES}}"
+							],
+							"path": [
+								"indexes",
+								"ibov",
+								"performance",
+								"yearly"
+							],
+							"query": [
+								{
+									"key": "years",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_BASE",
+			"value": "https://fintz.herokuapp.com"
+		},
+		{
+			"key": "CNPJ_A",
+			"value": "44174296000132"
+		},
+		{
+			"key": "CNPJ_B",
+			"value": "02351877000586"
+		},
+		{
+			"key": "CNAE",
+			"value": "6203100"
+		},
+		{
+			"key": "TICKER",
+			"value": "LWSA3"
+		},
+		{
+			"key": "URL_BASE_FUNDOS",
+			"value": "https://0o1jvhh5z7.execute-api.us-east-2.amazonaws.com"
+		},
+		{
+			"key": "CNPJ_FUNDO",
+			"value": "20458815000126"
+		},
+		{
+			"key": "URL_BASE_INDICES",
+			"value": "https://0o1jvhh5z7.execute-api.us-east-2.amazonaws.com"
+		},
+		{
+			"key": "URL_BASE_LOGOS",
+			"value": "https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main"
+		}
+	]
+}
