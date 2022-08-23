@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "387756f0-6066-4ce9-b27b-fc499fccd23d",
-		"name": "Endpoints",
+		"_postman_id": "d1db8372-4374-4eab-b0ae-d90105ba3871",
+		"name": "Endpoints Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -90,13 +90,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL_BASE_LOGOS}}/imgs/TSLA34.png",
+							"raw": "{{URL_BASE}}/api/b3/acoes/indicadores?tickers=PETR3,MGLU3",
 							"host": [
-								"{{URL_BASE_LOGOS}}"
+								"{{URL_BASE}}"
 							],
 							"path": [
-								"imgs",
-								"TSLA34.png"
+								"api",
+								"b3",
+								"acoes",
+								"indicadores"
+							],
+							"query": [
+								{
+									"key": "tickers",
+									"value": "PETR3,MGLU3"
+								}
 							]
 						}
 					},
@@ -136,26 +144,65 @@
 					"response": []
 				},
 				{
-					"name": "6. Logos e ícones",
+					"name": "6. Eventos Corporativos",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL_BASE}}/api/b3/acoes/indicadores?tickers=PETR3,MGLU3",
+							"raw": "{{URL_BASE}}/api/b3/eventos?ticker=AMZO34&dataComStart=2022-01-01&tipo=desdobramento&size=10&dataComEnd=2022-06-30",
 							"host": [
 								"{{URL_BASE}}"
 							],
 							"path": [
 								"api",
 								"b3",
-								"acoes",
-								"indicadores"
+								"eventos"
 							],
 							"query": [
 								{
-									"key": "tickers",
-									"value": "PETR3,MGLU3"
+									"key": "ticker",
+									"value": "AMZO34"
+								},
+								{
+									"key": "dataComStart",
+									"value": "2022-01-01"
+								},
+								{
+									"key": "sort",
+									"value": "dataCom,desc",
+									"disabled": true
+								},
+								{
+									"key": "tipo",
+									"value": "desdobramento",
+									"description": "desdobramento ou grupamento ou bonificacao"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "dataComEnd",
+									"value": "2022-06-30"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Logos e ícones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE_LOGOS}}/imgs/TSLA34.png",
+							"host": [
+								"{{URL_BASE_LOGOS}}"
+							],
+							"path": [
+								"imgs",
+								"TSLA34.png"
 							]
 						}
 					},

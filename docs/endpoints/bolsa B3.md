@@ -291,7 +291,56 @@ curl 'https://fintz.herokuapp.com/api/b3/proventos?ticker=PETR3&size=3&sort=data
 
 ## Eventos corporativos
 
-Em fase final de desenvolvimento. Lançamento dia 22 de agosto de 2.022.
+Esse endpoint retorna os seguintes tipos de eventos corporativos:
+- desdobramentos
+- agrupamentos
+- bonificações
+
+Suporta qualquer ativo da Bolsa B3 (ações, BDRs, FIIs, e ETFs).
+
+**Parâmetros**
+
+- `ticker` (obrigatório): um `string`, _case insensitive_ com o ticker do ativo desejada.
+  Exemplo: `PETR3` ou `PETR4`.
+- `tipo`: um `string`, _case insensitive_ que pode ser um dos seguintes valores 'desdobramento' ou 'grupamento' ou 'bonificacao'
+- `dataComStart`: um `string` de data no padrão 'AAAA-MM-DD', significando que você vai receber os eventos que ocorreram após essa data.
+  Exemplo: `2022-01-01`.
+- `dataComEnd`: um `string` de data no padrão 'AAAA-MM-DD', significando que você vai receber os eventos que ocorreram anteriormente à essa data.
+  Exemplo: `2022-06-30`.
+- `size`: quantidade máxima de itens retornados na chamada
+- `sort`: usado para ordenar a resposta por algum atributo
+  Exemplo: 'dataCom,desc', que retorna em ordem decrescente de acontecimento (os eventos mais recentes)
+
+**Estrutura de chamada**
+
+```bash
+curl '{BASE}/api/b3/eventos?ticker={ticker}&tipo={tipo}'
+```
+
+**Exemplo de chamada**
+
+```bash
+curl 'https://fintz.herokuapp.com/api/b3/eventos?ticker=AMZO34&dataComStart=2022-04-01&dataComEnd=2022-05-30'
+```
+
+**Resposta do exemplo:**
+
+```json
+[
+  {
+    "isin": "BRAMZOBDR002",
+    "fator": 20.0,
+    "dataAnuncio": "2022-05-25",
+    "ativoEmitido": "BRAMZOBDR002",
+    "tipo": "DESDOBRAMENTO",
+    "dataCom": "2022-05-25",
+    "ticker": "AMZO34"
+  }
+]
+```
+
+Neste exemplo, observa-se que o ativo AMZO34 (BDR da Amazon) foi desdobrado em proporção 1:20 no dia 25 de Maio de 2.022. Isso significa que quem tinha X ativos AMZO34 na carteira no dia anterior, passou a ter 20X no dia 25 (e que, portanto, o preço do ativo também foi ajustado).
+
 
 ## Logos e ícones
 
