@@ -6,6 +6,7 @@ nav:
   - Introdução: 'index.md'
   - Endpoints:
     - Bolsa B3: 'endpoints/bolsa B3.md'
+    - Títulos públicos: 'endpoints/titulos-publicos.md'
     - Empresas: 'endpoints/empresas.md'
     - Fundos de investimento: 'endpoints/fundos de investimento.md'
     - Indices do mercado: 'endpoints/indices do mercado.md'
