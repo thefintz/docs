@@ -4,12 +4,14 @@ repo_url: https://github.com/thefintz/docs-api
 
 nav:
   - Introdução: 'index.md'
+  - Autenticação: 'auth.md'
   - Endpoints:
     - Bolsa B3: 'endpoints/bolsa B3.md'
-    - Empresas: 'endpoints/empresas.md'
+    - Títulos públicos: 'endpoints/titulos-publicos.md'
     - Fundos de investimento: 'endpoints/fundos de investimento.md'
     - Indices do mercado: 'endpoints/indices do mercado.md'
     - Criptomoedas: 'endpoints/cripto.md'
+    - Empresas: 'endpoints/empresas.md'
   - Postman collection: 'postman.md'
 
 theme:
