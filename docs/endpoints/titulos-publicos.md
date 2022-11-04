@@ -1,20 +1,20 @@
 # Títulos públicos - Tesouro Direto
 
-Todos os endpoints desta página tem a seguinte url base:
-> `URL_BASE` = `https://api.fintz.com.br/titulos-publicos/`
-
-Permite o usuário consultar dados de todos os títulos públicos da plataforma
+Permite ao usuário consultar dados de todos os títulos públicos da plataforma
 [Tesouro Direto](https://www.tesourodireto.com.br/). Os dados são atualizados
 diariamente.
 
+Todos os endpoints desta página tem a seguinte URL base:
+> `URL_BASE` = `https://api.fintz.com.br/titulos-publicos/`
+
 ## Lista de títulos
 
-Retorna a [lista de títulos públicos](#lista-de-titulos) disponíveis.
+Retorna a [lista de títulos públicos](#lista-de-titulos) disponíveis paginada.
 
 **Parâmetros:**
 
-- `pagina`: opcional. Inteiro que representa o índice de página, para
-  paginação. O valor padrão é 1, índice da primeira página.
+- `pagina`: opcional. Inteiro que representa o índice de página. O valor
+  padrão é 1, índice da primeira página.
 - `tamanho`: opcional. Inteiro que indica o tamanho da página a ser retornada.
   O valor padrão é 10.
 
@@ -47,6 +47,8 @@ curl '{URL_BASE}/tesouro?pagina=1&tamanho=40'
 
 ## Informações dos títulos
 
+Retorna informações extras sobre um título, como descrição e estratégia.
+
 **Exemplo:**
 
 ```bash
@@ -71,6 +73,8 @@ curl '{URL_BASE}/tesouro/{codigo}/informacoes'
 ```
 
 ## Histórico de preços e taxas
+
+Retorna histórico paginado de preços e taxas, com filtros por datas.
 
 **Parâmetros:**
 
@@ -120,7 +124,8 @@ curl '{URL_BASE}/tesouro/{codigo}/precos/historico?dataInicio=2016-12-31&dataFim
 
 ## Preços e taxas atuais
 
-Retorna preços e taxas dos títulos públicos referentes à data mais atual. Exclusivo para títulos não vencidos.
+Retorna preços e taxas dos títulos públicos referentes à data mais atual.
+Exclusivo para títulos não vencidos.
 
 **Exemplo:**
 
@@ -148,12 +153,13 @@ curl '{URL_BASE}/tesouro/{codigo}/precos/atual'
 
 ## Pagamentos de cupons de juros
 
-Retorna preços e taxas dos títulos públicos referentes à data mais atual. Exclusivo para títulos não vencidos.
+Retorna preços e taxas dos títulos públicos referentes à data mais atual.
+Exclusivo para títulos não vencidos.
 
 **Parâmetros:**
 
-- `pagina`: opcional. Inteiro que representa o índice de página, para
-  paginação. O valor padrão é 1, índice da primeira página.
+- `pagina`: opcional. Inteiro que representa o índice de página paginação. O
+  valor padrão é 1, índice da primeira página.
 - `tamanho`: opcional. Inteiro que indica o tamanho da página a ser retornada.
   O valor padrão é 10.
 
