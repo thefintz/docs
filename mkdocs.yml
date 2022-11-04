@@ -4,6 +4,7 @@ repo_url: https://github.com/thefintz/docs-api
 
 nav:
   - Introdução: 'index.md'
+  - Autenticação: 'auth.md'
   - Endpoints:
     - Bolsa B3: 'endpoints/bolsa B3.md'
     - Títulos públicos: 'endpoints/titulos-publicos.md'
