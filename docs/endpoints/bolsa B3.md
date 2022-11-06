@@ -2,14 +2,15 @@
 
 # Bolsa B3
 
-Todos os endpoints desta página tem a seguinte url base:
+Todos os endpoints desta página têm a seguinte URL base:
 > `URL_BASE` =  `https://fintz.herokuapp.com/api`
 
 ## Cotações
 
 ### Cotação atual por ticker
 
-Retorna o ultimo preço de fechamento do ticker especificado que representa o código de negociação do ativo na bolsa brasileira (B3)
+Retorna o último preço de fechamento do ticker especificado, que representa o
+código de negociação do ativo na bolsa brasileira (B3).
 
 **Parâmetros**
 
@@ -33,7 +34,7 @@ curl '{URL_BASE}/b3/{TIPO}/{TICKER}/preco'
 
 ### Cotação histórica
 
-Retorna os preços de fechamento de todos os tickers especificados no período indicado
+Retorna os preços de fechamento de todos os tickers especificados no período indicado.
 
 **Parâmetros**
 
@@ -108,7 +109,7 @@ curl '{URL_BASE}/b3/ativos/cotacoes?tickers=TAEE11,PETR4&dataPregStart=2022-08-0
 
 ### Cotação mercado futuro
 
-Disponível sob demanda. Caso tenha interesse, favor entrar em [contato.][contato]
+Disponível sob demanda. Caso tenha interesse, favor entrar em [contato][contato].
 
 ## Indicadores
 
@@ -118,8 +119,7 @@ Retorna os indicadores fundamentalistas de um ativo listado na bolsa pelo ticker
 
 **Parâmetros**
 
-- `TICKER`: um `string`, _case insensitive_ com o código de negociação do ativo desejado. 
-Exemplo: `TAEE11` ou `PETR4`.
+- `TICKER`: um `string`, _case insensitive_ com o código de negociação do ativo desejado. Exemplo: `TAEE11` ou `PETR4`.
 
 **Exemplo de chamada:**
 
@@ -232,6 +232,7 @@ curl '{URL_BASE}/b3/acoes/indicadores?tickers=PETR3,MGLU3'
 
 
 ## Proventos
+
 http://fintz.herokuapp.com/api/b3/proventos?ticker=PETR3&size=1000
 
 **Parâmetros**
@@ -344,7 +345,7 @@ Neste exemplo, observa-se que o ativo AMZO34 (BDR da Amazon) foi desdobrado em p
 
 ## Logos e ícones
 
-Retorna a URL da logo de um ativo listado na bolsa pelo ticker. 
+Retorna a URL da logo de um ativo listado na bolsa pelo ticker.
 
 Suporta ações, BDRs, FIIs, e ETFs.
 

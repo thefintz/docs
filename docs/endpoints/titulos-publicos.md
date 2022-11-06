@@ -4,7 +4,7 @@ Permite ao usuário consultar dados de todos os títulos públicos da plataforma
 [Tesouro Direto](https://www.tesourodireto.com.br/). Os dados são atualizados
 diariamente.
 
-Todos os endpoints desta página tem a seguinte URL base:
+Todos os endpoints desta página têm a seguinte URL base:
 > `URL_BASE` = `https://api.fintz.com.br/titulos-publicos/`
 
 ## Lista de títulos
