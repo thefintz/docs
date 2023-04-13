@@ -12,7 +12,7 @@ nav:
     - Índices: 'endpoints/indices.md'
     # - Criptomoedas: 'endpoints/cripto.md'
     # - Empresas: 'endpoints/empresas.md'
-  - Postman collection: 'postman.md'
+  - Postman: 'postman.md'
 
 theme:
   name: material

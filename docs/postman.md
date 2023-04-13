@@ -11,3 +11,7 @@ Conforme novos lançamentos, a documentação e o Postman serão atualizados.
 
 Caso tenha alguma dúvida, fique à vontade para [entrar em contato.][contato]
 
+```json
+whatsapp: (41) 99187-5540
+email: contato@fintz.com.br
+```
