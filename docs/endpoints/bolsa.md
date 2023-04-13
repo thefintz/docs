@@ -11,7 +11,7 @@ x-api-key = {sua chave da API Fintz}
 
 ## Busca e lista de ativos
 
-### /bolsa/b3/avista/busca
+** /bolsa/b3/avista/busca **
 
 Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
 Por exemplo, você pode filtrar apenas os ativos do setor de tecnologia, ou mesmo pode conectar a sua search bar para buscar pelo nome ou ticker do ativo.
@@ -46,7 +46,7 @@ print(res.json())
 
 ## Cotação
 
-### /bolsa/b3/avista/cotacoes/historico
+** /bolsa/b3/avista/cotacoes/historico **
 
 Retorna os preços de fechamento do ticker especificado na data especificada.
 
@@ -107,7 +107,7 @@ print(res.json())
 
 ## Proventos
 
-### /bolsa/b3/avista/proventos
+** /bolsa/b3/avista/proventos **
 
 Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e as datas especificadas na chamada.
 
@@ -165,37 +165,31 @@ Terá acesso a balanços, demonstrações de resultados e demonstrações de flu
 Em beta, lançamento dia 30/04/2023.
 Terá acesso ao histórico de indicadores também.
 
-### Cotação mercado futuro
+## Cotação mercado futuro
 
 Disponível sob demanda. Caso tenha interesse, favor entrar em [contato][contato].
 
-### Cotação commodities
+## Cotação commodities
 
 Disponível sob demanda. Caso tenha interesse, favor entrar em [contato][contato].
 
 ## Logos e ícones
 
-Retorna a URL da logo de um ativo listado na bolsa pelo ticker.
+URL do ícone de um ativo listado na bolsa pelo ticker.
 
 Suporta ações, BDRs, FIIs, e ETFs.
 
-Esse é o único endpoint da API que não utiliza a URL_BASE nem autenticação.
-> `BASE` = `https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main`
+Esse é o único endpoint da API que utiliza outra URL.
 
-**Parâmetros**
+Para acessar o ícone, basta adicionar o `ticker.png` depois da seguinte URL
+```https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/```
 
-| Parâmetro | Descrição | |
-| :-: | - | :-: |
-| `ticker`     | `string` representando o código de negociação | obrigatório
+Então, por exemplo, ícone da Tesla seria TSLA34.png
 
-**Exemplo de chamada**
-
-**Exemplo de chamada**
-
-```bash
-curl 'https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main/imgs/BBAS3.png'
+```
+'https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/TSLA34.png'
 ```
 
 **Resposta do exemplo:**
 
-![BDR da Tesla, BBAS3](https://raw.githubusercontent.com/thecartera/B3-Assets-Images/main/imgs/BBAS3.png)
+![BDR da Tesla, TSLA34](https://raw.githubusercontent.com/thefintz/icones-b3/main/icones/TSLA34.png)
