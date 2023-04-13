@@ -1,5 +1,5 @@
 [contato]: https://fintz.com.br/#/contato
-[link_postman]: https://raw.githubusercontent.com/thefintz/docs/main/Endpoints-Fintz.postman_collection.json
+[link_postman]: https://raw.githubusercontent.com/thefintz/docs/main/Fintz.postman_collection.json
 
 # Postman
 

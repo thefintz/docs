@@ -1,11 +1,12 @@
-# Títulos públicos - Tesouro Direto
+# Tesouro Direto
 
-Permite ao usuário consultar dados de todos os títulos públicos da plataforma
-[Tesouro Direto](https://www.tesourodireto.com.br/). Os dados são atualizados
-diariamente.
+Permite ao usuário consultar dados de todos os títulos do Tesouro Direto, até mesmo o histórico dos títulos que não são mais negociados. 
 
-Todos os endpoints desta página têm a seguinte URL base:
-> `URL_BASE` = `https://api.fintz.com.br/titulos-publicos/`
+Os dados são atualizados diariamente.
+
+Lembrando que todos os endpoints da API tem a mesma URL Base e precisam do header "x-api-key" com sua chave.
+> `URL_BASE` = `https://api.fintz.com.br`  
+> `x-api-key` = `{sua chave da API Fintz}`
 
 ## Lista de títulos
 

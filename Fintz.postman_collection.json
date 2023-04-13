@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "eda6b086-e604-46b1-b2d9-ee678f6b4fdd",
+		"name": "Fintz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bolsa",
+			"item": [
+				{
+					"name": "1. Buscar ativos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "Opcional",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?q=BBAS",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "BBAS",
+									"description": "opcional"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Histórico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?ticker=BBAS3&dataInicio=2023-01-01",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"cotacoes",
+								"historico"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "BBAS3",
+									"description": "obrigatório"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2023-01-01",
+									"description": "obrigatório"
+								},
+								{
+									"key": "dataFim",
+									"value": "",
+									"description": "opcional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Proventos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=BBAS3&dataInicio=2023-01-01",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"proventos"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "BBAS3"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2023-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fundos (em breve)",
+			"item": []
+		},
+		{
+			"name": "Tesouro",
+			"item": [
+				{
+					"name": "1. Listar títulos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro?pagina=1&tamanho=200&vencido=False",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"titulos-publicos",
+								"tesouro"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": "1"
+								},
+								{
+									"key": "tamanho",
+									"value": "200"
+								},
+								{
+									"key": "vencido",
+									"value": "False"
+								}
+							]
+						},
+						"description": "Lista os títulos públicos do Tesouro direto, incluindo os vencidos.\nO modelo da resposta possui:\n* codigo: identificador do título na API e será usado nas outras chamadas,\n* nome: nome do título,\n* dataVencimento: indica o dia em que o título vence, formato ISO 8601 (%Y-%m-%d),\n* vencido: boolean que indica se o título já venceu,\n* possivelInvestir: boolean que indica se é possível comprar o título no Tesouro Direto\n* possivelResgatar: boolean que indica se é possível vencer o título no Tesouro Direto\n\nComo a resposta é paginada, podem ser passados os parâmetros \"pagina\" e \"tamanho\" para buscar mais ou menos resultados"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Informações dos títulos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/informacoes",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"titulos-publicos",
+								"tesouro",
+								"NTNB20550515",
+								"informacoes"
+							]
+						},
+						"description": "Busca informações gerais de um título.\nRecebe o código do título na URL e retorna:\n* codigo: código do título,\n* nome: nome do título,\n* dataVencimento: data de vencimento do título em ISO 8601 (%Y-%m-%d)\n* indice: nome do índice que o título está atrelado, ex: IPCA, SELIC, IGP-M. Se o título for préfixado o indice será nulo\n* vencido: indica se o título está vencido\n* possivelInvestir: indica se é possível comprar o título no Tesouro Direto\n* possivelResgatar: indica se é possível vender o título no Tesouro Direto\n* descricao: breve descricao do título\n* estrategia: descricao mais detalhada de como o título funciona e qual sua estrategia\n* jurosSemestrais: indica se o título paga cupom de juros semestralmente"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Histórico de preços e taxas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/historico?pagina=1&tamanho=1000&dataInicio=2022-12-01&dataFim=2022-12-31",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"titulos-publicos",
+								"tesouro",
+								"NTNB20550515",
+								"precos",
+								"historico"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": "1"
+								},
+								{
+									"key": "tamanho",
+									"value": "1000"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2022-12-01"
+								},
+								{
+									"key": "dataFim",
+									"value": "2022-12-31"
+								}
+							]
+						},
+						"description": "Busca o histórico de preço e taxas de um título. Recebe o código do título na URL e retorna:\n* codigo: Código do título\n* data: Data base à qual os preços e taxas se referem,\n* taxaJurosCompra: Taxa disponível para o investidor comprar o título, formato decimal com 4 casas decimais\n* taxaJurosVenda: Taxa disponível para o investidor revender o título para o TN. A taxa venda sempre é um\npouco maior que a taxa compra para resguardar o TN das oscilações que ocorrem entre uma precificação\ne outra, formato decimal com 4 casas decimais\n* puCompra: É o preço do título, considerando a taxa de compra manhã, com liquidação para o próximo\ndia útil (D+1). Quanto maior a taxa, menor o preço e vice-versa\n* puVenda: É o preço do título, considerando a taxa de venda manhã, com liquidação para o próximo dia\nútil (D+1)\n* puBase: É o preço do título, considerando a taxa de venda manhã, com liquidação para o mesmo dia\n(D0). Este PU valoriza os títulos para marcar a mercado os títulos adquiridos no Tesouro Direto"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Preços e taxas atuais de títulos não vencidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/atual",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"titulos-publicos",
+								"tesouro",
+								"NTNB20550515",
+								"precos",
+								"atual"
+							]
+						},
+						"description": "Busca os preço e taxas mais atualizados de um título.\nRecebe o código de um título que NÃO tenha vencido ainda e retorna:\n* codigo: Código do título\n* possivelInvestir: Indica se é possível comprar este título no Tesouro Direto,\n* possivelResgatar: Indica se é possível vender este título no Tesouro Direto, \n* taxaJurosCompra: Taxa disponível para o investidor comprar o título, formato decimal com 4 casas decimais\n* taxaJurosVenda: Taxa disponível para o investidor revender o título para o TN. A taxa venda sempre é um pouco maior que a taxa compra para resguardar o TN das oscilações que ocorrem entre uma precificação e outra, formato decimal com 4 casas decimais\n* puCompra: É o preço de compra do título, considerando a taxa de compra atual\n* puVenda: É o preço de venda do título, considerando a taxa de venda atual\n* minQtdVenda: Mínima quantidade que é possível vender o título\n* minValorVenda: Valor mínimo de venda do título\n* minValorCompra: Valor mínimo de compra do título\n* dataUltAtualizacao: data e hora da ultima atualização dos preços, no formato ISO 8601"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Pagamentos de cupons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/cupons?tamanho=20",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"titulos-publicos",
+								"tesouro",
+								"NTNB20550515",
+								"cupons"
+							],
+							"query": [
+								{
+									"key": "tamanho",
+									"value": "20"
+								}
+							]
+						},
+						"description": "Busca os cupons pagos por títulos com juros semestrais.\nRecebe o código de um título que tenha pago pelo menos um cupom e retorna:\n* codigo: Código do título\n* dataResgate: Data do resgate/pagamento do cupom\n* dataVencimento: Data do vencimento do título\n* valor: Valor pago em reais do cupom por título.\n* qtdTotal: Quantidade total de títulos que receberam o pagamento do cupom \n* valorTotal: Valor total em reais para pagar todos os juros aos investidores. É a quantidade x preço."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Índices (em breve)",
+			"item": []
+		}
+	]
+}
