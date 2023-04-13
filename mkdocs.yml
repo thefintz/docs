@@ -3,7 +3,7 @@ site_name: ''
 repo_url: https://github.com/thefintz/docs-api
 
 nav:
-  - Introdução: 'introducao.md'
+  - Introdução: 'index.md'
   - Autenticação: 'autenticacao.md'
   - Endpoints:
     - Bolsa: 'endpoints/bolsa.md'
