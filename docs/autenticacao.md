@@ -6,7 +6,7 @@ Assim, sua chave deve estar presente em todas as chamadas através do header `X-
 
 Para um teste inicial, você pode utilizar a chave `chave-de-teste-api-fintz`.
 
-Se você quiser uma chave mais poderosa (mais chamadas e mais rápida), temos um plano gratuito com chave individual e também planos avançados [link](https://fintz.com.br/#/produtos).
+Se você quiser uma chave com mais chamadas, mais rápida e unicamente sua, entre em contato em contato@fintz.com.br ou [veja nossos planos no link](https://fintz.com.br/#/precos).
 
 Caso tenha qualquer dúvida, [entre em contato](https://fintz.com.br/#/contato).
 

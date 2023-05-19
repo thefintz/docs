@@ -16,12 +16,12 @@
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "Opcional",
+								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?q=BBAS",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?classe=ACOES",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -38,7 +38,13 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "BBAS",
+									"value": "",
+									"description": "opcional",
+									"disabled": true
+								},
+								{
+									"key": "classe",
+									"value": "ACOES",
 									"description": "opcional"
 								}
 							]
@@ -47,18 +53,19 @@
 					"response": []
 				},
 				{
-					"name": "2. Histórico",
+					"name": "2. Historico",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?ticker=BBAS3&dataInicio=2023-01-01",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?dataFim=2023-04-18&dataInicio=2023-01-01&ticker=ITSA4",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -75,20 +82,19 @@
 							],
 							"query": [
 								{
-									"key": "ticker",
-									"value": "BBAS3",
-									"description": "obrigatório"
+									"key": "dataFim",
+									"value": "2023-04-18",
+									"description": "opcional"
 								},
 								{
 									"key": "dataInicio",
 									"value": "2023-01-01",
-									"description": "obrigatório"
+									"description": "opcional"
 								},
 								{
-									"key": "dataFim",
-									"value": "",
-									"description": "opcional",
-									"disabled": true
+									"key": "ticker",
+									"value": "ITSA4",
+									"description": "obrigatorio"
 								}
 							]
 						}
@@ -103,11 +109,12 @@
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=BBAS3&dataInicio=2023-01-01",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=ITSA4&dataInicio=2020-01-01",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -124,11 +131,220 @@
 							"query": [
 								{
 									"key": "ticker",
-									"value": "BBAS3"
+									"value": "ITSA4",
+									"description": "obrigatorio"
 								},
 								{
 									"key": "dataInicio",
-									"value": "2023-01-01"
+									"value": "2020-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataFim",
+									"value": null,
+									"description": "opcional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Bonificacoes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/bonificacoes?ticker=BBDC3&dataInicio=2020-01-01",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"bonificacoes"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "BBDC3",
+									"description": "obrigatorio"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2020-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataFim",
+									"value": null,
+									"description": "opcional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Desdobramentos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/desdobramentos?ticker=OIBR3&dataInicio=2010-01-01",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"desdobramentos"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "OIBR3",
+									"description": "obrigatorio"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2010-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataFim",
+									"value": null,
+									"description": "opcional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Indicadores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores?ticker=BBAS3&dataInicio=2015-01-01&indicador=ROE",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"tm",
+								"indicadores"
+							],
+							"query": [
+								{
+									"key": "ticker",
+									"value": "BBAS3",
+									"description": "opcional"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2015-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataFim",
+									"value": null,
+									"description": "opcional",
+									"disabled": true
+								},
+								{
+									"key": "indicador",
+									"value": "ROE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Itens contábeis",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes?item=LucroLiquido12m&ticker=BBAS3&dataInicio=2010-01-01",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"tm",
+								"demonstracoes"
+							],
+							"query": [
+								{
+									"key": "item",
+									"value": "LucroLiquido12m",
+									"description": "obrigatorio"
+								},
+								{
+									"key": "ticker",
+									"value": "BBAS3",
+									"description": "opcional"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2010-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataFim",
+									"value": null,
+									"description": "opcional",
+									"disabled": true
 								}
 							]
 						}
@@ -340,8 +556,60 @@
 			]
 		},
 		{
-			"name": "Índices (em breve)",
-			"item": []
+			"name": "Indices",
+			"item": [
+				{
+					"name": "1. Historico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/indices/historico?indice=IBOV&dataFim=2023-05-01&dataInicio=2023-01-01&ordem=ASC",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"indices",
+								"historico"
+							],
+							"query": [
+								{
+									"key": "indice",
+									"value": "IBOV",
+									"description": "obrigatorio"
+								},
+								{
+									"key": "dataFim",
+									"value": "2023-05-01",
+									"description": "opcional"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2023-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "ordem",
+									"value": "ASC",
+									"description": "opcional, asc ou desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

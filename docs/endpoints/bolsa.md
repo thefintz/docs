@@ -2,23 +2,28 @@
 
 # Bolsa B3
 
-Lembrando que todos os endpoints da API tem a mesma URL base e precisam do header de autenticação com sua chave.
->
-```
-URL_BASE = https://api.fintz.com.br
-x-api-key = {sua chave da API Fintz}
-```
+!!! warning "Lembrete"
+    Você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
+    Entre em contato em contato@fintz.com.br para conseguir a sua chave própria e robusta.
 
 ## Busca e lista de ativos
 
 ** /bolsa/b3/avista/busca **
 
 Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
-Por exemplo, você pode filtrar apenas os ativos do setor de tecnologia, ou mesmo pode conectar a sua search bar para buscar pelo nome ou ticker do ativo.
+Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive o que não são mais negociados.
+
+Todos os ativos da bolsa B3 estão disponíveis (ações, FIIs, ETFs, BDRs, ...).
+
+Um exemplo de uso, você pode filtrar apenas os ativos do setor de tecnologia, ou mesmo pode conectar a sua search bar para buscar pelo nome ou ticker do ativo.
 
 **Parâmetros**
 
-- `q`: `string` que buscará entre os tickers (ex: "BBAS" vai retornar o "BBAS3")
+| Parâmetro | Tipo |Descrição | |
+| :-: | :-: | - | :-: |
+| `q`     | `string` | ex: "BBAS" vai retornar o "BBAS3" | opcional
+| `classe` | `string` | BDRS, ACOES, FUNDOS, FIIS ou TODOS | opcional
+
 
 **Exemplo de chamada:**
 
@@ -29,7 +34,8 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'q': 'BBAS' }
 
-res = req.get(f'{URL_BASE}/bolsa/b3/avista/busca', headers=HEADERS, params=PARAMS)
+endpoint = URL_BASE + '/bolsa/b3/avista/busca'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
@@ -44,7 +50,7 @@ print(res.json())
 ]
 ```
 
-## Cotação
+## Cotação histórica
 
 ** /bolsa/b3/avista/cotacoes/historico **
 
@@ -52,11 +58,11 @@ Retorna os preços de fechamento do ticker especificado na data especificada.
 
 **Parâmetros**
 
-| Parâmetro | Descrição | |
-| :-: | - | :-: |
-| `ticker`     | `string` representando o código de negociação | obrigatório
-| `dataInicio` | `string` (yyyy-mm-dd) para inicio da busca dos dados históricos | obrigatório
-| `dataFim`    | `string` (yyyy-mm-dd) para fim da busca dos dados históricos | opcional
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | código de negociação | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
 
 **Exemplo de chamada:**
 
@@ -64,11 +70,11 @@ Retorna os preços de fechamento do ticker especificado na data especificada.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-ENDPOINT = URL_BASE + '/bolsa/b3/avista/cotacoes/historico'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-04-01' }
 
-res = req.get(ENDPOINT, headers=HEADERS, params=PARAMS)
+endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
@@ -113,11 +119,11 @@ Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e a
 
 **Parâmetros**
 
-| Parâmetro | Descrição | |
-| :-: | - | :-: |
-| `ticker`     | `string` representando o código de negociação | obrigatório
-| `dataInicio` | `string` (yyyy-mm-dd) para inicio da busca dos dados históricos | obrigatório
-| `dataFim`    | `string` (yyyy-mm-dd) para fim da busca dos dados históricos | opcional
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | código de negociação | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
 
 **Exemplo de chamada:**
 
@@ -128,7 +134,8 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-01-01' }
 
-res = req.get(f'{URL_BASE}/bolsa/b3/avista/proventos', headers=HEADERS, params=PARAMS)
+endpoint = URL_BASE + '/bolsa/b3/avista/proventos'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
@@ -155,15 +162,249 @@ print(res.json())
 ]
 ```
 
-## Demonstrações financeiras
 
-Em beta, lançamento dia 25/04/2023.
-Terá acesso a balanços, demonstrações de resultados e demonstrações de fluxo de caixa por trimestre e por ano.
+## Bonificacoes
+
+** /bolsa/b3/avista/bonificacoes **
+
+Retorna as bonificacoes do ticker e datas especificados.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | código de negociação | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'ticker': 'BBDC3', 'dataInicio': '2020-01-01' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/bonificacoes'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "ticker": "BBDC3",
+    "ativoEmitido": "BBDC3",
+    "proporcao": 0.1,
+    "dataCom": "2022-04-18",
+    "dataAnuncio": "2022-03-10",
+    "dataIncorporacao": "2022-04-22",
+    "valorBase": 4.13
+  },
+  {
+    "ticker": "BBDC3",
+    "ativoEmitido": "BBDC3",
+    "proporcao": 0.1,
+    "dataCom": "2021-04-16",
+    "dataAnuncio": "2021-04-07",
+    "dataIncorporacao": "2021-04-22",
+    "valorBase": 4.53
+  },
+  ...
+]
+```
+
+## Desdobramentos
+
+** /bolsa/b3/avista/desdobramentos **
+
+Retorna os desdobramentos (splits) e grupamentos do ticker e datas especificados.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | do código de negociação | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-01-01' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/desdobramentos'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "ticker": "BBAS3",
+    "dataCom": "2023-03-13",
+    "dataPagamento": "2023-03-31",
+    "dataAprovacao": "2023-02-17",
+    "valor": 0.35203697246,
+    "tipo": "JRS CAP PROPRIO"
+  },
+  {
+    "ticker": "BBAS3",
+    "dataCom": "2023-02-23",
+    "dataPagamento": "2023-03-03",
+    "dataAprovacao": "2023-02-09",
+    "valor": 0.2354913913,
+    "tipo": "DIVIDENDO"
+  }
+]
+```
 
 ## Indicadores
 
-Em beta, lançamento dia 30/04/2023.
-Terá acesso ao histórico de indicadores também.
+
+!!! success "Novidade!"
+    Esse endpoint acaba de ser lançado e estamos adicionando indicadores continuamente.
+    
+    Tem algum indicador que deseja ser adicionado o quanto antes?
+    Só mandar pelo email contato@fintz.com.br
+
+** /bolsa/b3/tm/indicadores **
+
+Retorna o histórico referente ao indicador requisitado.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indicador`  | `string` | ex: "ROE" | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+| `ticker`     | `string` | código de negociação | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
+
+endpoint = URL_BASE + '/b3/tm/indicadores'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+      "t": "BBAS3",
+      "i": "roe",
+      "di": "2015-02-11T08:24:11.850000",
+      "df": "2015-03-27T08:18:34.097000",
+      "v": 0.14519
+  },
+  {
+      "t": "BBAS3",
+      "i": "roe",
+      "di": "2015-03-27T08:18:34.097000",
+      "df": "2015-05-14T08:26:41.240000",
+      "v": 0.15617
+  },
+  ...
+]
+```
+
+
+Os indicadores atualmente disponíveis são
+```
+ROE
+ROIC
+P/L
+DivLiq
+DivBruta
+P/VP
+EV/EBITDA
+EV/EBIT
+```
+
+Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
+
+## DRE, DFC e BP padronizados
+
+** /bolsa/b3/tm/demonstracoes **
+
+Retorna o histórico referente ao item contábil padronizado.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `item`  | `string` | ex: "LucroLiquido12m" | obrigatório
+| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
+| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+| `ticker`     | `string` | código de negociação | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
+
+endpoint = URL_BASE + '/b3/tm/demonstracoes'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+      "t": "BBAS3",
+      "i": "LucroLiquido12m",
+      "di": "2012-02-14T09:49:04.487000",
+      "df": "2012-03-30T18:15:39.613000",
+      "v": 12247330000.0
+  },
+  {
+      "t": "BBAS3",
+      "i": "LucroLiquido12m",
+      "di": "2012-03-30T18:15:39.613000",
+      "df": "2012-05-03T10:08:04.667000",
+      "v": 12736912000.0
+  },
+  ...
+]
+```
+
+
+Os itens contábeis atualmente disponíveis são
+```
+LucroLiquido12m
+LucroLiquido
+PatrimonioLiquido
+DividaBruta12m
+DividaBruta
+DividaLiquida12m
+DividaLiquida
+```
+
+Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
 
 ## Cotação mercado futuro
 

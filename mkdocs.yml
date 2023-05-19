@@ -33,6 +33,8 @@ theme:
 
 markdown_extensions:
   - pymdownx.highlight
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
 
 plugins:
