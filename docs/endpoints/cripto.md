@@ -2,7 +2,7 @@
 
 # Criptomoedas
 
-Esses endpoints estão em fase de beta fechado e vão ser lançados dia 19 de Outubro.
+Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/10/2023.
 
 Tem interesse em participar do beta? [Entre em contato][contato].
 

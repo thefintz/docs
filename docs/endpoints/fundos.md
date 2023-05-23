@@ -2,7 +2,7 @@
 
 # Fundos
 
-Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/05/2023.
+Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/07/2023.
 
 Os endpoints em beta são
 ```
