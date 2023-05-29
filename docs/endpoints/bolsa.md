@@ -309,11 +309,11 @@ print(res.json())
 ```json
 [
   {
-      "t": "BBAS3",
-      "i": "roe",
-      "di": "2015-02-11T08:24:11.850000",
-      "df": "2015-03-27T08:18:34.097000",
-      "v": 0.14519
+      "t": "BBAS3", # ticker
+      "i": "roe", # indicador
+      "di": "2015-02-11T08:24:11.850000", # data inicio
+      "df": "2015-03-27T08:18:34.097000", # data fim
+      "v": 0.14519 # valor
   },
   {
       "t": "BBAS3",
@@ -375,11 +375,11 @@ print(res.json())
 ```json
 [
   {
-      "t": "BBAS3",
-      "i": "LucroLiquido12m",
-      "di": "2012-02-14T09:49:04.487000",
-      "df": "2012-03-30T18:15:39.613000",
-      "v": 12247330000.0
+      "t": "BBAS3", # ticker
+      "i": "LucroLiquido12m", # item contábil
+      "di": "2012-02-14T09:49:04.487000", # data inicial
+      "df": "2012-03-30T18:15:39.613000", # data final
+      "v": 12247330000.0 # valor
   },
   {
       "t": "BBAS3",
