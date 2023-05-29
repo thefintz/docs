@@ -395,13 +395,16 @@ print(res.json())
 
 Os itens contábeis atualmente disponíveis são
 ```
+PatrimonioLiquido
 LucroLiquido12m
 LucroLiquido
-PatrimonioLiquido
-DividaBruta12m
 DividaBruta
-DividaLiquida12m
 DividaLiquida
+Disponibilidades
+Ebit
+Ebit12m
+Impostos
+Impostos12m
 ```
 
 Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
