@@ -341,7 +341,8 @@ EV/EBIT
 
 Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
 
-## DRE, DFC e BP padronizados
+
+## Itens contábeis padronizados
 
 ** /bolsa/b3/tm/demonstracoes **
 
@@ -408,6 +409,76 @@ Impostos12m
 ```
 
 Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
+
+## DRE, BP, DFC crus da CVM
+
+** /bolsa/b3/demonstracoes/{tipo} **
+
+Retorna a demonstração financeira especificada, de maneira completa e crua (sem padronização), como está na CVM.
+
+Hoje, a API retorna dados para as seguintes demonstrações financeiras ({tipo})  
+- `dre`: Demonstração de Resultados  
+- `bpa`: Balanço Patrimonial Ativo  
+- `bpp`: Balanço Patrimonial Passivo  
+- `dfc`: Demonstração do Fluxo de Caixa  
+No caso da DFC, retornamos tanto o MD (método direto) quanto o MI (método indireto).
+Para todos os casos, retornamos tanto o Consolidado quanto o Individual.
+
+Atenção: o {tipo} é em letra minúscula, por exemplo:  
+`/bolsa/b3/demonstracoes/dre`
+
+**Parâmetros**
+
+| Parâmetro   | Tipo     | Exemplo | |
+| :-:         | :-:      | - | :-: |
+| `ticker`    | `string` | BBAS3 | obrigatório
+| `ano`       | `string` | 2022 | obrigatório
+| `trimestre` | `string` | 4 | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'ticker': 'BBAS3', 'ano': '2022', 'trimestre': '4' }
+
+endpoint = URL_BASE + '/bolsa/b3/demonstracoes/DRE'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "nome": "BCO BRASIL S.A.",
+    "tipo_demonstracao": "CONSOLIDADO",
+    "data_inicio_exercicio": "2022-01-01",
+    "data_fim_exercicio": "2022-12-31",
+    "codigo_conta": "3.01",
+    "descricao_conta": "Receitas de Intermediação Financeira",
+    "valor_conta": 236549051000,
+    "demonstracao": "DRE"
+  },
+  {
+    "nome": "BCO BRASIL S.A.",
+    "tipo_demonstracao": "CONSOLIDADO",
+    "data_inicio_exercicio": "2022-01-01",
+    "data_fim_exercicio": "2022-12-31",
+    "codigo_conta": "3.01.01",
+    "descricao_conta": "Receita de Juros",
+    "valor_conta": 236549051000,
+    "demonstracao": "DRE"
+  },
+  ...
+]
+```
+
+
+Precisa de alguma outra demonstração financeira? [Entre em contato][contato] e adicionamos gratuitamente.
 
 ## Cotação mercado futuro
 
