@@ -13,6 +13,7 @@ nav:
     # - Criptomoedas: 'endpoints/cripto.md'
     # - Empresas: 'endpoints/empresas.md'
   - Postman: 'postman.md'
+  - Updates: 'updates.md'
 
 theme:
   name: material

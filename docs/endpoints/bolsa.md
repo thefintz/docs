@@ -331,12 +331,9 @@ Os indicadores atualmente disponíveis são
 ```
 ROE
 ROIC
-P/L
-DivLiq
-DivBruta
-P/VP
-EV/EBITDA
-EV/EBIT
+LPA
+P_L
+L_P
 ```
 
 Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
