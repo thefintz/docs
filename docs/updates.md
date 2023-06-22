@@ -45,7 +45,7 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
 
 
-??? note "2023-06-21"
+???+ note "2023-06-21"
     ## Novos indicadores P/L e L/P
 
     O L/P tem um objetivo de ordenação, onde se sabe que quanto maior L/P, melhor.  
@@ -72,7 +72,7 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
     Esses indicadores estão disponíveis no endpoint de [indicadores].
 
 
-??? note "2023-06-19"
+???+ note "2023-06-19"
     ## 4 Novos itens contábeis
 
     Adicionados os seguintes itens contábeis padronizados

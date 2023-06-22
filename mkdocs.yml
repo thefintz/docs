@@ -14,6 +14,7 @@ nav:
     # - Empresas: 'endpoints/empresas.md'
   - Postman: 'postman.md'
   - Updates: 'updates.md'
+  # - Como calculamos: 'calculos.md'
 
 theme:
   name: material
