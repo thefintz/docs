@@ -403,9 +403,13 @@ Ebit
 Ebit12m
 Impostos
 Impostos12m
+AcoesEmCirculacao
+TotalAcoes
+LucroLiquidoSociosControladora
+LucroLiquidoSociosControladora12m
 ```
 
-Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
+Precisa de algum outro item contábil? [Entre em contato][contato] e adicionamos gratuitamente.
 
 ## DRE, BP, DFC crus da CVM
 
