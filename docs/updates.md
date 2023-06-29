@@ -8,11 +8,37 @@ Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
 
+???+ note "2023-06-29"
+    ## 3 Novos indicadores
+
+    Adicionados os seguintes indicadores
+
+    ```
+    EV
+    EV_EBIT
+    ValorDeMercado
+    ```
+
+    Aqui está o link para o [endpoint de indicadores][indicadores]
+
+???+ note "2023-06-26"
+    ## Novo: ReceitaLiquida
+
+    Adicionados os seguintes itens contábeis padronizados
+
+    ```
+    ReceitaLiquida
+    ReceitaLiquida12m
+    ```
+
+    Esses itens são úteis para uma série de indicadores, esperamos que gostem.
+
+    Aqui está o link para o [endpoint de itens padronizados][itenscontabeis]
 
 ???+ note "2023-06-22"
-    ## 26 novos índices B3
+    ## Adicionados 26 índices B3
 
-    Esses índices estão disponíveis no endpoint de [índices][indices]
+    Esses índices estão disponíveis no [endpoint de índices][indices]
 
     | Índice | Descrição |
     | :-: | |
@@ -69,7 +95,7 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Assim podemos ordenar sem problemas.
 
-    Esses indicadores estão disponíveis no endpoint de [indicadores].
+    Esses indicadores estão disponíveis no [endpoint de indicadores].
 
 
 ???+ note "2023-06-19"
@@ -86,4 +112,4 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Esses itens são úteis para uma série de indicadores, esperamos que gostem.
 
-    [Aqui está o link para o endpoint de itens padronizados][itenscontabeis]
+    Aqui está o link para o [endpoint de itens padronizados][itenscontabeis]

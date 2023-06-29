@@ -334,6 +334,9 @@ ROIC
 LPA
 P_L
 L_P
+EV
+EV_EBIT
+ValorDeMercado
 ```
 
 Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
@@ -396,6 +399,8 @@ Os itens contábeis atualmente disponíveis são
 PatrimonioLiquido
 LucroLiquido12m
 LucroLiquido
+ReceitaLiquida
+ReceitaLiquida12m
 DividaBruta
 DividaLiquida
 Disponibilidades
