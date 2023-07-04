@@ -364,7 +364,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
+PARAMS = { 'item': 'PatrimonioLiquido', 'dataInicio': '2023-01-01' }
 
 endpoint = URL_BASE + '/b3/tm/demonstracoes'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
