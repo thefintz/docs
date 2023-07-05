@@ -299,7 +299,7 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
 
-endpoint = URL_BASE + '/b3/tm/indicadores'
+endpoint = URL_BASE + '/bolsa/b3/tm/indicadores'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
@@ -366,7 +366,7 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'item': 'LucroLiquido12m', 'dataInicio': '2023-01-01' }
 
-endpoint = URL_BASE + '/b3/tm/demonstracoes'
+endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
