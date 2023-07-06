@@ -286,9 +286,9 @@ Retorna o histórico referente ao indicador requisitado.
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `indicador`  | `string` | ex: "ROE" | obrigatório
+| `ticker`     | `string` | código de negociação | obrigatório
 | `dataInicio` | `string` | (yyyy-mm-dd) | opcional
 | `dataFim`    | `string` | (yyyy-mm-dd) | opcional
-| `ticker`     | `string` | código de negociação | opcional
 
 **Exemplo de chamada:**
 
@@ -353,9 +353,9 @@ Retorna o histórico referente ao item contábil padronizado.
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `item`  | `string` | ex: "LucroLiquido12m" | obrigatório
+| `ticker`     | `string` | código de negociação | obrigatório
 | `dataInicio` | `string` | (yyyy-mm-dd) | opcional
 | `dataFim`    | `string` | (yyyy-mm-dd) | opcional
-| `ticker`     | `string` | código de negociação | opcional
 
 **Exemplo de chamada:**
 
