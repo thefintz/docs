@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "eda6b086-e604-46b1-b2d9-ee678f6b4fdd",
+		"_postman_id": "9bddeec3-7337-415c-afcc-6f90e808f44a",
 		"name": "Fintz",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28679064"
 	},
 	"item": [
 		{
@@ -276,7 +277,7 @@
 								{
 									"key": "ticker",
 									"value": "BBAS3",
-									"description": "opcional"
+									"description": "obrigatório"
 								},
 								{
 									"key": "dataInicio",
@@ -284,14 +285,14 @@
 									"description": "opcional"
 								},
 								{
-									"key": "dataFim",
-									"value": null,
-									"description": "opcional",
-									"disabled": true
-								},
-								{
 									"key": "indicador",
 									"value": "ROE"
+								},
+								{
+									"key": "dataFim",
+									"value": "",
+									"description": "opcional",
+									"disabled": true
 								}
 							]
 						}
@@ -310,7 +311,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes?item=LucroLiquido12m&ticker=BBAS3&dataInicio=2010-01-01",
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes?item=Ebit&ticker=PETR4&dataInicio=2010-01-01",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -327,13 +328,13 @@
 							"query": [
 								{
 									"key": "item",
-									"value": "LucroLiquido12m",
+									"value": "Ebit",
 									"description": "obrigatorio"
 								},
 								{
 									"key": "ticker",
-									"value": "BBAS3",
-									"description": "opcional"
+									"value": "PETR4",
+									"description": "obrigatorio"
 								},
 								{
 									"key": "dataInicio",
@@ -342,7 +343,7 @@
 								},
 								{
 									"key": "dataFim",
-									"value": null,
+									"value": "",
 									"description": "opcional",
 									"disabled": true
 								}
@@ -354,7 +355,7 @@
 			]
 		},
 		{
-			"name": "Fundos (em breve)",
+			"name": "Fundos",
 			"item": []
 		},
 		{
@@ -556,10 +557,74 @@
 			]
 		},
 		{
-			"name": "Indices",
+			"name": "Indices, taxas e câmbio",
 			"item": [
 				{
-					"name": "1. Historico",
+					"name": "Índices: histórico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/indices/busca",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"indices",
+								"busca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taxas: busca",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/taxas/busca?q=cdi",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"taxas",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "cdi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Taxas: histórico",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -602,6 +667,92 @@
 								{
 									"key": "ordem",
 									"value": "ASC",
+									"description": "opcional, asc ou desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PTAX: busca",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/cambio/ptax/busca?q=dólar",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"cambio",
+								"ptax",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "dólar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PTAX: histórico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/cambio/ptax/historico?codigo=USD&dataInicio=2023-01-01&boletim=FECHAMENTO&ordem=DESC",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"cambio",
+								"ptax",
+								"historico"
+							],
+							"query": [
+								{
+									"key": "codigo",
+									"value": "USD"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2023-01-01",
+									"description": "opcional"
+								},
+								{
+									"key": "boletim",
+									"value": "FECHAMENTO"
+								},
+								{
+									"key": "ordem",
+									"value": "DESC",
 									"description": "opcional, asc ou desc"
 								}
 							]
