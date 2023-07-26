@@ -1,12 +1,29 @@
 [indicadores]: ../endpoints/bolsa/#indicadores
 [itenscontabeis]: ../endpoints/bolsa/#itens-contabeis-padronizados
 [indices]: ../endpoints/indices
+[taxas]: ../endpoints/indices/#taxas
 
 # Notas de Atualização
 
 Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
+
+???+ note "2023-07-19"
+    ## Taxas e câmbio!
+
+    Agora você tem acesso ao histórico de diversas taxas e câmbios como:
+
+    ```
+    CDI e seus acumulados
+    Selic e seus acumulados
+    Dólar
+    Euro
+    Libra
+    e muito mais
+    ```
+
+    Aqui está o link para os [endpoints][taxas]
 
 ???+ note "2023-06-29"
     ## 3 Novos indicadores
