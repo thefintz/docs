@@ -1,9 +1,13 @@
 [contato]: https://fintz.com.br/#/contato
+[postman]: ../../postman
 
 # Bolsa B3
 
-!!! warning "Lembrete"
-    Você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
+!!! info "Lembrete"
+    Você tem acesso a uma coleção [Postman][postman].
+
+    Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
+    
     Entre em contato em contato@fintz.com.br para conseguir a sua chave própria e robusta.
 
 ## Busca e lista de ativos
@@ -297,7 +301,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
+PARAMS = { 'ticker': 'BBAS3', 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/indicadores'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -364,7 +368,11 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'LucroLiquido12m', 'dataInicio': '2023-01-01' }
+PARAMS = {
+  'ticker': 'BBAS3',
+  'item': 'LucroLiquido12m',
+  'dataInicio': '2023-01-01'
+}
 
 endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
