@@ -9,7 +9,7 @@ nav:
     - Bolsa: 'endpoints/bolsa.md'
     - Fundos: 'endpoints/fundos.md'
     - Tesouro: 'endpoints/tesouro.md'
-    - Índices: 'endpoints/indices.md'
+    - Índices, taxas e câmbio: 'endpoints/indices.md'
     # - Criptomoedas: 'endpoints/cripto.md'
     # - Empresas: 'endpoints/empresas.md'
   - Postman: 'postman.md'

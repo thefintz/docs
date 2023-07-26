@@ -1,13 +1,17 @@
 [contato]: https://fintz.com.br/#/contato
 
-# Índices
+# Índices, taxas e câmbio
 
 !!! success "Novidade!"
-    Esse endpoint acaba de ser lançado e estamos adicionando índices continuamente.
+    Esses endpoints acabam de ser lançado e estamos adicionando índices continuamente.
     
-    Tem algum índice que deseja ser adicionado o quanto antes?
+    Tem algum índice, taxa ou câmbio que deseja ser adicionado o quanto antes?
     Só mandar pelo email contato@fintz.com.br
 
+## Índices
+
+
+### histórico
 ** /indices/historico **
 
 Retorna o histórico referente ao índice requisitado.
@@ -68,3 +72,254 @@ CDI
 ```
 
 Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratuitamente.
+
+## Taxas
+
+### busca
+
+** /taxas/busca **
+
+Retorna todas as taxas que podem ser buscadas. 
+Pode-se utilizar filtro.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `q`     | `string` | ex: "cdi" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'q': 'cdi' }
+
+res = req.get(f'{URL_BASE}/taxas/busca', headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+    {
+        "nome": "CDI",
+        "codigo": 12,
+        "unidade": "% a.d.",
+        "descricao": "Taxa média dos empréstimos interbancários com um dia de prazo, comumente usada como referência para investimentos de renda fixa."
+    },
+    {
+        "nome": "CDI acumulada no mês",
+        "codigo": 4391,
+        "unidade": "% a.m.",
+        "descricao": "A taxa CDI acumulada no período mensal."
+    },
+    {
+        "nome": "CDI acumulada no mês anualizada base 252",
+        "codigo": 4392,
+        "unidade": "% a.a.",
+        "descricao": "A taxa CDI mensal, anualizada com base em 252 dias úteis."
+    },
+    {
+        "nome": "CDI anualizada base 252",
+        "codigo": 4389,
+        "unidade": "% a.a.",
+        "descricao": "Taxa CDI anualizada levando em consideração 252 dias úteis."
+    }
+]
+```
+
+
+### histórico
+
+** /taxas/historico **
+
+Retorna todas as taxas que podem ser buscadas. 
+Pode-se utilizar filtro.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indice`     | `string` | ex: "IBOV" | obrigatório
+| `dataInicio` | Date | ex: "2023-01-01" | opcional
+| `dataFim`    | Date | ex: "2023-05-01" | opcional
+| `ordem`      | "ASC" ou "DESC" | ex: "ASC" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indice': 'IBOV' }
+
+res = req.get(f'{URL_BASE}/taxas/busca', headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+    {
+        "indice": "IBOV",
+        "data": "2023-01-02",
+        "valor": 106376.02
+    },
+    {
+        "indice": "IBOV",
+        "data": "2023-01-03",
+        "valor": 104165.74
+    },
+    {
+        "indice": "IBOV",
+        "data": "2023-01-04",
+        "valor": 105334.46
+    }, ...
+]
+```
+
+As taxas atualmente disponíveis são
+```
+CDI
+CDI acumulada no mês
+CDI acumulada no mês anualizada base 252
+CDI anualizada base 252
+Fator diário Taxa Extramercado
+FII para TCR e TRFC
+FII para TFC
+Selic
+Selic acumulada no mês
+Selic acumulada no mês anualizada base 252
+Selic anualizada base 252
+Taxa básica financeira pro-rata (TBF pro-rata)
+Taxa básica financeira (TBF)
+Taxa básica financeira (TBF) - Primeiro dia do mês
+Taxa básica financeira (TBF) - Primeiro dia do mês anualizada na base 252
+Taxa de juros de longo prazo - TJLP
+Taxa Extramercado
+Taxa Jm para TLP
+Taxa referencial do Tesouro - Taxa anual
+Taxa referencial do Tesouro - Taxa diária
+Taxa referencial pro-rata (TR pro-rata)
+Taxa referencial (TR)
+Taxa referencial (TR) para financiamentos imobiliários prefixados do SFH
+Taxa referencial (TR) - Primeiro dia do mês
+Taxa referencial (TR) - Primeiro dia do mês anualizada base 252
+TJLP mensal
+TRT - Fator diário
+```
+
+## Câmbio (PTAX)
+
+### busca
+
+** /cambio/ptax/busca **
+
+Retorna a lista de PTAX que podem ser buscadas. 
+Pode-se utilizar filtro.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `q`     | `string` | ex: "dólar" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'q': 'dólar' }
+
+res = req.get(f'{URL_BASE}/cambio/ptax/busca', headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+    {
+        "nome": "Dólar australiano",
+        "codigo": "AUD",
+        "tipoMoeda": "B"
+    },
+    {
+        "nome": "Dólar canadense",
+        "codigo": "CAD",
+        "tipoMoeda": "A"
+    },
+    {
+        "nome": "Dólar dos Estados Unidos",
+        "codigo": "USD",
+        "tipoMoeda": "A"
+    }
+]
+```
+
+### histórico
+
+** /cambio/ptax/historico **
+
+Retorna o histórico referente ao ptax selecionado.
+Há filtro de datas.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `codigo`     | `string` | ex: "USD" | obrigatório
+| `dataInicio` | `string` | ex: "2023-01-01" | opcional
+| `dataFim`    | `string` | ex: "2023-05-01" | opcional
+| `boletim`    | `string` | "FECHAMENTO" ou "ABERTURA | opcional
+| `ordem`      | `string` | "ASC" ou "DESC" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indice': 'USD' }
+
+res = req.get(f'{URL_BASE}/cambio/ptax/busca', headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+    {
+        "codigo": "USD",
+        "nome": "Dólar dos Estados Unidos",
+        "data": "2023-07-25T13:11:28.371000",
+        "cotacaoCompra": 4.749,
+        "cotacaoVenda": 4.7496,
+        "paridadeCompra": 1.0,
+        "paridadeVenda": 1.0,
+        "tipoBoletim": "Fechamento",
+        "tipoMoeda": "A"
+    },
+    {
+        "codigo": "USD",
+        "nome": "Dólar dos Estados Unidos",
+        "data": "2023-07-24T13:07:25.216000",
+        "cotacaoCompra": 4.7451,
+        "cotacaoVenda": 4.7457,
+        "paridadeCompra": 1.0,
+        "paridadeVenda": 1.0,
+        "tipoBoletim": "Fechamento",
+        "tipoMoeda": "A"
+    }, ...
+]
+```
