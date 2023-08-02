@@ -23,6 +23,9 @@ theme:
   logo: assets/logo-negativo-fundo-preto.png
   favicon: assets/favicon.ico
 
+  extra_css:
+    - css/custom.css
+
   palette:
     - scheme: slate
       toggle:
@@ -38,6 +41,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
 
 plugins:
   - search:

@@ -491,8 +491,115 @@ print(res.json())
 ]
 ```
 
+## Arquivos Backtest
 
-Precisa de alguma outra demonstração financeira? [Entre em contato][contato] e adicionamos gratuitamente.
+Seus backtests ficam mais fáceis com os arquivos pois esses contém muito mais dados e podem ser facilmente trabalhados diretamente no pandas para serem analisados ou exportados para Excel.
+
+Já pensamos e cuidados dos vieses importantes para backtest:
+
+- sobrevivência (survivorship): empresas delistadas também estão presentes
+
+- antecipação (look-ahead): os dados em determinada data são os dados disponíveis até aquela data, não depois
+
+- confiabilidade (data-quality): fornecemos o preço de fechamento ajustado (splits/inplits, dividendos, JCP e bonificações)
+
+### Arquivo: Cotação histórica
+
+> ** GET **  `/bolsa/b3/avista/cotacoes/historico/arquivos`
+
+Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação de todos os tickers, desde 2010 até o último fechamento de mercado. 
+
+**Parâmetros**
+
+Esse endpoint não tem parâmetros. O arquivo possui cotação de todos os tickers, desde 2010 até o último fechamento de mercado.
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico/arquivos'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+{
+  "link": "url"
+}
+```
+
+
+### Arquivo: Indicadores
+
+> ** GET ** `/bolsa/b3/tm/indicadores/arquivos`
+
+Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
+
+**Parâmetros**
+
+| Parâmetro   | Tipo     | Exemplo | |
+| :-:         | :-:      | - | :-: |
+| `indicador` | `string` | ROE | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + '/bolsa/b3/tm/indicadores/arquivos'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+{
+  "link": "url"
+}
+```
+
+### Arquivo: Itens contábeis
+
+> ** GET ** `/bolsa/b3/tm/demonstracoes/arquivos`
+
+Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do item contábil selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
+
+**Parâmetros**
+
+| Parâmetro   | Tipo     | Exemplo | |
+| :-:         | :-:      | - | :-: |
+| `item` | `string` | LucroLiquido12m | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes/arquivos'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+{
+  "link": "url"
+}
+```
 
 ## Cotação mercado futuro
 
