@@ -59,16 +59,32 @@ print(res.json())
 
 Os índices atualmente disponíveis são
 ```
+AGFS
+BDRX
+GPTW
 IBOV
-IBX
-IFIX
+IBRA
+IBXL
+IBXX
+ICO2
+ICON
 IDIV
-SMLL
+IEEX
+IFIL
+IFIX
+IFNC
+IGCT
+IGCX
+IGNM
+IMAT
+IMOB
+INDX
+ISEE
 ITAG
-SP500
-IGPM
-IPCA
-CDI
+IVBX
+MLCX
+SMLL
+UTIL
 ```
 
 Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratuitamente.
