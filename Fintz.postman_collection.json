@@ -66,7 +66,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?dataFim=2023-04-18&dataInicio=2023-01-01&ticker=ITSA4",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?dataInicio=2022-08-14&ticker=BBAS3",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -84,17 +84,18 @@
 							"query": [
 								{
 									"key": "dataFim",
-									"value": "2023-04-18",
-									"description": "opcional"
+									"value": "2022-08-14",
+									"description": "opcional",
+									"disabled": true
 								},
 								{
 									"key": "dataInicio",
-									"value": "2023-01-01",
+									"value": "2022-08-14",
 									"description": "opcional"
 								},
 								{
 									"key": "ticker",
-									"value": "ITSA4",
+									"value": "BBAS3",
 									"description": "obrigatorio"
 								}
 							]
@@ -115,7 +116,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=ITSA4&dataInicio=2020-01-01",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=BBAS3&dataInicio=2020-01-01",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -132,7 +133,7 @@
 							"query": [
 								{
 									"key": "ticker",
-									"value": "ITSA4",
+									"value": "BBAS3",
 									"description": "obrigatorio"
 								},
 								{
@@ -142,7 +143,7 @@
 								},
 								{
 									"key": "dataFim",
-									"value": null,
+									"value": "",
 									"description": "opcional",
 									"disabled": true
 								}
@@ -238,7 +239,7 @@
 								},
 								{
 									"key": "dataFim",
-									"value": null,
+									"value": "",
 									"description": "opcional",
 									"disabled": true
 								}
@@ -259,7 +260,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores?ticker=BBAS3&dataInicio=2015-01-01&indicador=ROE",
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores?ticker=BBAS3&dataInicio=2010-01-01&indicador=ValorDeMercado&preencher=true",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -281,18 +282,22 @@
 								},
 								{
 									"key": "dataInicio",
-									"value": "2015-01-01",
+									"value": "2010-01-01",
 									"description": "opcional"
 								},
 								{
 									"key": "indicador",
-									"value": "ROE"
+									"value": "ValorDeMercado"
 								},
 								{
 									"key": "dataFim",
-									"value": "",
+									"value": "2023-01-01",
 									"description": "opcional",
 									"disabled": true
+								},
+								{
+									"key": "preencher",
+									"value": "true"
 								}
 							]
 						}
@@ -447,7 +452,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/historico?pagina=1&tamanho=1000&dataInicio=2022-12-01&dataFim=2022-12-31",
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/historico?pagina=1&tamanho=1000&dataInicio=2022-12-01",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -477,7 +482,8 @@
 								},
 								{
 									"key": "dataFim",
-									"value": "2022-12-31"
+									"value": "2022-12-31",
+									"disabled": true
 								}
 							]
 						},
@@ -572,7 +578,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/indices/busca",
+							"raw": "https://api.fintz.com.br/indices/historico?indice=IBOV&dataFim=2023-05-01&dataInicio=2023-01-01&ordem=ASC",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -582,7 +588,25 @@
 							],
 							"path": [
 								"indices",
-								"busca"
+								"historico"
+							],
+							"query": [
+								{
+									"key": "indice",
+									"value": "IBOV"
+								},
+								{
+									"key": "dataFim",
+									"value": "2023-05-01"
+								},
+								{
+									"key": "dataInicio",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "ordem",
+									"value": "ASC"
+								}
 							]
 						}
 					},
@@ -601,7 +625,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/taxas/busca?q=cdi",
+							"raw": "https://api.fintz.com.br/taxas/busca",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -616,7 +640,8 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "cdi"
+									"value": "cdi",
+									"disabled": true
 								}
 							]
 						}
@@ -636,7 +661,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/indices/historico?indice=IBOV&dataFim=2023-05-01&dataInicio=2023-01-01&ordem=ASC",
+							"raw": "https://api.fintz.com.br/taxas/historico?codigo=12&dataFim=2023-05-01&dataInicio=2023-01-01&ordem=ASC",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -645,13 +670,13 @@
 								"br"
 							],
 							"path": [
-								"indices",
+								"taxas",
 								"historico"
 							],
 							"query": [
 								{
-									"key": "indice",
-									"value": "IBOV",
+									"key": "codigo",
+									"value": "12",
 									"description": "obrigatorio"
 								},
 								{
@@ -754,6 +779,119 @@
 									"key": "ordem",
 									"value": "DESC",
 									"description": "opcional, asc ou desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arquivos backtest",
+			"item": [
+				{
+					"name": "1. Historico preços",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"description": "obrigatorio",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico/arquivos",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"cotacoes",
+								"historico",
+								"arquivos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Itens contábeis",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes/arquivos?item=Ebit",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"tm",
+								"demonstracoes",
+								"arquivos"
+							],
+							"query": [
+								{
+									"key": "item",
+									"value": "Ebit",
+									"description": "obrigatorio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Indicadores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores/arquivos?indicador=ValorDeMercado",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"tm",
+								"indicadores",
+								"arquivos"
+							],
+							"query": [
+								{
+									"key": "indicador",
+									"value": "ValorDeMercado"
 								}
 							]
 						}
