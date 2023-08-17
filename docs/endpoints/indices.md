@@ -156,11 +156,13 @@ print(res.json())
 Retorna todas as taxas que podem ser buscadas. 
 Pode-se utilizar filtro.
 
+Os codigos das taxas estão disponíveis no endpoint de busca (/taxas/busca).
+
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `indice`     | `string` | ex: "IBOV" | obrigatório
+| `codigo`     | `string` | ex: "12" (para CDI) | obrigatório
 | `dataInicio` | Date | ex: "2023-01-01" | opcional
 | `dataFim`    | Date | ex: "2023-05-01" | opcional
 | `ordem`      | "ASC" ou "DESC" | ex: "ASC" | opcional
@@ -172,7 +174,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indice': 'IBOV' }
+PARAMS = { 'codigo': 'IBOV' }
 
 res = req.get(f'{URL_BASE}/taxas/busca', headers=HEADERS, params=PARAMS)
 print(res.json())
@@ -202,33 +204,34 @@ print(res.json())
 
 As taxas atualmente disponíveis são
 ```
-CDI
-CDI acumulada no mês
-CDI acumulada no mês anualizada base 252
-CDI anualizada base 252
-Fator diário Taxa Extramercado
-FII para TCR e TRFC
-FII para TFC
-Selic
-Selic acumulada no mês
-Selic acumulada no mês anualizada base 252
-Selic anualizada base 252
-Taxa básica financeira pro-rata (TBF pro-rata)
-Taxa básica financeira (TBF)
-Taxa básica financeira (TBF) - Primeiro dia do mês
-Taxa básica financeira (TBF) - Primeiro dia do mês anualizada na base 252
-Taxa de juros de longo prazo - TJLP
-Taxa Extramercado
-Taxa Jm para TLP
-Taxa referencial do Tesouro - Taxa anual
-Taxa referencial do Tesouro - Taxa diária
-Taxa referencial pro-rata (TR pro-rata)
-Taxa referencial (TR)
-Taxa referencial (TR) para financiamentos imobiliários prefixados do SFH
-Taxa referencial (TR) - Primeiro dia do mês
-Taxa referencial (TR) - Primeiro dia do mês anualizada base 252
-TJLP mensal
-TRT - Fator diário
+Código | Taxa
+12     | CDI
+4391   | CDI acumulada no mês
+4392   | CDI acumulada no mês anualizada base 252
+4389   | CDI anualizada base 252
+27803  | Fator diário Taxa Extramercado
+29251  | FII para TCR e TRFC
+29252  | FII para TFC
+11     | Selic
+4390   | Selic acumulada no mês
+4189   | Selic acumulada no mês anualizada base 252
+1178   | Selic anualizada base 252
+254    | Taxa básica financeira pro-rata (TBF pro-rata)
+253    | Taxa básica financeira (TBF)
+7813   | Taxa básica financeira (TBF) - Primeiro dia do mês
+7814   | Taxa básica financeira (TBF) - Primeiro dia do mês anualizada na base 252
+256    | Taxa de juros de longo prazo - TJLP
+27804  | Taxa Extramercado
+27572  | Taxa Jm para TLP
+25624  | Taxa referencial do Tesouro - Taxa anual
+25623  | Taxa referencial do Tesouro - Taxa diária
+227    | Taxa referencial pro-rata (TR pro-rata)
+226    | Taxa referencial (TR)
+13421  | Taxa referencial (TR) para financiamentos imobiliários prefixados do SFH
+7811   | Taxa referencial (TR) - Primeiro dia do mês
+7812   | Taxa referencial (TR) - Primeiro dia do mês anualizada base 252
+7815   | TJLP mensal
+22161  | TRT - Fator diário
 ```
 
 ## Câmbio (PTAX)

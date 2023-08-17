@@ -541,6 +541,11 @@ print(res.json())
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 
+Não é possível passar uma lista de indicadores, pois o arquivo já é grande.
+
+Caso queira mais de um indicador, basta fazer mais chamadas.
+Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON ao invés de arquivos e para apenas um ticker.
+
 **Parâmetros**
 
 | Parâmetro   | Tipo     | Exemplo | |
@@ -554,9 +559,10 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indicador': 'ROE' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/indicadores/arquivos'
-res = req.get(endpoint, headers=HEADERS)
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
@@ -574,6 +580,11 @@ print(res.json())
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do item contábil selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 
+Não é possível passar uma lista de itens contábeis, apenas um por chamada.
+
+Caso queira mais de um item contábel, basta fazer mais chamadas.
+Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON ao invés de arquivos e para apenas um ticker.
+
 **Parâmetros**
 
 | Parâmetro   | Tipo     | Exemplo | |
@@ -587,9 +598,10 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'item': 'LucroLiquido12m' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes/arquivos'
-res = req.get(endpoint, headers=HEADERS)
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
