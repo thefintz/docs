@@ -9,7 +9,94 @@ Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
 
-???+ note "2023-07-19"
+??? note "Novembro 2023 - Muitas Novidades"
+
+    Todos os indicadores e itens contábeis foram adicionados tanto em endpoints de arquivo como de JSON, assim como dados point in time e não point in time.
+
+    ## +14 indicadores
+
+    - DL/PL
+    - DL/EBITDA
+    - DL/EBIT
+    - PL/ATIVOS
+    - PASSIVOS/ATIVOS
+    - LIQ. CORRENTE
+    - M. BRUTA
+    - M. EBITDA
+    - M. EBIT
+    - M. LIQ.
+    - ROE
+    - ROA
+    - ROIC
+    - GIRO ATIVOS
+
+    ## +28 itens contábeis
+
+    - AtivoCirculante
+    - AtivoNaoCirculante
+    - AtivoTotal
+    - CaixaEquivalentes
+    - Custos
+    - DepreciacaoAmortizacao
+    - DespesasFinanceiras
+    - DespesasReceitasOperacionaisAdministrativas
+    - Disponibilidades
+    - DividaBruta
+    - DividaLiquida
+    - Ebit
+    - Ebitda
+    - EquivalenciaPatrimonial
+    - Impostos
+    - Lair
+    - LucroLiquido
+    - LucroLiquidoOpContinuadas
+    - LucroLiquidoOpDescontinuadas
+    - LucroLiquidoSociosControladora
+    - PassivoCirculante
+    - PassivoNaoCirculante
+    - PassivoTotal
+    - PatrimonioLiquido
+    - ReceitaLiquida
+    - ReceitasFinanceiras
+    - ResultadoBruto
+    - ResultadoFinanceiro
+
+    ## Separando dados Point in Time e comuns.
+    
+    Também estamos trabalhando para deixar mais clara a diferenciação quando dados são point in time ou não.
+
+??? note "Outubro 2023 - Atualização diária dos dados"
+    ## Atualização diária de todos os históricos
+
+    Agora tanto os arquivos `parquet` quanto os endpoints JSONs possuem dados atualizados diariamente, seja de cotações, itens contábeis ou mesmo indicadores.
+
+??? note "Setembro 2023 - Refatoração e Otimização"
+    ## Refatoração e preparação para novidades
+
+    Tiramos esse mês para focar em otimizações de algoritmo e refatoração.
+    
+    Muito do que construímos nos últimos meses foi focado no caso de uso de backtest, com dados point in time. 
+    
+    E desenvolvemos rápido. Com as demandas dos usuários de que os dados atualizem diariamente, o processamento estava ficando caro e lento. A adição de novas features também estava lenta por questão dos débitos técnicos.
+
+    Agora vamos otimizar tudo isso, permitindo adicionarmos novas features e funcionalidades muito mais rápido nos próximos meses. E também atendermos os casos de uso de dashboards e criação de sites, com vários endpoints que facilitam a vida do usuário.
+
+    Um pouco do que está por vir até o fim do ano:
+
+    - +30 indicadores
+    - +30 itens contábeis
+    - Separação de endpoints comuns e point in time
+    - +3 novos endpoints indicadores:  
+        - escolho um indicador e um ticker, vem todo o histórico
+        - escolho um indicador, vem o valor mais recente para todos os tickers
+        - escolho um ticker, vem o valor mais recente de todos os indicadores
+    - +3 novos endpoints itens contábeis:  
+        - escolho um item contabil e um ticker, vem todo o histórico
+        - escolho um item contabil, vem o valor mais recente para todos os tickers
+        - escolho um ticker, vem o valor mais recente de todos os itens contábeis
+    - Proventos e indicadores de FIIs
+
+??? note "Agosto 2023 - Adicionadas Taxas e Câmbio"
     ## Taxas e câmbio!
 
     Agora você tem acesso ao histórico de diversas taxas e câmbios como:
@@ -25,7 +112,6 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Aqui está o link para os [endpoints][taxas]
 
-???+ note "2023-06-29"
     ## 3 Novos indicadores
 
     Adicionados os seguintes indicadores
@@ -38,7 +124,6 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Aqui está o link para o [endpoint de indicadores][indicadores]
 
-???+ note "2023-06-26"
     ## Novo: ReceitaLiquida
 
     Adicionados os seguintes itens contábeis padronizados
@@ -52,8 +137,8 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Aqui está o link para o [endpoint de itens padronizados][itenscontabeis]
 
-???+ note "2023-06-22"
-    ## Adicionados 26 índices B3
+??? note "Julho 2023 - Adicionados índices B3"
+    ## +26 índices de mercado
 
     Esses índices estão disponíveis no [endpoint de índices][indices]
 
@@ -88,7 +173,7 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
 
 
-???+ note "2023-06-21"
+??? note "Junho 2023 - Novos indicadores point in time"
     ## Novos indicadores P/L e L/P
 
     O L/P tem um objetivo de ordenação, onde se sabe que quanto maior L/P, melhor.  
@@ -114,8 +199,6 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     Esses indicadores estão disponíveis no [endpoint de indicadores].
 
-
-???+ note "2023-06-19"
     ## 4 Novos itens contábeis
 
     Adicionados os seguintes itens contábeis padronizados
