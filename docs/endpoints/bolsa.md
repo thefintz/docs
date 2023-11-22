@@ -12,7 +12,7 @@
 
 ## Busca e lista de ativos
 
-** /bolsa/b3/avista/busca **
+**/bolsa/b3/avista/busca**
 
 Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
 Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive o que não são mais negociados.
@@ -56,7 +56,7 @@ print(res.json())
 
 ## Cotação histórica
 
-** /bolsa/b3/avista/cotacoes/historico **
+**/bolsa/b3/avista/cotacoes/historico**
 
 Retorna os preços de fechamento do ticker especificado na data especificada.
 
@@ -117,7 +117,7 @@ print(res.json())
 
 ## Proventos
 
-** /bolsa/b3/avista/proventos **
+**/bolsa/b3/avista/proventos**
 
 Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e as datas especificadas na chamada.
 
@@ -169,7 +169,7 @@ print(res.json())
 
 ## Bonificacoes
 
-** /bolsa/b3/avista/bonificacoes **
+**/bolsa/b3/avista/bonificacoes**
 
 Retorna as bonificacoes do ticker e datas especificados.
 
@@ -223,7 +223,7 @@ print(res.json())
 
 ## Desdobramentos
 
-** /bolsa/b3/avista/desdobramentos **
+**/bolsa/b3/avista/desdobramentos**
 
 Retorna os desdobramentos (splits) e grupamentos do ticker e datas especificados.
 
@@ -281,7 +281,7 @@ print(res.json())
     Tem algum indicador que deseja ser adicionado o quanto antes?
     Só mandar pelo email contato@fintz.com.br
 
-** /bolsa/b3/tm/indicadores **
+**/bolsa/b3/tm/indicadores**
 
 Retorna o histórico referente ao indicador requisitado.
 
@@ -348,7 +348,7 @@ Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos grat
 
 ## Itens contábeis padronizados
 
-** /bolsa/b3/tm/demonstracoes **
+**/bolsa/b3/tm/demonstracoes**
 
 Retorna o histórico referente ao item contábil padronizado.
 
@@ -426,7 +426,7 @@ Precisa de algum outro item contábil? [Entre em contato][contato] e adicionamos
 
 ## DRE, BP, DFC crus da CVM
 
-** /bolsa/b3/demonstracoes/{tipo} **
+**/bolsa/b3/demonstracoes/{tipo}**
 
 Retorna a demonstração financeira especificada, de maneira completa e crua (sem padronização), como está na CVM.
 
@@ -505,7 +505,7 @@ Já pensamos e cuidados dos vieses importantes para backtest:
 
 ### Arquivo: Cotação histórica
 
-> ** GET **  `/bolsa/b3/avista/cotacoes/historico/arquivos`
+>**GET** `/bolsa/b3/avista/cotacoes/historico/arquivos`
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação de todos os tickers, desde 2010 até o último fechamento de mercado. 
 
@@ -537,7 +537,7 @@ print(res.json())
 
 ### Arquivo: Indicadores
 
-> ** GET ** `/bolsa/b3/tm/indicadores/arquivos`
+>**GET**`/bolsa/b3/tm/indicadores/arquivos`
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 
@@ -576,7 +576,7 @@ print(res.json())
 
 ### Arquivo: Itens contábeis
 
-> ** GET ** `/bolsa/b3/tm/demonstracoes/arquivos`
+>**GET**`/bolsa/b3/tm/demonstracoes/arquivos`
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do item contábil selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 

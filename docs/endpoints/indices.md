@@ -12,7 +12,7 @@
 
 
 ### histórico
-** /indices/historico **
+**/indices/historico**
 
 Retorna o histórico referente ao índice requisitado.
 
@@ -93,7 +93,7 @@ Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratui
 
 ### busca
 
-** /taxas/busca **
+**/taxas/busca**
 
 Retorna todas as taxas que podem ser buscadas. 
 Pode-se utilizar filtro.
@@ -151,7 +151,7 @@ print(res.json())
 
 ### histórico
 
-** /taxas/historico **
+**/taxas/historico**
 
 Retorna todas as taxas que podem ser buscadas. 
 Pode-se utilizar filtro.
@@ -238,7 +238,7 @@ Código | Taxa
 
 ### busca
 
-** /cambio/ptax/busca **
+**/cambio/ptax/busca**
 
 Retorna a lista de PTAX que podem ser buscadas. 
 Pode-se utilizar filtro.
@@ -286,7 +286,7 @@ print(res.json())
 
 ### histórico
 
-** /cambio/ptax/historico **
+**/cambio/ptax/historico**
 
 Retorna o histórico referente ao ptax selecionado.
 Há filtro de datas.
