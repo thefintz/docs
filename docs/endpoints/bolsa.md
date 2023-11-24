@@ -1,18 +1,19 @@
 [contato]: https://fintz.com.br/#/contato
 [postman]: ../../postman
+[link_compra]: https://fintz.com.br/#/precos
 
 # Bolsa B3
 
-!!! info "Lembrete"
+!!! success "Lembrete"
     Você tem acesso a uma coleção [Postman][postman].
 
     Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
     
-    Entre em contato em contato@fintz.com.br para conseguir a sua chave própria e robusta.
+    Adquira um de nossos planos para obter sua própria chave [neste link][link_compra]
 
 ## Busca e lista de ativos
 
-**/bolsa/b3/avista/busca**
+>**GET** `/bolsa/b3/avista/busca`
 
 Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
 Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive o que não são mais negociados.
@@ -54,11 +55,15 @@ print(res.json())
 ]
 ```
 
-## Cotação histórica
+## Cotação Histórica OHLC
 
-**/bolsa/b3/avista/cotacoes/historico**
+### JSON
 
-Retorna os preços de fechamento do ticker especificado na data especificada.
+>**GET** `/bolsa/b3/avista/cotacoes/historico`
+
+Retorna, em JSON, os preços OHLC (abertura, maxima, minima, fechamento) do ticker especificado na data especificada. Também retorna volume e quantidade negociada.
+
+É retornado tanto o fechamento quanto o fechamento ajustado por proventos/splits/bonificações.
 
 **Parâmetros**
 
@@ -115,11 +120,46 @@ print(res.json())
 ]
 ```
 
-## Proventos
+### Arquivo
 
-**/bolsa/b3/avista/proventos**
+>**GET** `/bolsa/b3/avista/cotacoes/historico/arquivos`
+
+Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação OHLC de todos os tickers, desde 2010 até o último fechamento de mercado. 
+
+**Parâmetros**
+
+Esse endpoint não tem parâmetros. O arquivo possui cotação de todos os tickers, desde 2010 até o último fechamento de mercado.
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico/arquivos'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+{
+  "link": "url"
+}
+```
+
+## Eventos
+
+### Proventos (Dividendos, JCP, ...)
+
+>**GET** `/bolsa/b3/avista/proventos`
 
 Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e as datas especificadas na chamada.
+
+obs: por enquanto apenas de ações. Em 15/12/2023 vamos adicionar proventos de FIIs neste mesmo endpoint.
 
 **Parâmetros**
 
@@ -167,9 +207,9 @@ print(res.json())
 ```
 
 
-## Bonificacoes
+### Bonificacoes
 
-**/bolsa/b3/avista/bonificacoes**
+>**GET** `/bolsa/b3/avista/bonificacoes`
 
 Retorna as bonificacoes do ticker e datas especificados.
 
@@ -221,9 +261,9 @@ print(res.json())
 ]
 ```
 
-## Desdobramentos
+### Desdobramentos
 
-**/bolsa/b3/avista/desdobramentos**
+>**GET** `/bolsa/b3/avista/desdobramentos`
 
 Retorna os desdobramentos (splits) e grupamentos do ticker e datas especificados.
 
@@ -272,27 +312,184 @@ print(res.json())
 ]
 ```
 
+## Itens contábeis
+
+Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
+```
+- AtivoCirculante
+- AtivoNaoCirculante
+- AtivoTotal
+- CaixaEquivalentes
+- Custos
+- DepreciacaoAmortizacao
+- DespesasFinanceiras
+- DespesasReceitasOperacionaisAdministrativas
+- Disponibilidades
+- DividaBruta
+- DividaLiquida
+- Ebit
+- Ebitda
+- EquivalenciaPatrimonial
+- Impostos
+- Lair
+- LucroLiquido
+- LucroLiquidoOpContinuadas
+- LucroLiquidoOpDescontinuadas
+- LucroLiquidoSociosControladora
+- PassivoCirculante
+- PassivoNaoCirculante
+- PassivoTotal
+- PatrimonioLiquido
+- ReceitaLiquida
+- ReceitasFinanceiras
+- ResultadoBruto
+- ResultadoFinanceiro
+```
+
+### Histórico por item contábil e ticker
+
+>**GET** `/bolsa/b3/avista/itens-contabeis/historico`
+
+Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item contábil escolhido para a empresa escolhida.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `ticker`     | `string` | ex: `TRPL4` | obrigatório
+| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'item': 'Ebit', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/historico'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "ticker": "TRPL4",
+    "item": "Ebit",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 3,
+    "valor": 3603826000
+  },
+  {
+    "ticker": "TRPL4",
+    "item": "Ebit",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 2,
+    "valor": 3549900000
+  }, ...
+]
+```
+
+### Item contábil mais recente para todos os tickers
+
+>**GET** `bolsa/b3/avista/itens-contabeis`
+
+Aqui você escolhe o item contábil e recebe o valor mais recente deste item contábil para todas as empresas.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'item': 'Ebit', 'tipoPeriodo': '12M' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "ticker": "AESB3",
+    "item": "Ebit",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 3,
+    "valor": 926467000
+  },
+  {
+    "ticker": "AGXY3",
+    "item": "Ebit",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 3,
+    "valor": 405492000
+  }, ...
+]
+```
+
+### Itens contábeis mais recentes por ticker
+
+!!! abstract "Em breve!"
+    Esse endpoint será lançado em 08/12/2023
+
 ## Indicadores
 
+Os indicadores disponíveis/selecionáveis para os próximos endpoints são os seguintes:
+```
+- ROE
+- ROA
+- ROIC
+- GiroAtivos
+- MargemBruta
+- MargemEbitda
+- MargemEbit
+- MargemLiquida
+- DividaLiquida_PatrimonioLiquido
+- DividaLiquida_Ebitda
+- DividaLiquida_Ebit
+- PatrimonioLiquido_Ativos
+- Passivos_Ativos
+- LiquidezCorrente
+```
 
-!!! success "Novidade!"
-    Esse endpoint acaba de ser lançado e estamos adicionando indicadores continuamente.
-    
-    Tem algum indicador que deseja ser adicionado o quanto antes?
-    Só mandar pelo email contato@fintz.com.br
+### Histórico por indicador e ticker
 
-**/bolsa/b3/tm/indicadores**
+>**GET** `bolsa/b3/avista/indicadores/historico`
 
-Retorna o histórico referente ao indicador requisitado.
+Aqui você escolhe o indicador e o ticker e recebe o histórico desse indicador escolhido para a empresa escolhida.
 
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `indicador`  | `string` | ex: "ROE" | obrigatório
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
+| `ticker`     | `string` | ex: `BBAS3` | obrigatório
 
 **Exemplo de chamada:**
 
@@ -301,9 +498,9 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'ticker': 'BBAS3', 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
+PARAMS = { 'indicador': 'ROE', 'ticker': 'BBAS3' }
 
-endpoint = URL_BASE + '/bolsa/b3/tm/indicadores'
+endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/historico'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
@@ -312,245 +509,34 @@ print(res.json())
 
 ```json
 [
+  ...
   {
-      "t": "BBAS3", # ticker
-      "i": "roe", # indicador
-      "di": "2015-02-11T08:24:11.850000", # data inicio
-      "df": "2015-03-27T08:18:34.097000", # data fim
-      "v": 0.14519 # valor
+    "ticker": "BBAS3",
+    "indicador": "ROE",
+    "data": "2023-09-30",
+    "valor": 0.1939291767457561
   },
   {
-      "t": "BBAS3",
-      "i": "roe",
-      "di": "2015-03-27T08:18:34.097000",
-      "df": "2015-05-14T08:26:41.240000",
-      "v": 0.15617
+    "ticker": "BBAS3",
+    "indicador": "ROE",
+    "data": "2023-06-30",
+    "valor": 0.19387026105337873
   },
   ...
 ]
 ```
 
+### Indicador mais recente para todos os tickers
 
-Os indicadores atualmente disponíveis são
-```
-ROE
-ROIC
-LPA
-P_L
-L_P
-EV
-EV_EBIT
-ValorDeMercado
-```
+>**GET** `bolsa/b3/avista/indicadores`
 
-Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
-
-
-## Itens contábeis padronizados
-
-**/bolsa/b3/tm/demonstracoes**
-
-Retorna o histórico referente ao item contábil padronizado.
+Aqui você escolhe o indicador e recebe o valor mais recente deste indicador para todas as empresas.
 
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `item`  | `string` | ex: "LucroLiquido12m" | obrigatório
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
-
-**Exemplo de chamada:**
-
-```py
-import requests as req
-
-URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = {
-  'ticker': 'BBAS3',
-  'item': 'LucroLiquido12m',
-  'dataInicio': '2023-01-01'
-}
-
-endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes'
-res = req.get(endpoint, headers=HEADERS, params=PARAMS)
-print(res.json())
-```
-
-**Resposta:**
-
-```json
-[
-  {
-      "t": "BBAS3", # ticker
-      "i": "LucroLiquido12m", # item contábil
-      "di": "2012-02-14T09:49:04.487000", # data inicial
-      "df": "2012-03-30T18:15:39.613000", # data final
-      "v": 12247330000.0 # valor
-  },
-  {
-      "t": "BBAS3",
-      "i": "LucroLiquido12m",
-      "di": "2012-03-30T18:15:39.613000",
-      "df": "2012-05-03T10:08:04.667000",
-      "v": 12736912000.0
-  },
-  ...
-]
-```
-
-
-Os itens contábeis atualmente disponíveis são
-```
-PatrimonioLiquido
-LucroLiquido12m
-LucroLiquido
-ReceitaLiquida
-ReceitaLiquida12m
-DividaBruta
-DividaLiquida
-Disponibilidades
-Ebit
-Ebit12m
-Impostos
-Impostos12m
-AcoesEmCirculacao
-TotalAcoes
-LucroLiquidoSociosControladora
-LucroLiquidoSociosControladora12m
-```
-
-Precisa de algum outro item contábil? [Entre em contato][contato] e adicionamos gratuitamente.
-
-## DRE, BP, DFC crus da CVM
-
-**/bolsa/b3/demonstracoes/{tipo}**
-
-Retorna a demonstração financeira especificada, de maneira completa e crua (sem padronização), como está na CVM.
-
-Hoje, a API retorna dados para as seguintes demonstrações financeiras ({tipo})  
-- `dre`: Demonstração de Resultados  
-- `bpa`: Balanço Patrimonial Ativo  
-- `bpp`: Balanço Patrimonial Passivo  
-- `dfc`: Demonstração do Fluxo de Caixa  
-No caso da DFC, retornamos tanto o MD (método direto) quanto o MI (método indireto).
-Para todos os casos, retornamos tanto o Consolidado quanto o Individual.
-
-Atenção: o {tipo} é em letra minúscula, por exemplo:  
-`/bolsa/b3/demonstracoes/dre`
-
-**Parâmetros**
-
-| Parâmetro   | Tipo     | Exemplo | |
-| :-:         | :-:      | - | :-: |
-| `ticker`    | `string` | BBAS3 | obrigatório
-| `ano`       | `string` | 2022 | obrigatório
-| `trimestre` | `string` | 4 | obrigatório
-
-**Exemplo de chamada:**
-
-```py
-import requests as req
-
-URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'ticker': 'BBAS3', 'ano': '2022', 'trimestre': '4' }
-
-endpoint = URL_BASE + '/bolsa/b3/demonstracoes/DRE'
-res = req.get(endpoint, headers=HEADERS, params=PARAMS)
-print(res.json())
-```
-
-**Resposta:**
-
-```json
-[
-  {
-    "nome": "BCO BRASIL S.A.",
-    "tipo_demonstracao": "CONSOLIDADO",
-    "data_inicio_exercicio": "2022-01-01",
-    "data_fim_exercicio": "2022-12-31",
-    "codigo_conta": "3.01",
-    "descricao_conta": "Receitas de Intermediação Financeira",
-    "valor_conta": 236549051000,
-    "demonstracao": "DRE"
-  },
-  {
-    "nome": "BCO BRASIL S.A.",
-    "tipo_demonstracao": "CONSOLIDADO",
-    "data_inicio_exercicio": "2022-01-01",
-    "data_fim_exercicio": "2022-12-31",
-    "codigo_conta": "3.01.01",
-    "descricao_conta": "Receita de Juros",
-    "valor_conta": 236549051000,
-    "demonstracao": "DRE"
-  },
-  ...
-]
-```
-
-## Arquivos Backtest
-
-Seus backtests ficam mais fáceis com os arquivos pois esses contém muito mais dados e podem ser facilmente trabalhados diretamente no pandas para serem analisados ou exportados para Excel.
-
-Já pensamos e cuidados dos vieses importantes para backtest:
-
-- sobrevivência (survivorship): empresas delistadas também estão presentes
-
-- antecipação (look-ahead): os dados em determinada data são os dados disponíveis até aquela data, não depois
-
-- confiabilidade (data-quality): fornecemos o preço de fechamento ajustado (splits/inplits, dividendos, JCP e bonificações)
-
-### Arquivo: Cotação histórica
-
->**GET** `/bolsa/b3/avista/cotacoes/historico/arquivos`
-
-Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação de todos os tickers, desde 2010 até o último fechamento de mercado. 
-
-**Parâmetros**
-
-Esse endpoint não tem parâmetros. O arquivo possui cotação de todos os tickers, desde 2010 até o último fechamento de mercado.
-
-**Exemplo de chamada:**
-
-```py
-import requests as req
-
-URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-
-endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico/arquivos'
-res = req.get(endpoint, headers=HEADERS)
-print(res.json())
-```
-
-**Resposta:**
-
-```json
-{
-  "link": "url"
-}
-```
-
-
-### Arquivo: Indicadores
-
->**GET**`/bolsa/b3/tm/indicadores/arquivos`
-
-Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
-
-Não é possível passar uma lista de indicadores, pois o arquivo já é grande.
-
-Caso queira mais de um indicador, basta fazer mais chamadas.
-Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON ao invés de arquivos e para apenas um ticker.
-
-**Parâmetros**
-
-| Parâmetro   | Tipo     | Exemplo | |
-| :-:         | :-:      | - | :-: |
-| `indicador` | `string` | ROE | obrigatório
+| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
 
 **Exemplo de chamada:**
 
@@ -561,7 +547,7 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'indicador': 'ROE' }
 
-endpoint = URL_BASE + '/bolsa/b3/tm/indicadores/arquivos'
+endpoint = URL_BASE + '/bolsa/b3/avista/indicadores'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
@@ -569,57 +555,52 @@ print(res.json())
 **Resposta:**
 
 ```json
-{
-  "link": "url"
-}
+[
+  ... 
+  {
+    "ticker": "BBAS3",
+    "indicador": "ROE",
+    "data": "2023-09-30",
+    "valor": 0.1939291767457561
+  },
+  {
+    "ticker": "BBDC3",
+    "indicador": "ROE",
+    "data": "2023-09-30",
+    "valor": 0.08024657432331474
+  }, 
+  ...
+]
 ```
 
-### Arquivo: Itens contábeis
+### Indicadores mais recentes por ticker
 
->**GET**`/bolsa/b3/tm/demonstracoes/arquivos`
+!!! abstract "Em breve!"
+    Esse endpoint será lançado em 08/12/2023
 
-Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do item contábil selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
+## DRE, BP, DFC crus da CVM
 
-Não é possível passar uma lista de itens contábeis, apenas um por chamada.
+>**GET** `bolsa/b3/demonstracoes/{tipo}`
 
-Caso queira mais de um item contábel, basta fazer mais chamadas.
-Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON ao invés de arquivos e para apenas um ticker.
+!!! abstract "Em breve!"
+    Esse endpoint será lançado em 29/01/2024
 
-**Parâmetros**
+## Aluguel de ações
 
-| Parâmetro   | Tipo     | Exemplo | |
-| :-:         | :-:      | - | :-: |
-| `item` | `string` | LucroLiquido12m | obrigatório
+!!! abstract "Em breve!"
+    Esse endpoint será lançado no primeiro semestre de 2024.
 
-**Exemplo de chamada:**
-
-```py
-import requests as req
-
-URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'LucroLiquido12m' }
-
-endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes/arquivos'
-res = req.get(endpoint, headers=HEADERS, params=PARAMS)
-print(res.json())
-```
-
-**Resposta:**
-
-```json
-{
-  "link": "url"
-}
-```
+    Caso precise com urgência, [entre em contato][contato] para priorizarmos
 
 ## Cotação mercado futuro
 
-Disponível sob demanda. Caso tenha interesse, favor entrar em [contato][contato].
+!!! info "Restrito!"
+    Disponível apenas demanda. Caso tenha interesse, favor entrar em [contato][contato].
 
 ## Cotação commodities
 
-Disponível sob demanda. Caso tenha interesse, favor entrar em [contato][contato].
+!!! info "Restrito!"
+    Disponível apenas demanda. Caso tenha interesse, favor entrar em [contato][contato].
 
 ## Logos e ícones
 
