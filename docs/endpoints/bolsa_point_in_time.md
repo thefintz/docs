@@ -157,7 +157,7 @@ print(res.json())
 
 ### JSON: Histórico por item contábil e ticker
 
->**GET** `/bolsa/b3/avista/itens-contabeis/point-in-time/historico`
+>**GET** `/bolsa/b3/avista/itens-contabeis/point-in-time`
 
 Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item contábil escolhido para a empresa escolhida.
 
@@ -167,8 +167,10 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
-| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 | `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | obrigatório
+| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+
+obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
 
 **Exemplo de chamada:**
 
@@ -179,7 +181,7 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'item': 'Ebit', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
 
-endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time/historico'
+endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
 print(res.json())
 ```

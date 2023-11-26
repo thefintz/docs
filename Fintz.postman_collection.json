@@ -1,28 +1,504 @@
 {
 	"info": {
-		"_postman_id": "9bddeec3-7337-415c-afcc-6f90e808f44a",
-		"name": "Fintz",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28679064"
+		"_postman_id": "5c21d0f5-17de-4080-ab69-d1ed2e885a2b",
+		"name": "Fintz API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Bolsa",
 			"item": [
 				{
-					"name": "1. Buscar ativos",
+					"name": "Cotação Histórica OHLC",
+					"item": [
+						{
+							"name": "Cotação Histórica OHLC JSON",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?ticker=TRPL4&dataInicio=2023-11-01&dataFim=2023-11-30",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"cotacoes",
+										"historico"
+									],
+									"query": [
+										{
+											"key": "ticker",
+											"value": "TRPL4"
+										},
+										{
+											"key": "dataInicio",
+											"value": "2023-11-01"
+										},
+										{
+											"key": "dataFim",
+											"value": "2023-11-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cotação Histórica Arquivo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico/arquivos",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"cotacoes",
+										"historico",
+										"arquivos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Eventos",
+					"item": [
+						{
+							"name": "Proventos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=BBAS3&dataInicio=2023-09-01&dataFim=2023-12-31",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"proventos"
+									],
+									"query": [
+										{
+											"key": "ticker",
+											"value": "BBAS3"
+										},
+										{
+											"key": "dataInicio",
+											"value": "2023-09-01"
+										},
+										{
+											"key": "dataFim",
+											"value": "2023-12-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bonificações",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/bonificacoes?ticker=ITSA4&dataInicio=2020-01-01&dataFim=2023-12-31",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"bonificacoes"
+									],
+									"query": [
+										{
+											"key": "ticker",
+											"value": "ITSA4"
+										},
+										{
+											"key": "dataInicio",
+											"value": "2020-01-01"
+										},
+										{
+											"key": "dataFim",
+											"value": "2023-12-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Desdobramentos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/bonificacoes?ticker=SLCE3&dataInicio=2022-01-01&dataFim=2023-12-31",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"bonificacoes"
+									],
+									"query": [
+										{
+											"key": "ticker",
+											"value": "SLCE3"
+										},
+										{
+											"key": "dataInicio",
+											"value": "2022-01-01"
+										},
+										{
+											"key": "dataFim",
+											"value": "2023-12-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Itens Contábeis",
+					"item": [
+						{
+							"name": "Histórico por item contábil e ticker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/historico?item=Ebit&ticker=TRPL4&tipoPeriodo=12M",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"itens-contabeis",
+										"historico"
+									],
+									"query": [
+										{
+											"key": "item",
+											"value": "Ebit"
+										},
+										{
+											"key": "ticker",
+											"value": "TRPL4"
+										},
+										{
+											"key": "tipoPeriodo",
+											"value": "12M"
+										},
+										{
+											"key": "tipoDemonstracao",
+											"value": null,
+											"description": "se não souber, deixar vazio",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Item contábil mais recente para todos os tickers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis?item=Ebit&tipoPeriodo=12M",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"itens-contabeis"
+									],
+									"query": [
+										{
+											"key": "item",
+											"value": "Ebit"
+										},
+										{
+											"key": "tipoPeriodo",
+											"value": "12M"
+										},
+										{
+											"key": "tipoDemonstracao",
+											"value": null,
+											"description": "se não souber, deixar vazio",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Itens contábeis mais recentes por ticker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis?em breve=em breve",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"itens-contabeis"
+									],
+									"query": [
+										{
+											"key": "em breve",
+											"value": "em breve",
+											"description": "lancamento 08/12/2023"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Indicadores",
+					"item": [
+						{
+							"name": "Histórico por indicador e ticker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/historico?indicador=ROE&ticker=BBAS3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"indicadores",
+										"historico"
+									],
+									"query": [
+										{
+											"key": "indicador",
+											"value": "ROE"
+										},
+										{
+											"key": "ticker",
+											"value": "BBAS3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Indicador mais recente para todos os tickers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores?indicador=ROE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"indicadores"
+									],
+									"query": [
+										{
+											"key": "indicador",
+											"value": "ROE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Indicadores mais recentes por ticker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/historico?em breve=em breve",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"indicadores",
+										"historico"
+									],
+									"query": [
+										{
+											"key": "em breve",
+											"value": "em breve",
+											"description": "Será lançado em 29/01/2024"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Busca e lista de ativos",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?classe=ACOES",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?q=bb&classe=ACOES",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -39,318 +515,11 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "",
-									"description": "opcional",
-									"disabled": true
+									"value": "bb"
 								},
 								{
 									"key": "classe",
-									"value": "ACOES",
-									"description": "opcional"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "2. Historico",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico?dataInicio=2022-08-14&ticker=BBAS3",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"avista",
-								"cotacoes",
-								"historico"
-							],
-							"query": [
-								{
-									"key": "dataFim",
-									"value": "2022-08-14",
-									"description": "opcional",
-									"disabled": true
-								},
-								{
-									"key": "dataInicio",
-									"value": "2022-08-14",
-									"description": "opcional"
-								},
-								{
-									"key": "ticker",
-									"value": "BBAS3",
-									"description": "obrigatorio"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "3. Proventos",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/proventos?ticker=BBAS3&dataInicio=2020-01-01",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"avista",
-								"proventos"
-							],
-							"query": [
-								{
-									"key": "ticker",
-									"value": "BBAS3",
-									"description": "obrigatorio"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2020-01-01",
-									"description": "opcional"
-								},
-								{
-									"key": "dataFim",
-									"value": "",
-									"description": "opcional",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "4. Bonificacoes",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/bonificacoes?ticker=BBDC3&dataInicio=2020-01-01",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"avista",
-								"bonificacoes"
-							],
-							"query": [
-								{
-									"key": "ticker",
-									"value": "BBDC3",
-									"description": "obrigatorio"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2020-01-01",
-									"description": "opcional"
-								},
-								{
-									"key": "dataFim",
-									"value": null,
-									"description": "opcional",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "5. Desdobramentos",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/desdobramentos?ticker=OIBR3&dataInicio=2010-01-01",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"avista",
-								"desdobramentos"
-							],
-							"query": [
-								{
-									"key": "ticker",
-									"value": "OIBR3",
-									"description": "obrigatorio"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2010-01-01",
-									"description": "opcional"
-								},
-								{
-									"key": "dataFim",
-									"value": "",
-									"description": "opcional",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "6. Indicadores",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores?ticker=BBAS3&dataInicio=2010-01-01&indicador=ValorDeMercado&preencher=true",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"tm",
-								"indicadores"
-							],
-							"query": [
-								{
-									"key": "ticker",
-									"value": "BBAS3",
-									"description": "obrigatório"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2010-01-01",
-									"description": "opcional"
-								},
-								{
-									"key": "indicador",
-									"value": "ValorDeMercado"
-								},
-								{
-									"key": "dataFim",
-									"value": "2023-01-01",
-									"description": "opcional",
-									"disabled": true
-								},
-								{
-									"key": "preencher",
-									"value": "true"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "7. Itens contábeis",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes?item=Ebit&ticker=PETR4&dataInicio=2010-01-01",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"tm",
-								"demonstracoes"
-							],
-							"query": [
-								{
-									"key": "item",
-									"value": "Ebit",
-									"description": "obrigatorio"
-								},
-								{
-									"key": "ticker",
-									"value": "PETR4",
-									"description": "obrigatorio"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2010-01-01",
-									"description": "opcional"
-								},
-								{
-									"key": "dataFim",
-									"value": "",
-									"description": "opcional",
-									"disabled": true
+									"value": "ACOES"
 								}
 							]
 						}
@@ -361,24 +530,65 @@
 		},
 		{
 			"name": "Fundos",
-			"item": []
-		},
-		{
-			"name": "Tesouro",
 			"item": [
 				{
-					"name": "1. Listar títulos",
+					"name": "Em breve (15/02/2024)",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"type": "text"
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro?pagina=1&tamanho=200&vencido=False",
+							"raw": "https://api.fintz.com.br/bolsa/b3/avista/busca?q=bb&classe=ACOES",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"bolsa",
+								"b3",
+								"avista",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "bb"
+								},
+								{
+									"key": "classe",
+									"value": "ACOES"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tesouro Direto",
+			"item": [
+				{
+					"name": "Lista de Títulos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro?pagina=1&tamanho=40",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -397,31 +607,26 @@
 								},
 								{
 									"key": "tamanho",
-									"value": "200"
-								},
-								{
-									"key": "vencido",
-									"value": "False"
+									"value": "40"
 								}
 							]
-						},
-						"description": "Lista os títulos públicos do Tesouro direto, incluindo os vencidos.\nO modelo da resposta possui:\n* codigo: identificador do título na API e será usado nas outras chamadas,\n* nome: nome do título,\n* dataVencimento: indica o dia em que o título vence, formato ISO 8601 (%Y-%m-%d),\n* vencido: boolean que indica se o título já venceu,\n* possivelInvestir: boolean que indica se é possível comprar o título no Tesouro Direto\n* possivelResgatar: boolean que indica se é possível vencer o título no Tesouro Direto\n\nComo a resposta é paginada, podem ser passados os parâmetros \"pagina\" e \"tamanho\" para buscar mais ou menos resultados"
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "2. Informações dos títulos",
+					"name": "Informações dos Títulos",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"type": "text"
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/informacoes",
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNF20330101/informacoes",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -432,27 +637,26 @@
 							"path": [
 								"titulos-publicos",
 								"tesouro",
-								"NTNB20550515",
+								"NTNF20330101",
 								"informacoes"
 							]
-						},
-						"description": "Busca informações gerais de um título.\nRecebe o código do título na URL e retorna:\n* codigo: código do título,\n* nome: nome do título,\n* dataVencimento: data de vencimento do título em ISO 8601 (%Y-%m-%d)\n* indice: nome do índice que o título está atrelado, ex: IPCA, SELIC, IGP-M. Se o título for préfixado o indice será nulo\n* vencido: indica se o título está vencido\n* possivelInvestir: indica se é possível comprar o título no Tesouro Direto\n* possivelResgatar: indica se é possível vender o título no Tesouro Direto\n* descricao: breve descricao do título\n* estrategia: descricao mais detalhada de como o título funciona e qual sua estrategia\n* jurosSemestrais: indica se o título paga cupom de juros semestralmente"
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "3. Histórico de preços e taxas",
+					"name": "Histórico de Preços e Taxas",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"type": "text"
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/historico?pagina=1&tamanho=1000&dataInicio=2022-12-01",
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNF20330101/precos/atual",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -463,79 +667,27 @@
 							"path": [
 								"titulos-publicos",
 								"tesouro",
-								"NTNB20550515",
-								"precos",
-								"historico"
-							],
-							"query": [
-								{
-									"key": "pagina",
-									"value": "1"
-								},
-								{
-									"key": "tamanho",
-									"value": "1000"
-								},
-								{
-									"key": "dataInicio",
-									"value": "2022-12-01"
-								},
-								{
-									"key": "dataFim",
-									"value": "2022-12-31",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Busca o histórico de preço e taxas de um título. Recebe o código do título na URL e retorna:\n* codigo: Código do título\n* data: Data base à qual os preços e taxas se referem,\n* taxaJurosCompra: Taxa disponível para o investidor comprar o título, formato decimal com 4 casas decimais\n* taxaJurosVenda: Taxa disponível para o investidor revender o título para o TN. A taxa venda sempre é um\npouco maior que a taxa compra para resguardar o TN das oscilações que ocorrem entre uma precificação\ne outra, formato decimal com 4 casas decimais\n* puCompra: É o preço do título, considerando a taxa de compra manhã, com liquidação para o próximo\ndia útil (D+1). Quanto maior a taxa, menor o preço e vice-versa\n* puVenda: É o preço do título, considerando a taxa de venda manhã, com liquidação para o próximo dia\nútil (D+1)\n* puBase: É o preço do título, considerando a taxa de venda manhã, com liquidação para o mesmo dia\n(D0). Este PU valoriza os títulos para marcar a mercado os títulos adquiridos no Tesouro Direto"
-					},
-					"response": []
-				},
-				{
-					"name": "4. Preços e taxas atuais de títulos não vencidos",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/precos/atual",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"titulos-publicos",
-								"tesouro",
-								"NTNB20550515",
+								"NTNF20330101",
 								"precos",
 								"atual"
 							]
-						},
-						"description": "Busca os preço e taxas mais atualizados de um título.\nRecebe o código de um título que NÃO tenha vencido ainda e retorna:\n* codigo: Código do título\n* possivelInvestir: Indica se é possível comprar este título no Tesouro Direto,\n* possivelResgatar: Indica se é possível vender este título no Tesouro Direto, \n* taxaJurosCompra: Taxa disponível para o investidor comprar o título, formato decimal com 4 casas decimais\n* taxaJurosVenda: Taxa disponível para o investidor revender o título para o TN. A taxa venda sempre é um pouco maior que a taxa compra para resguardar o TN das oscilações que ocorrem entre uma precificação e outra, formato decimal com 4 casas decimais\n* puCompra: É o preço de compra do título, considerando a taxa de compra atual\n* puVenda: É o preço de venda do título, considerando a taxa de venda atual\n* minQtdVenda: Mínima quantidade que é possível vender o título\n* minValorVenda: Valor mínimo de venda do título\n* minValorCompra: Valor mínimo de compra do título\n* dataUltAtualizacao: data e hora da ultima atualização dos preços, no formato ISO 8601"
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "5. Pagamentos de cupons",
+					"name": "Cupons",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"type": "text"
+								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20550515/cupons?tamanho=20",
+							"raw": "https://api.fintz.com.br/titulos-publicos/tesouro/NTNB20450515/cupons",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -546,34 +698,26 @@
 							"path": [
 								"titulos-publicos",
 								"tesouro",
-								"NTNB20550515",
+								"NTNB20450515",
 								"cupons"
-							],
-							"query": [
-								{
-									"key": "tamanho",
-									"value": "20"
-								}
 							]
-						},
-						"description": "Busca os cupons pagos por títulos com juros semestrais.\nRecebe o código de um título que tenha pago pelo menos um cupom e retorna:\n* codigo: Código do título\n* dataResgate: Data do resgate/pagamento do cupom\n* dataVencimento: Data do vencimento do título\n* valor: Valor pago em reais do cupom por título.\n* qtdTotal: Quantidade total de títulos que receberam o pagamento do cupom \n* valorTotal: Valor total em reais para pagar todos os juros aos investidores. É a quantidade x preço."
+						}
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Indices, taxas e câmbio",
+			"name": "Índices, Taxas e Câmbio",
 			"item": [
 				{
-					"name": "Índices: histórico",
+					"name": "Índices - Histórico",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
@@ -613,19 +757,18 @@
 					"response": []
 				},
 				{
-					"name": "Taxas: busca",
+					"name": "Taxas - Busca",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/taxas/busca",
+							"raw": "https://api.fintz.com.br/taxas/busca?q=cdi",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -640,8 +783,7 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "cdi",
-									"disabled": true
+									"value": "cdi"
 								}
 							]
 						}
@@ -649,14 +791,13 @@
 					"response": []
 				},
 				{
-					"name": "Taxas: histórico",
+					"name": "Taxas - Histórico",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
@@ -676,23 +817,19 @@
 							"query": [
 								{
 									"key": "codigo",
-									"value": "12",
-									"description": "obrigatorio"
+									"value": "12"
 								},
 								{
 									"key": "dataFim",
-									"value": "2023-05-01",
-									"description": "opcional"
+									"value": "2023-05-01"
 								},
 								{
 									"key": "dataInicio",
-									"value": "2023-01-01",
-									"description": "opcional"
+									"value": "2023-01-01"
 								},
 								{
 									"key": "ordem",
-									"value": "ASC",
-									"description": "opcional, asc ou desc"
+									"value": "ASC"
 								}
 							]
 						}
@@ -700,14 +837,13 @@
 					"response": []
 				},
 				{
-					"name": "PTAX: busca",
+					"name": "Câmbio - Busca",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
@@ -736,19 +872,18 @@
 					"response": []
 				},
 				{
-					"name": "PTAX: histórico",
+					"name": "Câmbio - Histórico",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-api-key",
 								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "https://api.fintz.com.br/cambio/ptax/historico?codigo=USD&dataInicio=2023-01-01&boletim=FECHAMENTO&ordem=DESC",
+							"raw": "https://api.fintz.com.br/cambio/ptax/historico?codigo=USD&dataInicio=2023-01-01&ordem=DESC",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -767,18 +902,17 @@
 									"value": "USD"
 								},
 								{
-									"key": "dataInicio",
-									"value": "2023-01-01",
-									"description": "opcional"
+									"key": "dataFim",
+									"value": "2023-05-01",
+									"disabled": true
 								},
 								{
-									"key": "boletim",
-									"value": "FECHAMENTO"
+									"key": "dataInicio",
+									"value": "2023-01-01"
 								},
 								{
 									"key": "ordem",
-									"value": "DESC",
-									"description": "opcional, asc ou desc"
+									"value": "DESC"
 								}
 							]
 						}
@@ -788,115 +922,157 @@
 			]
 		},
 		{
-			"name": "Arquivos backtest",
+			"name": "Point In Time (backtest)",
 			"item": [
 				{
-					"name": "1. Historico preços",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"description": "obrigatorio",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/avista/cotacoes/historico/arquivos",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"avista",
-								"cotacoes",
-								"historico",
-								"arquivos"
-							]
+					"name": "Itens Contábeis",
+					"item": [
+						{
+							"name": "Arquivo: Histórico de item contábil para todos os tickers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time/arquivos?item=Ebit&tipoPeriodo=12M",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"itens-contabeis",
+										"point-in-time",
+										"arquivos"
+									],
+									"query": [
+										{
+											"key": "item",
+											"value": "Ebit"
+										},
+										{
+											"key": "tipoPeriodo",
+											"value": "12M"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "JSON: Histórico de item contábil para todos os tickers Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time?item=Ebit&ticker=TRPL4&tipoPeriodo=12M",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"itens-contabeis",
+										"point-in-time"
+									],
+									"query": [
+										{
+											"key": "item",
+											"value": "Ebit"
+										},
+										{
+											"key": "ticker",
+											"value": "TRPL4"
+										},
+										{
+											"key": "tipoPeriodo",
+											"value": "12M"
+										},
+										{
+											"key": "tipoDemonstracao",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "2. Itens contábeis",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/demonstracoes/arquivos?item=Ebit",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"tm",
-								"demonstracoes",
-								"arquivos"
-							],
-							"query": [
-								{
-									"key": "item",
-									"value": "Ebit",
-									"description": "obrigatorio"
+					"name": "Indicadores",
+					"item": [
+						{
+							"name": "Arquivo: Histórico de indicador para todos os tickers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "?em breve=em breve",
+									"query": [
+										{
+											"key": "em breve",
+											"value": "em breve",
+											"description": "será lançado 15/12/2023"
+										}
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "3. Indicadores",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{CHAVE_API}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "https://api.fintz.com.br/bolsa/b3/tm/indicadores/arquivos?indicador=ValorDeMercado",
-							"protocol": "https",
-							"host": [
-								"api",
-								"fintz",
-								"com",
-								"br"
-							],
-							"path": [
-								"bolsa",
-								"b3",
-								"tm",
-								"indicadores",
-								"arquivos"
-							],
-							"query": [
-								{
-									"key": "indicador",
-									"value": "ValorDeMercado"
+							},
+							"response": []
+						},
+						{
+							"name": "JSON: Histórico por indicadore ticker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{CHAVE_API}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "?em breve=em breve",
+									"query": [
+										{
+											"key": "em breve",
+											"value": "em breve",
+											"description": "será lançado 15/12/2023"
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		}

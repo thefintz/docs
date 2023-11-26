@@ -8,8 +8,8 @@ nav:
   - Endpoints:
     - Bolsa: 'endpoints/bolsa.md'
     - Fundos: 'endpoints/fundos.md'
-    - Tesouro: 'endpoints/tesouro.md'
-    - Índices, taxas e câmbio: 'endpoints/indices.md'
+    - Tesouro Direto: 'endpoints/tesouro.md'
+    - Índices, Taxas e Câmbio: 'endpoints/indices.md'
     - Point in Time (backtest): 'endpoints/bolsa_point_in_time.md'
   - Postman: 'postman.md'
   - Updates: 'updates.md'

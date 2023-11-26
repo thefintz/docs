@@ -16,7 +16,7 @@
 >**GET** `/bolsa/b3/avista/busca`
 
 Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
-Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive o que não são mais negociados.
+Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive os que não são mais negociados.
 
 Todos os ativos da bolsa B3 estão disponíveis (ações, FIIs, ETFs, BDRs, ...).
 
@@ -49,8 +49,9 @@ print(res.json())
 ```json
 [
   {
-    "ticker": "BBAS3",
-    "nome": "BRASIL"
+    "ticker": "BBDC3",
+    "nome": "BRADESCO",
+    "ativo": true // informa se pode ser negociado ou fechou capital
   }
 ]
 ```
@@ -125,6 +126,12 @@ print(res.json())
 >**GET** `/bolsa/b3/avista/cotacoes/historico/arquivos`
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação OHLC de todos os tickers, desde 2010 até o último fechamento de mercado. 
+
+Recomendamos o uso deste endpoint apenas para uso local, como para backtests de estratégias.
+
+Como o arquivo é grande/pesado, em sites e dashboards é melhor utilizar as chamadas JSON mesmo, até porque evita de precisar levantar um banco para guardar os dados, implementar a política de cache e configurar as rotinas de atualização.
+
+Também é retornado um fator de ajuste, bastando multiplicá-lo pelos preços OHLC para obter o ajustado.
 
 **Parâmetros**
 
@@ -267,6 +274,10 @@ print(res.json())
 
 Retorna os desdobramentos (splits) e grupamentos do ticker e datas especificados.
 
+Na resposta, o atributo `"proporcao"` indica como ocorreu o evento.
+Desdobramento de 1 para 10 tem proporção 0.1
+Grupamento de 10 para 1 tem proporção 10
+
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
@@ -282,7 +293,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-01-01' }
+PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2022-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/desdobramentos'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -294,20 +305,13 @@ print(res.json())
 ```json
 [
   {
-    "ticker": "BBAS3",
-    "dataCom": "2023-03-13",
-    "dataPagamento": "2023-03-31",
-    "dataAprovacao": "2023-02-17",
-    "valor": 0.35203697246,
-    "tipo": "JRS CAP PROPRIO"
-  },
-  {
-    "ticker": "BBAS3",
-    "dataCom": "2023-02-23",
-    "dataPagamento": "2023-03-03",
-    "dataAprovacao": "2023-02-09",
-    "valor": 0.2354913913,
-    "tipo": "DIVIDENDO"
+    "ticker": "SLCE3",
+    "ativoEmitido": "SLCE3",
+    "proporcao": 0.1,
+    "dataCom": "2023-05-08",
+    "dataAnuncio": "2023-04-27",
+    "dataIncorporacao": "2023-05-11",
+    "valorBase": 23.54
   }
 ]
 ```
@@ -358,8 +362,10 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
+| `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` | opcional
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
+
+obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
 
 **Exemplo de chamada:**
 
@@ -406,13 +412,18 @@ print(res.json())
 
 Aqui você escolhe o item contábil e recebe o valor mais recente deste item contábil para todas as empresas.
 
+Na resposta está indicado o ano e trimestre que o dado se refere.
+Algumas empresas atualizam essas informações mais rapidamente que outras, então nem todas estão com a mesma data.
+
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
-| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 | `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
+| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+
+obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
 
 **Exemplo de chamada:**
 
