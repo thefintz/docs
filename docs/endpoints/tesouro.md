@@ -8,9 +8,9 @@ Lembrando que todos os endpoints da API tem a mesma URL Base e precisam do heade
 > `URL_BASE` = `https://api.fintz.com.br`  
 > `x-api-key` = `{sua chave da API Fintz}`
 
-## Lista de títulos
+## Lista de Títulos
 
-Retorna a [lista de títulos públicos](#lista-de-titulos) disponíveis paginada.
+Retorna a lista de títulos públicos disponíveis paginada.
 
 **Parâmetros:**
 
@@ -21,8 +21,16 @@ Retorna a [lista de títulos públicos](#lista-de-titulos) disponíveis paginada
 
 **Exemplo de chamada:**
 
-```bash
-curl '{URL_BASE}/tesouro?pagina=1&tamanho=40'
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'pagina': '1', 'tamanho': 40 }
+
+endpoint = URL_BASE + '/titulos-publicos/tesouro'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
 ```
 
 **Resposta:**
@@ -46,14 +54,23 @@ curl '{URL_BASE}/tesouro?pagina=1&tamanho=40'
 }
 ```
 
-## Informações dos títulos
+## Informações dos Títulos
 
 Retorna informações extras sobre um título, como descrição e estratégia.
 
 **Exemplo:**
 
-```bash
-curl '{URL_BASE}/tesouro/{codigo}/informacoes'
+Exemplo com o Título de código: `NTNBP20240815`
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/informacoes'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
 ```
 
 **Resposta:**
@@ -73,9 +90,9 @@ curl '{URL_BASE}/tesouro/{codigo}/informacoes'
 }
 ```
 
-## Histórico de preços e taxas
+## Histórico de Preços e Taxas
 
-Retorna histórico paginado de preços e taxas, com filtros por datas.
+Retorna histórico paginado de preços e taxas de compra e venda, com filtros por datas.
 
 **Parâmetros:**
 
@@ -88,8 +105,16 @@ Retorna histórico paginado de preços e taxas, com filtros por datas.
 
 **Exemplo:**
 
-```bash
-curl '{URL_BASE}/tesouro/{codigo}/precos/historico?dataInicio=2016-12-31&dataFim=2021-12-31'
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'dataInicio': '2016-12-31', 'dataFim': '2021-11-01' }
+
+endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/precos/historico'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
 ```
 
 **Resposta:**
@@ -130,25 +155,32 @@ Exclusivo para títulos não vencidos.
 
 **Exemplo:**
 
-```bash
-curl '{URL_BASE}/tesouro/{codigo}/precos/atual'
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/precos/atual'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
 ```
 
 **Resposta:**
 
 ```json
 {
-  "codigo": "NTNF20230101",
-  "possivelInvestir": false,
+  "codigo": "NTNF20330101",
+  "possivelInvestir": true,
   "possivelResgatar": true,
-  "taxaJurosCompra": 0.0,
-  "taxaJurosVenda": 13.78,
-  "puCompra": 0.0,
-  "puVenda": 1027.0,
+  "taxaJurosCompra": 0.1106,
+  "taxaJurosVenda": 0.1118,
+  "puCompra": 982.7,
+  "puVenda": 976.49,
   "minQtdVenda": 0.01,
-  "minValorVenda": 10.27,
-  "minValorCompra": 0.0,
-  "dataUltAtualizacao": "2022-11-01T15:21:01.080000"
+  "minValorVenda": 9.76,
+  "minValorCompra": 39.3,
+  "dataUltAtualizacao": "2023-11-24T15:24:20.063000"
 }
 ```
 
@@ -166,8 +198,15 @@ Exclusivo para títulos não vencidos.
 
 **Exemplo:**
 
-```bash
-curl '{URL_BASE}/tesouro/{codigo}/cupons?pagina=1&tamanho=20'
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+
+endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/cupons'
+res = req.get(endpoint, headers=HEADERS)
+print(res.json())
 ```
 
 **Resposta:**
@@ -175,24 +214,24 @@ curl '{URL_BASE}/tesouro/{codigo}/cupons?pagina=1&tamanho=20'
 ```json
 {
   "pagina": 1,
-  "tamanho": 20,
-  "total": 20,
+  "tamanho": 10,
+  "total": 23,
   "dados": [
     {
       "codigo": "NTNB20450515",
-      "dataResgate": "2017-05-15",
+      "dataResgate": "2023-11-16",
       "dataVencimento": "2045-05-15",
-      "valor": 88.406696,
-      "qtdTotal": 53576.98,
-      "valorTotal": 4736563.78
+      "valor": 122.980671,
+      "qtdTotal": 30789.48,
+      "valorTotal": 3786510.92
     },
     {
       "codigo": "NTNB20450515",
-      "dataResgate": "2016-11-16",
+      "dataResgate": "2023-05-15",
       "dataVencimento": "2045-05-15",
-      "valor": 87.022858,
-      "qtdTotal": 55416.61,
-      "valorTotal": 4822511.79
+      "valor": 121.758507,
+      "qtdTotal": 31102.46,
+      "valorTotal": 3786989.1
     },
     ...
   ]
