@@ -96,6 +96,9 @@ Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratui
 **/taxas/busca**
 
 Retorna todas as taxas que podem ser buscadas. 
+
+Importante pois você vai utilizar o `"codigo"` retornado para buscar o histórico da taxa.
+
 Pode-se utilizar filtro.
 
 **Parâmetros**
@@ -121,30 +124,30 @@ print(res.json())
 
 ```json
 [
-    {
-        "nome": "CDI",
-        "codigo": 12,
-        "unidade": "% a.d.",
-        "descricao": "Taxa média dos empréstimos interbancários com um dia de prazo, comumente usada como referência para investimentos de renda fixa."
-    },
-    {
-        "nome": "CDI acumulada no mês",
-        "codigo": 4391,
-        "unidade": "% a.m.",
-        "descricao": "A taxa CDI acumulada no período mensal."
-    },
-    {
-        "nome": "CDI acumulada no mês anualizada base 252",
-        "codigo": 4392,
-        "unidade": "% a.a.",
-        "descricao": "A taxa CDI mensal, anualizada com base em 252 dias úteis."
-    },
-    {
-        "nome": "CDI anualizada base 252",
-        "codigo": 4389,
-        "unidade": "% a.a.",
-        "descricao": "Taxa CDI anualizada levando em consideração 252 dias úteis."
-    }
+  {
+    "nome": "CDI",
+    "codigo": 12,
+    "unidade": "% a.d.",
+    "descricao": "Taxa média dos empréstimos interbancários com um dia de prazo, comumente usada como referência para investimentos de renda fixa."
+  },
+  {
+    "nome": "CDI acumulada no mês",
+    "codigo": 4391,
+    "unidade": "% a.m.",
+    "descricao": "A taxa CDI acumulada no período mensal."
+  },
+  {
+    "nome": "CDI acumulada no mês anualizada base 252",
+    "codigo": 4392,
+    "unidade": "% a.a.",
+    "descricao": "A taxa CDI mensal, anualizada com base em 252 dias úteis."
+  },
+  {
+    "nome": "CDI anualizada base 252",
+    "codigo": 4389,
+    "unidade": "% a.a.",
+    "descricao": "Taxa CDI anualizada levando em consideração 252 dias úteis."
+  }
 ]
 ```
 
@@ -156,7 +159,7 @@ print(res.json())
 Retorna todas as taxas que podem ser buscadas. 
 Pode-se utilizar filtro.
 
-Os codigos das taxas estão disponíveis no endpoint de busca (/taxas/busca).
+Os codigos das taxas estão disponíveis no endpoint de busca (/taxas/busca) e também listados um pouco abaixo.
 
 **Parâmetros**
 
@@ -174,9 +177,9 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'codigo': 'IBOV' }
+PARAMS = { 'codigo': '12' }
 
-res = req.get(f'{URL_BASE}/taxas/busca', headers=HEADERS, params=PARAMS)
+res = req.get(f'{URL_BASE}/taxas/historico', headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
@@ -184,21 +187,25 @@ print(res.json())
 
 ```json
 [
-    {
-        "indice": "IBOV",
-        "data": "2023-01-02",
-        "valor": 106376.02
-    },
-    {
-        "indice": "IBOV",
-        "data": "2023-01-03",
-        "valor": 104165.74
-    },
-    {
-        "indice": "IBOV",
-        "data": "2023-01-04",
-        "valor": 105334.46
-    }, ...
+  {
+    "nome": "CDI",
+    "data": "2023-01-02",
+    "valor": 0.050788,
+    "dataFim": null
+  },
+  {
+    "nome": "CDI",
+    "data": "2023-01-03",
+    "valor": 0.050788,
+    "dataFim": null
+  },
+  {
+    "nome": "CDI",
+    "data": "2023-01-04",
+    "valor": 0.050788,
+    "dataFim": null
+  },
+  ...
 ]
 ```
 
@@ -241,6 +248,9 @@ Código | Taxa
 **/cambio/ptax/busca**
 
 Retorna a lista de PTAX que podem ser buscadas. 
+
+Importante pois você vai utilizar o `"codigo"` retornado para buscar o histórico da taxa.
+
 Pode-se utilizar filtro.
 
 **Parâmetros**
@@ -288,7 +298,10 @@ print(res.json())
 
 **/cambio/ptax/historico**
 
-Retorna o histórico referente ao ptax selecionado.
+Retorna o histórico referente ao PTAX selecionado.
+
+Os codigos dos PTAX estão disponíveis no endpoint de busca (/taxas/busca) e também listados um pouco abaixo.
+
 Há filtro de datas.
 
 **Parâmetros**
@@ -310,7 +323,7 @@ URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
 PARAMS = { 'indice': 'USD' }
 
-res = req.get(f'{URL_BASE}/cambio/ptax/busca', headers=HEADERS, params=PARAMS)
+res = req.get(f'{URL_BASE}/cambio/ptax/historico', headers=HEADERS, params=PARAMS)
 print(res.json())
 ```
 
