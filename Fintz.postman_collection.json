@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "5c21d0f5-17de-4080-ab69-d1ed2e885a2b",
-		"name": "Fintz API",
+		"name": "Fintz API (igual docs)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -193,7 +193,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/bonificacoes?ticker=SLCE3&dataInicio=2022-01-01&dataFim=2023-12-31",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/desdobramentos?ticker=OIBR3&dataInicio=2022-01-01",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -205,12 +205,12 @@
 										"bolsa",
 										"b3",
 										"avista",
-										"bonificacoes"
+										"desdobramentos"
 									],
 									"query": [
 										{
 											"key": "ticker",
-											"value": "SLCE3"
+											"value": "OIBR3"
 										},
 										{
 											"key": "dataInicio",
@@ -218,7 +218,8 @@
 										},
 										{
 											"key": "dataFim",
-											"value": "2023-12-31"
+											"value": "2023-12-31",
+											"disabled": true
 										}
 									]
 								}

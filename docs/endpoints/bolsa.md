@@ -293,7 +293,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2022-01-01' }
+PARAMS = { 'ticker': 'OIBR3', 'dataInicio': '2022-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/desdobramentos'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -305,13 +305,12 @@ print(res.json())
 ```json
 [
   {
-    "ticker": "SLCE3",
-    "ativoEmitido": "SLCE3",
-    "proporcao": 0.1,
-    "dataCom": "2023-05-08",
-    "dataAnuncio": "2023-04-27",
-    "dataIncorporacao": "2023-05-11",
-    "valorBase": 23.54
+    "ticker": "OIBR3",
+    "valorAntes": 10.0,
+    "valorDepois": 1.0,
+    "dataCom": "2023-01-06",
+    "dataAnuncio": "2022-12-01",
+    "tipo": "GRUPAMENTO"
   }
 ]
 ```
