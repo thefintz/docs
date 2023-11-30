@@ -135,7 +135,20 @@ Também é retornado um fator de ajuste, bastando multiplicá-lo pelos preços O
 
 **Parâmetros**
 
-Esse endpoint não tem parâmetros. O arquivo possui cotação de todos os tickers, desde 2010 até o último fechamento de mercado.
+Esse endpoint só possui um parâmetro:
+
+| Parâmetro | Tipo |Descrição | |
+| :-: | :-: | - | :-: |
+| `preencher`     | `boolean` | `true` ou `false` | opcional
+
+O que esse `preencher` faz é fazer com que ativos com pouca liquidez tenham suas cotações propagadas para os próximos dias que não possuam negociações.
+
+Por exemplo:
+Mercado aberto segunda, terça e quarta.
+Porém, o ativo XXXX3 tem pouca liquidez (pouco volume diário) e só foi negociado segunda e quarta feira. 
+
+Se você não enviar `preencher=true`, não terá cotação para esse ativo na terça feira.
+Se você deseja que tenha (para não haver "buracos" nos dias), basta adicionar esse parâmtro `preencher=true` e o preço de fechamento anterior será propagado, sendo ele o preço de abertura, maxima, minima e fechamento do dia seguinte.
 
 **Exemplo de chamada:**
 
@@ -319,35 +332,47 @@ print(res.json())
 
 Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
-- AtivoCirculante
-- AtivoNaoCirculante
-- AtivoTotal
-- CaixaEquivalentes
-- Custos
-- DepreciacaoAmortizacao
-- DespesasFinanceiras
-- DespesasReceitasOperacionaisAdministrativas
-- Disponibilidades
-- DividaBruta
-- DividaLiquida
-- Ebit
-- Ebitda
-- EquivalenciaPatrimonial
-- Impostos
-- Lair
-- LucroLiquido
-- LucroLiquidoOpContinuadas
-- LucroLiquidoOpDescontinuadas
-- LucroLiquidoSociosControladora
-- PassivoCirculante
-- PassivoNaoCirculante
-- PassivoTotal
-- PatrimonioLiquido
-- ReceitaLiquida
-- ReceitasFinanceiras
-- ResultadoBruto
-- ResultadoFinanceiro
+Item Contábil                                   | TRI | ANO | 12M |
+- ReceitaLiquida                                |  ✓  |  ✓  |  ✓  |
+- Custos                                        |  ✓  |  ✓  |  ✓  |
+- ResultadoBruto                                |  ✓  |  ✓  |  ✓  |
+- DespesasReceitasOperacionaisAdministrativas   |  ✓  |  ✓  |  ✓  |
+- Ebit                                          |  ✓  |  ✓  |  ✓  |
+- ResultadoFinanceiro                           |  ✓  |  ✓  |  ✓  |
+- ReceitasFinanceiras                           |  ✓  |  ✓  |  ✓  |
+- Lair                                          |  ✓  |  ✓  |  ✓  |
+- Impostos                                      |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoOpContinuadas                     |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoOpDescontinuadas                  |  ✓  |  ✓  |  ✓  |
+- LucroLiquido                                  |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoSociosControladora                |  ✓  |  ✓  |  ✓  |
+- DepreciacaoAmortizacao                        |  ✓  |  ✓  |  ✓  |
+- EquivalenciaPatrimonial                       |  ✓  |  ✓  |  ✓  |
+- AtivoCirculante                               |  ✓  |  ✓  |  x  |
+- AtivoNaoCirculante                            |  ✓  |  ✓  |  x  |
+- AtivoTotal                                    |  ✓  |  ✓  |  x  |
+- CaixaEquivalentes                             |  ✓  |  ✓  |  x  |
+- DespesasFinanceiras                           |  ✓  |  ✓  |  x  |
+- Disponibilidades                              |  ✓  |  ✓  |  x  |
+- DividaBruta                                   |  ✓  |  ✓  |  x  |
+- DividaLiquida                                 |  ✓  |  ✓  |  x  |
+- Ebitda                                        |  ✓  |  ✓  |  x  |
+- PassivoCirculante                             |  ✓  |  ✓  |  x  |
+- PassivoNaoCirculante                          |  ✓  |  ✓  |  x  |
+- PassivoTotal                                  |  ✓  |  ✓  |  x  |
+- PatrimonioLiquido                             |  ✓  |  ✓  |  x  |
 ```
+
+Todos esses itens você pode requisitar como trimestral ou anual.
+
+Já o 12m é um conceito que não se aplica a todos. 
+É um valor acumulado, ou seja, há uma soma dos valores dos trimestres que compõe esses 12m.
+
+Por exemplo, AtivoTotal, não se pode somar os trimestrais, é algo específico daquele momento, diferente de ReceitaLiquida, que é algo que você pode somar 4 trimestres e obter o acumulado 12m.
+
+AtivoTotal é "quanto de Ativo temos no momento atual". E é assim para todos os itens do BP.
+
+ReceitaLiquida é "quanto geramos de receita líquida neste trimestre". E é assim para todos os itens da DRE.
 
 ### Histórico por item contábil e ticker
 
