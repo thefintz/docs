@@ -8,6 +8,8 @@ Lembrando que todos os endpoints da API tem a mesma URL Base e precisam do heade
 > `URL_BASE` = `https://api.fintz.com.br`  
 > `x-api-key` = `{sua chave da API Fintz}`
 
+Obs: dados disponíveis desde 2003-01-01
+
 ## Lista de Títulos
 
 Retorna a lista de títulos públicos disponíveis paginada.

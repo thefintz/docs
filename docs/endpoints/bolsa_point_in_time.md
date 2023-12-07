@@ -21,6 +21,8 @@
         - antecipação (look-ahead): os dados em determinada data são os dados disponíveis até aquela data, não depois
         - confiabilidade (data-quality): fornecemos o preço de fechamento ajustado (splits/inplits, dividendos, JCP e bonificações)
 
+Obs: dados disponíveis desde 2010-01-01
+
 ## Contexto e Infos Gerais
 
 ### Receber Arquivos ou JSON?

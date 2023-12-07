@@ -8,8 +8,9 @@
     Tem algum índice, taxa ou câmbio que deseja ser adicionado o quanto antes?
     Só mandar pelo email contato@fintz.com.br
 
-## Índices
+Obs: dados disponíveis desde 2000-01-01.
 
+## Índices
 
 ### histórico
 **/indices/historico**

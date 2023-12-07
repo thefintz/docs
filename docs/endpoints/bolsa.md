@@ -11,6 +11,8 @@
     
     Adquira um de nossos planos para obter sua própria chave [neste link][link_compra]
 
+Obs: dados disponíveis desde 2010-01-01
+
 ## Busca e lista de ativos
 
 >**GET** `/bolsa/b3/avista/busca`
