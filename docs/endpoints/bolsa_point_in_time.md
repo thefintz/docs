@@ -90,35 +90,40 @@ Este endpoint tem o mesmo comportamento point in time e não point in time. Ent�
 
 Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
-- AtivoCirculante
-- AtivoNaoCirculante
-- AtivoTotal
-- CaixaEquivalentes
-- Custos
-- DepreciacaoAmortizacao
-- DespesasFinanceiras
-- DespesasReceitasOperacionaisAdministrativas
-- Disponibilidades
-- DividaBruta
-- DividaLiquida
-- Ebit
-- Ebitda
-- EquivalenciaPatrimonial
-- Impostos
-- Lair
-- LucroLiquido
-- LucroLiquidoOpContinuadas
-- LucroLiquidoOpDescontinuadas
-- LucroLiquidoSociosControladora
-- PassivoCirculante
-- PassivoNaoCirculante
-- PassivoTotal
-- PatrimonioLiquido
-- ReceitaLiquida
-- ReceitasFinanceiras
-- ResultadoBruto
-- ResultadoFinanceiro
+Item Contábil                                   | TRI | 12M |
+- ReceitaLiquida                                |  ✓  |  ✓  |
+- Custos                                        |  ✓  |  ✓  |
+- ResultadoBruto                                |  ✓  |  ✓  |
+- DespesasReceitasOperacionaisAdministrativas   |  ✓  |  ✓  |
+- Ebit                                          |  ✓  |  ✓  |
+- ResultadoFinanceiro                           |  ✓  |  ✓  |
+- ReceitasFinanceiras                           |  ✓  |  ✓  |
+- Lair                                          |  ✓  |  ✓  |
+- Impostos                                      |  ✓  |  ✓  |
+- LucroLiquidoOpContinuadas                     |  ✓  |  ✓  |
+- LucroLiquidoOpDescontinuadas                  |  ✓  |  ✓  |
+- LucroLiquido                                  |  ✓  |  ✓  |
+- LucroLiquidoSociosControladora                |  ✓  |  ✓  |
+- DepreciacaoAmortizacao                        |  ✓  |  ✓  |
+- EquivalenciaPatrimonial                       |  ✓  |  ✓  |
+- AtivoCirculante                               |  ✓  |  x  |
+- AtivoNaoCirculante                            |  ✓  |  x  |
+- AtivoTotal                                    |  ✓  |  x  |
+- CaixaEquivalentes                             |  ✓  |  x  |
+- DespesasFinanceiras                           |  ✓  |  x  |
+- Disponibilidades                              |  ✓  |  x  |
+- DividaBruta                                   |  ✓  |  x  |
+- DividaLiquida                                 |  ✓  |  x  |
+- Ebitda                                        |  ✓  |  x  |
+- PassivoCirculante                             |  ✓  |  x  |
+- PassivoNaoCirculante                          |  ✓  |  x  |
+- PassivoTotal                                  |  ✓  |  x  |
+- PatrimonioLiquido                             |  ✓  |  x  |
 ```
+
+obs: note que não existe (aqui no _point-in-time_), para o parâmetro `tipoPeriodo`, a opção "ANUAL" como existe nos itens contábeis não _point-in-time_. 
+Isso é de propósito, pois evita uma grande complexidade para o desenvolvedor/usuário.
+Para pegar o último acumulado utilize o "12M".
 
 ### Arquivo: Histórico de item contábil para todos os tickers
 
@@ -133,7 +138,7 @@ O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalha
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | obrigatório
+| `tipoPeriodo`    | `string` | `12M` ou `TRIMESTRAL` | obrigatório
 
 **Exemplo de chamada:**
 
@@ -167,7 +172,7 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | obrigatório
+| `tipoPeriodo`    | `string` | `12M` ou `TRIMESTRAL` | obrigatório
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 
 obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
