@@ -322,7 +322,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indice': 'USD' }
+PARAMS = { 'codigo': 'USD', 'dataInicio': '2020-01-01' }
 
 res = req.get(f'{URL_BASE}/cambio/ptax/historico', headers=HEADERS, params=PARAMS)
 print(res.json())
