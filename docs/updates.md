@@ -35,9 +35,9 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
     - P_CapitalDeGiro
     - P_AtivoCirculanteLiquido
     - DividaBruta_PatrimonioLiquido
-    - Ebit_Ativos
-    - Ebit_DespesasFinanceiras
-    - Ebitda_DespesasFinanceiras
+    - EBIT_Ativos
+    - EBIT_DespesasFinanceiras
+    - EBITDA_DespesasFinanceiras
     - EBITDA_EV
     - EBIT_EV
     - L_P

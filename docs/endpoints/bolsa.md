@@ -334,35 +334,35 @@ print(res.json())
 
 Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
-Item Contábil                                   | TRI | ANO | 12M |
-- ReceitaLiquida                                |  ✓  |  ✓  |  ✓  |
-- Custos                                        |  ✓  |  ✓  |  ✓  |
-- ResultadoBruto                                |  ✓  |  ✓  |  ✓  |
-- DespesasReceitasOperacionaisAdministrativas   |  ✓  |  ✓  |  ✓  |
-- Ebit                                          |  ✓  |  ✓  |  ✓  |
-- ResultadoFinanceiro                           |  ✓  |  ✓  |  ✓  |
-- ReceitasFinanceiras                           |  ✓  |  ✓  |  ✓  |
-- Lair                                          |  ✓  |  ✓  |  ✓  |
-- Impostos                                      |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoOpContinuadas                     |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoOpDescontinuadas                  |  ✓  |  ✓  |  ✓  |
-- LucroLiquido                                  |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoSociosControladora                |  ✓  |  ✓  |  ✓  |
-- DepreciacaoAmortizacao                        |  ✓  |  ✓  |  ✓  |
-- EquivalenciaPatrimonial                       |  ✓  |  ✓  |  ✓  |
-- AtivoCirculante                               |  ✓  |  ✓  |  x  |
-- AtivoNaoCirculante                            |  ✓  |  ✓  |  x  |
-- AtivoTotal                                    |  ✓  |  ✓  |  x  |
-- CaixaEquivalentes                             |  ✓  |  ✓  |  x  |
-- DespesasFinanceiras                           |  ✓  |  ✓  |  x  |
-- Disponibilidades                              |  ✓  |  ✓  |  x  |
-- DividaBruta                                   |  ✓  |  ✓  |  x  |
-- DividaLiquida                                 |  ✓  |  ✓  |  x  |
-- Ebitda                                        |  ✓  |  ✓  |  x  |
-- PassivoCirculante                             |  ✓  |  ✓  |  x  |
-- PassivoNaoCirculante                          |  ✓  |  ✓  |  x  |
-- PassivoTotal                                  |  ✓  |  ✓  |  x  |
-- PatrimonioLiquido                             |  ✓  |  ✓  |  x  |
+Item Contábil                                    | TRI | ANO | 12M |
+- ReceitaLiquida                                 |  ✓  |  ✓  |  ✓  |
+- Custos                                         |  ✓  |  ✓  |  ✓  |
+- ResultadoBruto                                 |  ✓  |  ✓  |  ✓  |
+- DespesasReceitasOperacionaisOuAdministrativas  |  ✓  |  ✓  |  ✓  |
+- EBIT                                           |  ✓  |  ✓  |  ✓  |
+- ResultadoFinanceiro                            |  ✓  |  ✓  |  ✓  |
+- ReceitasFinanceiras                            |  ✓  |  ✓  |  ✓  |
+- LAIR                                           |  ✓  |  ✓  |  ✓  |
+- Impostos                                       |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoOperacoesContinuadas               |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoOperacoesDescontinuadas            |  ✓  |  ✓  |  ✓  |
+- LucroLiquido                                   |  ✓  |  ✓  |  ✓  |
+- LucroLiquidoSociosControladora                 |  ✓  |  ✓  |  ✓  |
+- DepreciacaoAmortizacao                         |  ✓  |  ✓  |  ✓  |
+- EquivalenciaPatrimonial                        |  ✓  |  ✓  |  ✓  |
+- AtivoCirculante                                |  ✓  |  ✓  |  x  |
+- AtivoNaoCirculante                             |  ✓  |  ✓  |  x  |
+- AtivoTotal                                     |  ✓  |  ✓  |  x  |
+- CaixaEquivalentes                              |  ✓  |  ✓  |  x  |
+- DespesasFinanceiras                            |  ✓  |  ✓  |  x  |
+- Disponibilidades                               |  ✓  |  ✓  |  x  |
+- DividaBruta                                    |  ✓  |  ✓  |  x  |
+- DividaLiquida                                  |  ✓  |  ✓  |  x  |
+- EBITDA                                         |  ✓  |  ✓  |  x  |
+- PassivoCirculante                              |  ✓  |  ✓  |  x  |
+- PassivoNaoCirculante                           |  ✓  |  ✓  |  x  |
+- PassivoTotal                                   |  ✓  |  ✓  |  x  |
+- PatrimonioLiquido                              |  ✓  |  ✓  |  x  |
 ```
 
 Todos esses itens você pode requisitar como trimestral ou anual.
@@ -518,19 +518,19 @@ Os indicadores disponíveis/selecionáveis para os próximos endpoints são os s
 - ROIC
 - GiroAtivos
 - MargemBruta
-- MargemEbitda
-- MargemEbit
+- MargemEBITDA
+- MargemEBIT
 - MargemLiquida
 - DividaLiquida_PatrimonioLiquido
-- DividaLiquida_Ebitda
-- DividaLiquida_Ebit
+- DividaLiquida_EBITDA
+- DividaLiquida_EBIT
 - PatrimonioLiquido_Ativos
 - Passivos_Ativos
 - LiquidezCorrente
 - DividaBruta_PatrimonioLiquido
-- Ebit_Ativos
-- Ebit_DespesasFinanceiras
-- Ebitda_DespesasFinanceiras
+- EBIT_Ativos
+- EBIT_DespesasFinanceiras
+- EBITDA_DespesasFinanceiras
 - EBITDA_EV
 - EBIT_EV
 - L_P
