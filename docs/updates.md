@@ -9,6 +9,39 @@ Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
 
+??? note "Dezembro 2023 - Novos indicadores e endpoints"
+
+    Esse mês focamos em adicionar mais indicadores, novos endpoints para atender outros casos de uso, e proventos de FIIs:
+    
+    - (12/12) Mais 21 indicadores
+    - (22/12) Mais 1 endpoint para indicador
+    - (22/12) Mais 1 endpoint para itens contábeis
+    - (22/12) Proventos FIIs.
+
+    ## +21 Indicadores
+
+    - ValorDeMercado
+    - EV
+    - P_L
+    - P_VP
+    - VPA
+    - LPA
+    - EV_EBITDA
+    - EV_EBIT
+    - P_EBITDA
+    - P_EBIT
+    - P_Ativos
+    - P_SR
+    - P_CapitalDeGiro
+    - P_AtivoCirculanteLiquido
+    - DividaBruta_PatrimonioLiquido
+    - Ebit_Ativos
+    - Ebit_DespesasFinanceiras
+    - Ebitda_DespesasFinanceiras
+    - EBITDA_EV
+    - EBIT_EV
+    - L_P
+
 ??? note "Novembro 2023 - Muitas Novidades"
 
     Todos os indicadores e itens contábeis foram adicionados tanto em endpoints de arquivo como de JSON, assim como dados point in time e não point in time.

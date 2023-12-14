@@ -181,7 +181,7 @@ print(res.json())
 
 Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e as datas especificadas na chamada.
 
-obs: por enquanto apenas de ações. Em 15/12/2023 vamos adicionar proventos de FIIs neste mesmo endpoint.
+obs: por enquanto apenas de ações. Em 22/12/2023 vamos adicionar proventos de FIIs neste mesmo endpoint.
 
 **Parâmetros**
 
@@ -493,12 +493,26 @@ print(res.json())
 ### Itens contábeis mais recentes por ticker
 
 !!! abstract "Em breve!"
-    Esse endpoint será lançado em 08/12/2023
+    Esse endpoint será lançado em 22/12/2023
 
 ## Indicadores
 
 Os indicadores disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
+- ValorDeMercado
+- EV
+- P_L
+- P_VP
+- VPA
+- LPA
+- EV_EBITDA
+- EV_EBIT
+- P_EBITDA
+- P_EBIT
+- P_Ativos
+- P_SR
+- P_CapitalDeGiro
+- P_AtivoCirculanteLiquido
 - ROE
 - ROA
 - ROIC
@@ -513,6 +527,13 @@ Os indicadores disponíveis/selecionáveis para os próximos endpoints são os s
 - PatrimonioLiquido_Ativos
 - Passivos_Ativos
 - LiquidezCorrente
+- DividaBruta_PatrimonioLiquido
+- Ebit_Ativos
+- Ebit_DespesasFinanceiras
+- Ebitda_DespesasFinanceiras
+- EBITDA_EV
+- EBIT_EV
+- L_P
 ```
 
 ### Histórico por indicador e ticker
@@ -613,7 +634,8 @@ print(res.json())
 ### Indicadores mais recentes por ticker
 
 !!! abstract "Em breve!"
-    Esse endpoint será lançado em 08/12/2023
+    Esse endpoint será lançado em 22/12/2023
+    Nele, você vai poder receber, em apenas uma chamada, todos os indicadores mais recentes para o ticker que escolher.
 
 ## DRE, BP, DFC crus da CVM
 
