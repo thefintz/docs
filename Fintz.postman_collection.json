@@ -243,7 +243,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/historico?item=Ebit&ticker=TRPL4&tipoPeriodo=12M",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/historico?item=EBIT&ticker=TRPL4&tipoPeriodo=12M",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -261,7 +261,7 @@
 									"query": [
 										{
 											"key": "item",
-											"value": "Ebit"
+											"value": "EBIT"
 										},
 										{
 											"key": "ticker",
@@ -294,7 +294,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis?item=Ebit&tipoPeriodo=12M",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis?item=EBIT&tipoPeriodo=12M",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -311,7 +311,7 @@
 									"query": [
 										{
 											"key": "item",
-											"value": "Ebit"
+											"value": "EBIT"
 										},
 										{
 											"key": "tipoPeriodo",
@@ -358,7 +358,7 @@
 										{
 											"key": "em breve",
 											"value": "em breve",
-											"description": "lancamento 08/12/2023"
+											"description": "lancamento 15/12/2023"
 										}
 									]
 								}
@@ -478,7 +478,7 @@
 										{
 											"key": "em breve",
 											"value": "em breve",
-											"description": "Será lançado em 29/01/2024"
+											"description": "Será lançado em 15/12/2024"
 										}
 									]
 								}
@@ -940,7 +940,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time/arquivos?item=Ebit&tipoPeriodo=12M",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time/arquivos?item=EBIT&tipoPeriodo=12M",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -959,7 +959,7 @@
 									"query": [
 										{
 											"key": "item",
-											"value": "Ebit"
+											"value": "EBIT"
 										},
 										{
 											"key": "tipoPeriodo",
@@ -982,7 +982,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time?item=Ebit&ticker=TRPL4&tipoPeriodo=12M",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/point-in-time?item=EBIT&ticker=TRPL4&tipoPeriodo=12M",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1000,7 +1000,7 @@
 									"query": [
 										{
 											"key": "item",
-											"value": "Ebit"
+											"value": "EBIT"
 										},
 										{
 											"key": "ticker",
@@ -1037,12 +1037,26 @@
 									}
 								],
 								"url": {
-									"raw": "?em breve=em breve",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/point-in-time/arquivos?indicador=ROE",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"indicadores",
+										"point-in-time",
+										"arquivos"
+									],
 									"query": [
 										{
-											"key": "em breve",
-											"value": "em breve",
-											"description": "será lançado 15/12/2023"
+											"key": "indicador",
+											"value": "ROE"
 										}
 									]
 								}
@@ -1061,12 +1075,29 @@
 									}
 								],
 								"url": {
-									"raw": "?em breve=em breve",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/point-in-time?indicador=ROE&ticker=TRPL4",
+									"protocol": "https",
+									"host": [
+										"api",
+										"fintz",
+										"com",
+										"br"
+									],
+									"path": [
+										"bolsa",
+										"b3",
+										"avista",
+										"indicadores",
+										"point-in-time"
+									],
 									"query": [
 										{
-											"key": "em breve",
-											"value": "em breve",
-											"description": "será lançado 15/12/2023"
+											"key": "indicador",
+											"value": "ROE"
+										},
+										{
+											"key": "ticker",
+											"value": "TRPL4"
 										}
 									]
 								}
