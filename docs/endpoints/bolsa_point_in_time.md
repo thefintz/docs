@@ -92,35 +92,35 @@ Este endpoint tem o mesmo comportamento point in time e não point in time. Ent�
 
 Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
-Item Contábil                                   | TRI | 12M |
-- ReceitaLiquida                                |  ✓  |  ✓  |
-- Custos                                        |  ✓  |  ✓  |
-- ResultadoBruto                                |  ✓  |  ✓  |
-- DespesasReceitasOperacionaisAdministrativas   |  ✓  |  ✓  |
-- Ebit                                          |  ✓  |  ✓  |
-- ResultadoFinanceiro                           |  ✓  |  ✓  |
-- ReceitasFinanceiras                           |  ✓  |  ✓  |
-- Lair                                          |  ✓  |  ✓  |
-- Impostos                                      |  ✓  |  ✓  |
-- LucroLiquidoOpContinuadas                     |  ✓  |  ✓  |
-- LucroLiquidoOpDescontinuadas                  |  ✓  |  ✓  |
-- LucroLiquido                                  |  ✓  |  ✓  |
-- LucroLiquidoSociosControladora                |  ✓  |  ✓  |
-- DepreciacaoAmortizacao                        |  ✓  |  ✓  |
-- EquivalenciaPatrimonial                       |  ✓  |  ✓  |
-- AtivoCirculante                               |  ✓  |  x  |
-- AtivoNaoCirculante                            |  ✓  |  x  |
-- AtivoTotal                                    |  ✓  |  x  |
-- CaixaEquivalentes                             |  ✓  |  x  |
-- DespesasFinanceiras                           |  ✓  |  x  |
-- Disponibilidades                              |  ✓  |  x  |
-- DividaBruta                                   |  ✓  |  x  |
-- DividaLiquida                                 |  ✓  |  x  |
-- Ebitda                                        |  ✓  |  x  |
-- PassivoCirculante                             |  ✓  |  x  |
-- PassivoNaoCirculante                          |  ✓  |  x  |
-- PassivoTotal                                  |  ✓  |  x  |
-- PatrimonioLiquido                             |  ✓  |  x  |
+Item Contábil                                    | TRI | 12M |
+- ReceitaLiquida                                 |  ✓  |  ✓  |
+- Custos                                         |  ✓  |  ✓  |
+- ResultadoBruto                                 |  ✓  |  ✓  |
+- DespesasReceitasOperacionaisOuAdministrativas  |  ✓  |  ✓  |
+- EBIT                                           |  ✓  |  ✓  |
+- ResultadoFinanceiro                            |  ✓  |  ✓  |
+- ReceitasFinanceiras                            |  ✓  |  ✓  |
+- LAIR                                           |  ✓  |  ✓  |
+- Impostos                                       |  ✓  |  ✓  |
+- LucroLiquidoOperacoesContinuadas               |  ✓  |  ✓  |
+- LucroLiquidoOperacoesDescontinuadas            |  ✓  |  ✓  |
+- LucroLiquido                                   |  ✓  |  ✓  |
+- LucroLiquidoSociosControladora                 |  ✓  |  ✓  |
+- DepreciacaoAmortizacao                         |  ✓  |  ✓  |
+- EquivalenciaPatrimonial                        |  ✓  |  ✓  |
+- AtivoCirculante                                |  ✓  |  x  |
+- AtivoNaoCirculante                             |  ✓  |  x  |
+- AtivoTotal                                     |  ✓  |  x  |
+- CaixaEquivalentes                              |  ✓  |  x  |
+- DespesasFinanceiras                            |  ✓  |  x  |
+- Disponibilidades                               |  ✓  |  x  |
+- DividaBruta                                    |  ✓  |  x  |
+- DividaLiquida                                  |  ✓  |  x  |
+- EBITDA                                         |  ✓  |  x  |
+- PassivoCirculante                              |  ✓  |  x  |
+- PassivoNaoCirculante                           |  ✓  |  x  |
+- PassivoTotal                                   |  ✓  |  x  |
+- PatrimonioLiquido                              |  ✓  |  x  |
 ```
 
 obs: note que não existe (aqui no _point-in-time_), para o parâmetro `tipoPeriodo`, a opção "ANUAL" como existe nos itens contábeis não _point-in-time_. 
@@ -139,7 +139,7 @@ O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalha
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
 | `tipoPeriodo`    | `string` | `12M` ou `TRIMESTRAL` | obrigatório
 
 **Exemplo de chamada:**
@@ -149,7 +149,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'Ebit', 'tipoPeriodo': '12M' }
+PARAMS = { 'item': 'EBIT', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time/arquivos'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -172,7 +172,7 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
 | `tipoPeriodo`    | `string` | `12M` ou `TRIMESTRAL` | obrigatório
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
@@ -186,7 +186,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'Ebit', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
+PARAMS = { 'item': 'EBIT', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -199,7 +199,7 @@ print(res.json())
 [
   {
     "ticker": "TRPL4",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "data": "2023-10-30",
@@ -209,7 +209,7 @@ print(res.json())
   },
   {
     "ticker": "TRPL4",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "data": "2023-07-31",
@@ -224,31 +224,126 @@ print(res.json())
 
 Os indicadores disponíveis/selecionáveis para os próximos endpoints são os seguintes:
 ```
+- ValorDeMercado
+- EV
+- P_L
+- P_VP
+- VPA
+- LPA
+- EV_EBITDA
+- EV_EBIT
+- P_EBITDA
+- P_EBIT
+- P_Ativos
+- P_SR
+- P_CapitalDeGiro
+- P_AtivoCirculanteLiquido
 - ROE
 - ROA
 - ROIC
 - GiroAtivos
 - MargemBruta
-- MargemEbitda
-- MargemEbit
+- MargemEBITDA
+- MargemEBIT
 - MargemLiquida
 - DividaLiquida_PatrimonioLiquido
-- DividaLiquida_Ebitda
-- DividaLiquida_Ebit
+- DividaLiquida_EBITDA
+- DividaLiquida_EBIT
 - PatrimonioLiquido_Ativos
 - Passivos_Ativos
 - LiquidezCorrente
+- DividaBruta_PatrimonioLiquido
+- EBIT_Ativos
+- EBIT_DespesasFinanceiras
+- EBITDA_DespesasFinanceiras
+- EBITDA_EV
+- EBIT_EV
+- L_P
 ```
+
+Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
 
 ### Arquivo: Histórico de indicador para todos os tickers
 
-!!! abstract "Em breve!"
-    Esse endpoint será lançado em 15/12/2023
 
-### JSON: Histórico por item contábil e ticker
+>**GET** `/bolsa/b3/avista/indicadores/point-in-time/arquivos`
 
-!!! abstract "Em breve!"
-    Esse endpoint será lançado em 15/12/2023
+Aqui você escolhe o indicador e recebe um link para arquivo com todo histórico desse item indicador escolhido para todas as empresas.
+
+O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalhado com, por exemplo, a biblioteca Pandas.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indicador': 'ROE', 'tipoPeriodo': '12M' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time/arquivos'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+{ "link": "url" }
+```
+
+### JSON: Histórico por indicador e ticker
+
+>**GET** `/bolsa/b3/avista/indicadores/point-in-time`
+
+Aqui você escolhe o indicador e o ticker e recebe o histórico desse indicador escolhido para a empresa escolhida.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indicador`  | `string` | ex: `ROE`   | obrigatório
+| `ticker`     | `string` | ex: `TRPL4` | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indicador': 'ROE', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+    {
+        "ticker": "TRPL4",
+        "indicador": "ROE",
+        "data": "2023-10-30",
+        "valor": 0.13067281932850636
+    },
+    {
+        "ticker": "TRPL4",
+        "indicador": "ROE",
+        "data": "2023-07-31",
+        "valor": 0.13512317084690387
+    },
+    ...
+]
+```
 
 ## (antigo) Indicadores
 
@@ -257,7 +352,7 @@ Os indicadores disponíveis/selecionáveis para os próximos endpoints são os s
 !!! info "Atenção"
     Este endpoint vai parar de funcionar em 01/03/2024. 
     
-    A nova versão, aprimorada e com mais dados será lançada em 15/12/2023 e será documentada nesta mesma página.
+    A nova versão, aprimorada e com mais dados será lançada em 22/12/2023 e será documentada nesta mesma página.
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 
@@ -410,8 +505,8 @@ ReceitaLiquida12m
 DividaBruta
 DividaLiquida
 Disponibilidades
-Ebit
-Ebit12m
+EBIT
+EBIT12m
 Impostos
 Impostos12m
 AcoesEmCirculacao
@@ -480,7 +575,7 @@ print(res.json())
 ```
 
 
-Os indicadores atualmente disponíveis são
+Os indicadores atualmente disponíveis neste endpoint antigo são
 ```
 ROE
 ROIC
@@ -491,5 +586,3 @@ EV
 EV_EBIT
 ValorDeMercado
 ```
-
-Precisa de algum outro indicador? [Entre em contato][contato] e adicionamos gratuitamente.
