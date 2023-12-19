@@ -16,6 +16,7 @@ Obs: dados disponíveis desde 2000-01-01.
 **/indices/historico**
 
 Retorna o histórico referente ao índice requisitado.
+Obs: dados disponíveis desde 2000-01-01.
 
 **Parâmetros**
 
@@ -162,12 +163,14 @@ Pode-se utilizar filtro.
 
 Os codigos das taxas estão disponíveis no endpoint de busca (/taxas/busca) e também listados um pouco abaixo.
 
+Obs: dados disponíveis desde 2000-01-01.
+
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `codigo`     | `string` | ex: "12" (para CDI) | obrigatório
-| `dataInicio` | Date | ex: "2023-01-01" | opcional
+| `dataInicio` | Date | ex: "2023-01-01" | obrigatório
 | `dataFim`    | Date | ex: "2023-05-01" | opcional
 | `ordem`      | "ASC" ou "DESC" | ex: "ASC" | opcional
 
@@ -178,7 +181,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'codigo': '12' }
+PARAMS = { 'codigo': '12', 'dataInicio': '2023-01-01' }
 
 res = req.get(f'{URL_BASE}/taxas/historico', headers=HEADERS, params=PARAMS)
 print(res.json())
@@ -305,12 +308,14 @@ Os codigos dos PTAX estão disponíveis no endpoint de busca (/taxas/busca) e ta
 
 Há filtro de datas.
 
+Obs: dados disponíveis desde 2000-01-01.
+
 **Parâmetros**
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `codigo`     | `string` | ex: "USD" | obrigatório
-| `dataInicio` | `string` | ex: "2023-01-01" | opcional
+| `dataInicio` | `string` | ex: "2023-01-01" | obrigatório
 | `dataFim`    | `string` | ex: "2023-05-01" | opcional
 | `boletim`    | `string` | "FECHAMENTO" ou "ABERTURA | opcional
 | `ordem`      | `string` | "ASC" ou "DESC" | opcional
