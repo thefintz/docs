@@ -386,7 +386,7 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
 | `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` | opcional
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
@@ -400,7 +400,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'Ebit', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
+PARAMS = { 'item': 'EBIT', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/historico'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -413,7 +413,7 @@ print(res.json())
 [
   {
     "ticker": "TRPL4",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "ano": 2023,
@@ -422,7 +422,7 @@ print(res.json())
   },
   {
     "ticker": "TRPL4",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "ano": 2023,
@@ -445,7 +445,7 @@ Algumas empresas atualizam essas informações mais rapidamente que outras, ent�
 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `Ebit` (ver lista completa) | obrigatório
+| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
 | `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 
@@ -458,7 +458,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'item': 'Ebit', 'tipoPeriodo': '12M' }
+PARAMS = { 'item': 'EBIT', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -471,7 +471,7 @@ print(res.json())
 [
   {
     "ticker": "AESB3",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "ano": 2023,
@@ -480,7 +480,7 @@ print(res.json())
   },
   {
     "ticker": "AGXY3",
-    "item": "Ebit",
+    "item": "EBIT",
     "tipoPeriodo": "12M",
     "tipoDemonstracao": "CONSOLIDADO",
     "ano": 2023,

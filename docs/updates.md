@@ -48,51 +48,51 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
     ## +14 indicadores
 
-    - DL/PL
-    - DL/EBITDA
-    - DL/EBIT
-    - PL/ATIVOS
-    - PASSIVOS/ATIVOS
-    - LIQ. CORRENTE
-    - M. BRUTA
-    - M. EBITDA
-    - M. EBIT
-    - M. LIQ.
+    - DividaLiquida_PatrimonioLiquido
+    - DividaLiquida_EBITDA
+    - DividaLiquida_EBIT
+    - PatrimonioLiquido_Ativos
+    - Passivos_Ativos
+    - LiquidezCorrente
+    - MargemBruta
+    - MargemEBITDA
+    - MargemEBIT
+    - MargemLiquida
     - ROE
     - ROA
     - ROIC
-    - GIRO ATIVOS
+    - GiroAtivos
 
     ## +28 itens contábeis
 
+    - ReceitaLiquida
+    - Custos
+    - ResultadoBruto
+    - DespesasReceitasOperacionaisOuAdministrativas
+    - EBIT
+    - ResultadoFinanceiro
+    - ReceitasFinanceiras
+    - LAIR
+    - Impostos
+    - LucroLiquidoOperacoesContinuadas
+    - LucroLiquidoOperacoesDescontinuadas
+    - LucroLiquido
+    - LucroLiquidoSociosControladora
+    - DepreciacaoAmortizacao
+    - EquivalenciaPatrimonial
     - AtivoCirculante
     - AtivoNaoCirculante
     - AtivoTotal
     - CaixaEquivalentes
-    - Custos
-    - DepreciacaoAmortizacao
     - DespesasFinanceiras
-    - DespesasReceitasOperacionaisAdministrativas
     - Disponibilidades
     - DividaBruta
     - DividaLiquida
-    - Ebit
-    - Ebitda
-    - EquivalenciaPatrimonial
-    - Impostos
-    - Lair
-    - LucroLiquido
-    - LucroLiquidoOpContinuadas
-    - LucroLiquidoOpDescontinuadas
-    - LucroLiquidoSociosControladora
+    - EBITDA
     - PassivoCirculante
     - PassivoNaoCirculante
     - PassivoTotal
     - PatrimonioLiquido
-    - ReceitaLiquida
-    - ReceitasFinanceiras
-    - ResultadoBruto
-    - ResultadoFinanceiro
 
     ## Separando dados Point in Time e comuns.
     
