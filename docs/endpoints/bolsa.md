@@ -504,10 +504,10 @@ As datas presentes na resposta podem parecer antigas, mas estão corretas. Isso 
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `ticker`     | `string` | ex: `TAEE11` | obrigatório
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | obrigatório
-| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
+| `tipoDemonstracao` | `string` | `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 
-obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
+obs: na dúvida, não inclua nem `tipoPeriodo` nem `tipoDemonstracao`, pois assim é o correto na maioria dos casos de uso.
 
 **Exemplo de chamada:**
 
