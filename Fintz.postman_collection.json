@@ -329,7 +329,7 @@
 							"response": []
 						},
 						{
-							"name": "Itens contábeis mais recentes por ticker",
+							"name": "Itens contábeis mais recentes por ticker Copy",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -340,7 +340,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis?em breve=em breve",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/itens-contabeis/por-ticker?ticker=TRPL4",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -352,13 +352,13 @@
 										"bolsa",
 										"b3",
 										"avista",
-										"itens-contabeis"
+										"itens-contabeis",
+										"por-ticker"
 									],
 									"query": [
 										{
-											"key": "em breve",
-											"value": "em breve",
-											"description": "lancamento 15/12/2023"
+											"key": "ticker",
+											"value": "TRPL4"
 										}
 									]
 								}
@@ -459,7 +459,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/historico?em breve=em breve",
+									"raw": "https://api.fintz.com.br/bolsa/b3/avista/indicadores/por-ticker?ticker=TRPL4",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -472,13 +472,12 @@
 										"b3",
 										"avista",
 										"indicadores",
-										"historico"
+										"por-ticker"
 									],
 									"query": [
 										{
-											"key": "em breve",
-											"value": "em breve",
-											"description": "Será lançado em 15/12/2024"
+											"key": "ticker",
+											"value": "TRPL4"
 										}
 									]
 								}
