@@ -388,7 +388,7 @@ Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item 
 | :-: | :-: | - | :-: |
 | `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
 | `ticker`     | `string` | ex: `TRPL4` | obrigatório
-| `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` | opcional
+| `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` | obrigatório
 | `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
 
 obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
@@ -492,8 +492,62 @@ print(res.json())
 
 ### Itens contábeis mais recentes por ticker
 
-!!! abstract "Em breve!"
-    Esse endpoint será lançado em 22/12/2023
+
+>**GET** `bolsa/b3/avista/itens-contabeis/por-ticker`
+
+Aqui você escolhe o ticker e recebe todos os itens contábeis mais recentes para esse ticker.
+
+As datas presentes na resposta podem parecer antigas, mas estão corretas. Isso porque a data é a data de entrega do último balanço (última atualização) e é o dado que está válido até hoje.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | ex: `TAEE11` | obrigatório
+| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | obrigatório
+| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+
+obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'ticker': 'TAEE11' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/por-ticker'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "ticker": "TAEE11",
+    "item": "EBIT",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 3,
+    "valor": 1844690000.0
+  },
+  {
+    "ticker": "TAEE11",
+    "item": "ReceitaLiquida",
+    "tipoPeriodo": "12M",
+    "tipoDemonstracao": "CONSOLIDADO",
+    "ano": 2023,
+    "trimestre": 3,
+    "valor": 2567241000.0
+  }
+  ...
+]
+```
 
 ## Indicadores
 
@@ -633,9 +687,56 @@ print(res.json())
 
 ### Indicadores mais recentes por ticker
 
-!!! abstract "Em breve!"
-    Esse endpoint será lançado em 22/12/2023
-    Nele, você vai poder receber, em apenas uma chamada, todos os indicadores mais recentes para o ticker que escolher.
+
+>**GET** `bolsa/b3/avista/indicadores/por-ticker`
+
+Aqui você escolhe o ticker e recebe todos os indicadores mais recentes para esse ticker.
+
+Existem indicadores que não fazem sentido para alguns tipos de empresas. 
+Por exemplo: DividaLiquida_EBITDA para financeiros. Assim, quando for o caso, esses indicadores não serão retornados.
+
+As datas presentes na resposta podem parecer antigas para alguns indicadores, como ROE, por exemplo, mas estão corretas. Isso porque ROE utiliza apenas itens contábeis presentes nos balanços, e a data é a data de entrega do último balanço (última atualização) e é o dado que está válido até hoje, por isso você não vai ver a data de hoje para todos os indicadores. Indicadores como P_L utilizam o preço, que varia diariamente, então estará com a data do último fechamento.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `ticker`     | `string` | ex: `TAEE11` | obrigatório
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'ticker': 'TAEE11' }
+
+endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/por-ticker'
+res = req.get(endpoint, headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  ... 
+  {
+    "ticker": "TAEE11",
+    "indicador": "P_L",
+    "data": "2023-12-19",
+    "valor": 11.2687
+  },
+  {
+    "ticker": "TAEE11",
+    "indicador": "ROE",
+    "data": "2023-11-08",
+    "valor": 0.13662
+  }, 
+  ...
+]
+```
 
 ## DRE, BP, DFC crus da CVM
 
