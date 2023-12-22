@@ -11,14 +11,15 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
 
 ??? note "Dezembro 2023 - Novos indicadores e endpoints"
 
-    Esse mês focamos em adicionar mais indicadores, novos endpoints para atender outros casos de uso, e proventos de FIIs:
+    Esse mês focamos em adicionar mais indicadores e novos endpoints para atender outros casos de usos:
     
-    - (12/12) Mais 21 indicadores
-    - (22/12) Mais 1 endpoint para indicador
-    - (22/12) Mais 1 endpoint para itens contábeis
-    - (22/12) Proventos FIIs.
+    - +22 indicadores
+    - +1 endpoint para indicador
+    - +1 endpoint para itens contábeis
+    
+    Esses dois novos endpoints retornam os valores mais recentes de todos os indicadores (ou itens contábeis) para o ticker selecionado, servindo muito bem para criação de uma página de ativo, por exemplo, já mostrando como estão, atualmente os indicadores deste ativo.
 
-    ## +21 Indicadores
+    ## +22 Indicadores
 
     - ValorDeMercado
     - EV
@@ -26,6 +27,7 @@ Você pode requisitar novas features ou dar feedback pelo nosso email contato@fi
     - P_VP
     - VPA
     - LPA
+    - DividendYield
     - EV_EBITDA
     - EV_EBIT
     - P_EBITDA

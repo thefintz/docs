@@ -230,6 +230,7 @@ Os indicadores disponíveis/selecionáveis para os próximos endpoints são os s
 - P_VP
 - VPA
 - LPA
+- DividendYield
 - EV_EBITDA
 - EV_EBIT
 - P_EBITDA
