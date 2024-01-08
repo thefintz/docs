@@ -1,5 +1,6 @@
 [endpoint_cotacao_json]: /endpoints/bolsa/#json
 [endpoint_cotacao_arquivo]: /endpoints/bolsa/#arquivo
+[contato]: https://fintz.com.br/#/contato
 
 # Point in Time (backtest)
 
