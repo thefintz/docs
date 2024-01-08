@@ -340,6 +340,7 @@ Item Contábil                                    | TRI | ANO | 12M |
 - ResultadoBruto                                 |  ✓  |  ✓  |  ✓  |
 - DespesasReceitasOperacionaisOuAdministrativas  |  ✓  |  ✓  |  ✓  |
 - EBIT                                           |  ✓  |  ✓  |  ✓  |
+- EBITDA                                         |  ✓  |  ✓  |  ✓  |
 - ResultadoFinanceiro                            |  ✓  |  ✓  |  ✓  |
 - ReceitasFinanceiras                            |  ✓  |  ✓  |  ✓  |
 - LAIR                                           |  ✓  |  ✓  |  ✓  |
@@ -358,7 +359,6 @@ Item Contábil                                    | TRI | ANO | 12M |
 - Disponibilidades                               |  ✓  |  ✓  |  x  |
 - DividaBruta                                    |  ✓  |  ✓  |  x  |
 - DividaLiquida                                  |  ✓  |  ✓  |  x  |
-- EBITDA                                         |  ✓  |  ✓  |  x  |
 - PassivoCirculante                              |  ✓  |  ✓  |  x  |
 - PassivoNaoCirculante                           |  ✓  |  ✓  |  x  |
 - PassivoTotal                                   |  ✓  |  ✓  |  x  |
