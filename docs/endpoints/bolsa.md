@@ -17,20 +17,25 @@ Obs: dados disponíveis desde 2010-01-01
 
 >**GET** `/bolsa/b3/avista/busca`
 
-Nesse endpoint você consegue buscar e filtrar os ativos da B3 para depois buscar dados deles.
-Se não enviar nenhum filtro, retorna todos os ativos da base, inclusive os que não são mais negociados.
+Este endpoint permite buscar e filtrar os ativos negociados no mercado à vista da B3. 
+Você pode realizar pesquisas específicas ou obter uma lista completa de todos os ativos disponíveis,
+incluindo aqueles que não são mais negociados.
 
-Todos os ativos da bolsa B3 estão disponíveis (ações, FIIs, ETFs, BDRs, ...).
+Os ativos abrangem diversas categorias, como ações, Fundos de Investimento Imobiliário (FIIs),
+Exchange-Traded Funds (ETFs), Brazilian Depositary Receipts (BDRs), entre outros.
 
-Um exemplo de uso, você pode filtrar apenas os ativos do setor de tecnologia, ou mesmo pode conectar a sua search bar para buscar pelo nome ou ticker do ativo.
+**Uso Comum:**
+
+* Integrar com uma barra de pesquisa para localizar ativos pelo ticker.
+* Filtrar apenas os FIIs que são negociados atualmente.
 
 **Parâmetros**
 
-| Parâmetro | Tipo |Descrição | |
-| :-: | :-: | - | :-: |
-| `q`     | `string` | ex: "BBAS" vai retornar o "BBAS3" | opcional
-| `classe` | `string` | BDRS, ACOES, FUNDOS, FIIS ou TODOS | opcional
-
+| Parâmetro |   Tipo    | Descrição                          |          |
+|:---------:|:---------:|------------------------------------|:--------:|
+|    `q`    | `string`  | ex: "BBAS" vai retornar o "BBAS3"  | opcional |
+| `classe`  | `string`  | BDRS, ACOES, FUNDOS, FIIS ou TODOS | opcional |
+|  `ativo`  | `boolean` | `true` ou `false`                  | opcional |
 
 **Exemplo de chamada:**
 
@@ -39,7 +44,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'q': 'BBAS' }
+PARAMS = { 'q': 'BBDC' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/busca'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -64,9 +69,11 @@ print(res.json())
 
 >**GET** `/bolsa/b3/avista/cotacoes/historico`
 
-Retorna, em JSON, os preços OHLC (abertura, maxima, minima, fechamento) do ticker especificado na data especificada. Também retorna volume e quantidade negociada.
-
-É retornado tanto o fechamento quanto o fechamento ajustado por proventos/splits/bonificações.
+Este endpoint fornece os dados históricos de cotação dos ativos negociados na B3.
+As informações são apresentadas no formato OHLC (Open - High - Low - Close, ou 
+Abertura - Máxima - Mínima - Fechamento) para o ticker especificado e dentro do intervalo de datas determinado.
+Adicionalmente, são fornecidos dados sobre o volume e a quantidade negociada,
+bem como o fechamento ajustado por eventos corporativos como proventos, splits e bonificações.
 
 **Parâmetros**
 
@@ -127,30 +134,33 @@ print(res.json())
 
 >**GET** `/bolsa/b3/avista/cotacoes/historico/arquivos`
 
-Retorna link para um arquivo no formato .parquet (similar a CSV) que contém cotação OHLC de todos os tickers, desde 2010 até o último fechamento de mercado. 
+Este endpoint fornece um link para download de um arquivo no formato .parquet (similar ao CSV),
+contendo as cotações OHLC (Open - High - Low - Close, ou Abertura - Máxima - Mínima - Fechamento)
+de todos os tickers da B3, desde 2010 até o último fechamento de mercado.
 
-Recomendamos o uso deste endpoint apenas para uso local, como para backtests de estratégias.
+Além disso, é retornado um fator de ajuste, que pode ser multiplicado pelos preços OHLC para obter os
+valores ajustados por eventos corporativos, como proventos, splits e bonificações.
 
-Como o arquivo é grande/pesado, em sites e dashboards é melhor utilizar as chamadas JSON mesmo, até porque evita de precisar levantar um banco para guardar os dados, implementar a política de cache e configurar as rotinas de atualização.
+**Uso Recomendado:**
 
-Também é retornado um fator de ajuste, bastando multiplicá-lo pelos preços OHLC para obter o ajustado.
+* Ideal para uso local, como backtests de estratégias de trading.
+* Devido ao tamanho e peso do arquivo, é mais adequado para análises offline do que para uso em websites 
+e dashboards.
+
 
 **Parâmetros**
 
 Esse endpoint só possui um parâmetro:
 
-| Parâmetro | Tipo |Descrição | |
-| :-: | :-: | - | :-: |
-| `preencher`     | `boolean` | `true` ou `false` | opcional
+|  Parâmetro  |   Tipo    | Descrição                                                                                                  |          |
+|:-----------:|:---------:|------------------------------------------------------------------------------------------------------------|:--------:|
+| `preencher` | `boolean` | `true` ou `false`. Preenche os dias sem negociação com a cotação anterior. O comportamento padrão é false. | opcional |
 
-O que esse `preencher` faz é fazer com que ativos com pouca liquidez tenham suas cotações propagadas para os próximos dias que não possuam negociações.
+**Funcionalidade do Parâmetro preencher:**
 
-Por exemplo:
-Mercado aberto segunda, terça e quarta.
-Porém, o ativo XXXX3 tem pouca liquidez (pouco volume diário) e só foi negociado segunda e quarta feira. 
-
-Se você não enviar `preencher=true`, não terá cotação para esse ativo na terça feira.
-Se você deseja que tenha (para não haver "buracos" nos dias), basta adicionar esse parâmtro `preencher=true` e o preço de fechamento anterior será propagado, sendo ele o preço de abertura, maxima, minima e fechamento do dia seguinte.
+* Quando `preencher` é definido como `true`, preenche os dias sem negociação de ativos com pouca liquidez usando a
+cotação do dia anterior, evitando lacunas nos dados.
+* Se `preencher` não for especificado, ou for definido como `false`, dias sem negociação não serão preenchidos.
 
 **Exemplo de chamada:**
 
@@ -179,17 +189,17 @@ print(res.json())
 
 >**GET** `/bolsa/b3/avista/proventos`
 
-Retorna os proventos em dinheiro (Dividendos, JCPs, ...) referente ao ticker e as datas especificadas na chamada.
-
-obs: por enquanto apenas de ações. Em 22/12/2023 vamos adicionar proventos de FIIs neste mesmo endpoint.
+Este endpoint retorna os proventos em dinheiro (Dividendos, JCPs, etc.) referentes ao ticker especificado
+na chamada. Atualmente, o serviço abrange apenas proventos de ações. A funcionalidade para incluir proventos
+de Fundos de Investimento Imobiliário (FIIs) será adicionada a este endpoint em breve.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+|  Parâmetro   |   Tipo   | Descrição            |             |
+|:------------:|:--------:|----------------------|:-----------:|
+|   `ticker`   | `string` | código de negociação | obrigatório |
+| `dataInicio` | `string` | (yyyy-mm-dd)         | obrigatório |
+|  `dataFim`   | `string` | (yyyy-mm-dd)         |  opcional   |
 
 **Exemplo de chamada:**
 
@@ -233,15 +243,17 @@ print(res.json())
 
 >**GET** `/bolsa/b3/avista/bonificacoes`
 
-Retorna as bonificacoes do ticker e datas especificados.
+Este endpoint fornece informações sobre bonificações de empresas listadas na B3.
+Bonificações são ações adicionais distribuídas aos acionistas. 
+Usando este endpoint, é possível consultar as bonificações por ticker e intervalo de datas.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+|  Parâmetro   |   Tipo   | Descrição            |             |
+|:------------:|:--------:|----------------------|:-----------:|
+|   `ticker`   | `string` | código de negociação | obrigatório |
+| `dataInicio` | `string` | (yyyy-mm-dd)         | obrigatório |
+|  `dataFim`   | `string` | (yyyy-mm-dd)         |  opcional   |
 
 **Exemplo de chamada:**
 
@@ -287,19 +299,17 @@ print(res.json())
 
 >**GET** `/bolsa/b3/avista/desdobramentos`
 
-Retorna os desdobramentos (splits) e grupamentos do ticker e datas especificados.
-
-Na resposta, o atributo `"proporcao"` indica como ocorreu o evento.
-Desdobramento de 1 para 10 tem proporção 0.1
-Grupamento de 10 para 1 tem proporção 10
+Este endpoint oferece informações sobre desdobramentos (splits) e grupamentos de ativos listados na B3.
+Estes eventos ajustam o número de ações em circulação, alterando o valor por ação sem modificar o valor de mercado
+da empresa.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `ticker`     | `string` | do código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | obrigatório
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+|  Parâmetro   |   Tipo   | Descrição            |             |
+|:------------:|:--------:|----------------------|:-----------:|
+|   `ticker`   | `string` | código de negociação | obrigatório |
+| `dataInicio` | `string` | (yyyy-mm-dd)         | obrigatório |
+|  `dataFim`   | `string` | (yyyy-mm-dd)         |  opcional   |
 
 **Exemplo de chamada:**
 
@@ -330,68 +340,111 @@ print(res.json())
 ]
 ```
 
+**Interpretação dos Campos `valorAntes` e `valorDepois`:**
+
+Estes campos indicam a proporção do desdobramento ou grupamento.
+Por exemplo, um grupamento onde o investidor tinha 10 ações e após o evento passa a ter 1 ação é indicado por
+`valorAntes` = 10 e `valorDepois` = 1. Da mesma forma, um desdobramento onde 1 ação se torna 10 é indicado por
+`valorAntes` = 1 e `valorDepois` = 10.
+
 ## Itens contábeis
 
+Os seguintes itens contábeis podem ser consultados nos próximos endpoints, disponíveis em diferentes periodicidades:
 Os itens contábeis disponíveis/selecionáveis para os próximos endpoints são os seguintes:
-```
-Item Contábil                                    | TRI | ANO | 12M |
-- ReceitaLiquida                                 |  ✓  |  ✓  |  ✓  |
-- Custos                                         |  ✓  |  ✓  |  ✓  |
-- ResultadoBruto                                 |  ✓  |  ✓  |  ✓  |
-- DespesasReceitasOperacionaisOuAdministrativas  |  ✓  |  ✓  |  ✓  |
-- EBIT                                           |  ✓  |  ✓  |  ✓  |
-- EBITDA                                         |  ✓  |  ✓  |  ✓  |
-- ResultadoFinanceiro                            |  ✓  |  ✓  |  ✓  |
-- ReceitasFinanceiras                            |  ✓  |  ✓  |  ✓  |
-- LAIR                                           |  ✓  |  ✓  |  ✓  |
-- Impostos                                       |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoOperacoesContinuadas               |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoOperacoesDescontinuadas            |  ✓  |  ✓  |  ✓  |
-- LucroLiquido                                   |  ✓  |  ✓  |  ✓  |
-- LucroLiquidoSociosControladora                 |  ✓  |  ✓  |  ✓  |
-- DepreciacaoAmortizacao                         |  ✓  |  ✓  |  ✓  |
-- EquivalenciaPatrimonial                        |  ✓  |  ✓  |  ✓  |
-- AtivoCirculante                                |  ✓  |  ✓  |  x  |
-- AtivoNaoCirculante                             |  ✓  |  ✓  |  x  |
-- AtivoTotal                                     |  ✓  |  ✓  |  x  |
-- CaixaEquivalentes                              |  ✓  |  ✓  |  x  |
-- DespesasFinanceiras                            |  ✓  |  ✓  |  x  |
-- Disponibilidades                               |  ✓  |  ✓  |  x  |
-- DividaBruta                                    |  ✓  |  ✓  |  x  |
-- DividaLiquida                                  |  ✓  |  ✓  |  x  |
-- PassivoCirculante                              |  ✓  |  ✓  |  x  |
-- PassivoNaoCirculante                           |  ✓  |  ✓  |  x  |
-- PassivoTotal                                   |  ✓  |  ✓  |  x  |
-- PatrimonioLiquido                              |  ✓  |  ✓  |  x  |
-```
 
-Todos esses itens você pode requisitar como trimestral ou anual.
 
-Já o 12m é um conceito que não se aplica a todos. 
-É um valor acumulado, ou seja, há uma soma dos valores dos trimestres que compõe esses 12m.
+| Item Contábil                                    | TRI | ANO | 12M |
+|--------------------------------------------------|:---:|:---:|:---:|
+| ReceitaLiquida                                   |  ✓  |  ✓  |  ✓  |
+| Custos                                           |  ✓  |  ✓  |  ✓  |
+| ResultadoBruto                                   |  ✓  |  ✓  |  ✓  |
+| DespesasReceitasOperacionaisOuAdministrativas    |  ✓  |  ✓  |  ✓  |
+| EBIT                                             |  ✓  |  ✓  |  ✓  |
+| EBITDA                                           |  ✓  |  ✓  |  ✓  |
+| ResultadoFinanceiro                              |  ✓  |  ✓  |  ✓  |
+| ReceitasFinanceiras                              |  ✓  |  ✓  |  ✓  |
+| LAIR                                             |  ✓  |  ✓  |  ✓  |
+| Impostos                                         |  ✓  |  ✓  |  ✓  |
+| LucroLiquidoOperacoesContinuadas                 |  ✓  |  ✓  |  ✓  |
+| LucroLiquidoOperacoesDescontinuadas              |  ✓  |  ✓  |  ✓  |
+| LucroLiquido                                     |  ✓  |  ✓  |  ✓  |
+| LucroLiquidoSociosControladora                   |  ✓  |  ✓  |  ✓  |
+| DepreciacaoAmortizacao                           |  ✓  |  ✓  |  ✓  |
+| EquivalenciaPatrimonial                          |  ✓  |  ✓  |  ✓  |
+| AtivoCirculante                                  |  ✓  |  ✓  |  x  |
+| AtivoNaoCirculante                               |  ✓  |  ✓  |  x  |
+| AtivoTotal                                       |  ✓  |  ✓  |  x  |
+| CaixaEquivalentes                                |  ✓  |  ✓  |  x  |
+| DespesasFinanceiras                              |  ✓  |  ✓  |  x  |
+| Disponibilidades                                 |  ✓  |  ✓  |  x  |
+| DividaBruta                                      |  ✓  |  ✓  |  x  |
+| DividaLiquida                                    |  ✓  |  ✓  |  x  |
+| PassivoCirculante                                |  ✓  |  ✓  |  x  |
+| PassivoNaoCirculante                             |  ✓  |  ✓  |  x  |
+| PassivoTotal                                     |  ✓  |  ✓  |  x  |
+| PatrimonioLiquido                                |  ✓  |  ✓  |  x  |
 
-Por exemplo, AtivoTotal, não se pode somar os trimestrais, é algo específico daquele momento, diferente de ReceitaLiquida, que é algo que você pode somar 4 trimestres e obter o acumulado 12m.
 
-AtivoTotal é "quanto de Ativo temos no momento atual". E é assim para todos os itens do BP.
+**Interpretação dos Dados:**
 
-ReceitaLiquida é "quanto geramos de receita líquida neste trimestre". E é assim para todos os itens da DRE.
+* Dados Trimestrais e Anuais: podem ser consultados para todos os itens listados.
+* Os dados anuais são obtidos exclusivamente a partir das Demonstrações Financeiras Padronizadas (DFPs). 
+Portanto, estes dados correspondem ao ano fiscal da empresa, que pode diferir do ano calendário.
+* Acumulado 12 Meses (12M): aplica-se apenas a certos itens e representa a soma dos valores dos trimestres
+que compõem esses 12 meses. Por exemplo, a Receita Líquida pode ser somada ao longo de quatro trimestres para obter o
+total acumulado em 12 meses.
 
-### Histórico por item contábil e ticker
+**Observações Específicas:**
+
+* Itens do balanço patrimonial, como o Ativo Total, não são acumulativos e, portanto, não são aplicáveis ao conceito
+de 12M. Estes representam valores específicos em um determinado momento, refletindo a situação patrimonial da empresa
+naquela data.
+
+* Itens como Receita Líquida, que fazem parte da DRE, são acumulativos. Eles podem ser somados ao longo dos
+trimestres para calcular o total de 12 meses, oferecendo uma visão ampliada do desempenho financeiro 
+da empresa ao longo do ano.
+
+**Explicação do `tipoDemonstracao`:**
+
+As demonstrações consolidadas agregam as informações financeiras de uma empresa matriz e suas subsidiárias,
+oferecendo uma visão global do grupo empresarial. Elas removem as transações internas para apresentar a situação
+financeira do conjunto. 
+
+As demonstrações individuais focam nos dados financeiros de uma única empresa, sem considerar suas afiliadas
+ou subsidiárias, proporcionando uma análise específica daquela empresa. 
+
+Enquanto as consolidadas são úteis para entender o desempenho do grupo como um todo, as individuais são importantes
+para avaliar a saúde financeira de uma empresa isolada.
+
+Este parâmetro estará presente nos endpoints de itens contábeis e pode ser usado para escolher uma ou
+outra demonstração.
+
+* O comportamento padrão, ao não informar este parâmetro, é exibir dados CONSOLIDADOS se disponíveis. No entanto, 
+se apenas dados INDIVIDUAIS estiverem disponíveis, estes serão exibidos.
+* A especificação de `CONSOLIDADO` ou `INDIVIDUAL` é necessária apenas se você deseja forçar a exibição de um
+tipo específico de dado, ignorando o comportamento padrão.
+
+Observação: Se houver incerteza, é recomendável não informar o parâmetro `tipoDemonstracao`, uma vez que essa é a 
+abordagem padrão para a maioria das situações.
+
+### Histórico por Item Contábil e Ticker
 
 >**GET** `/bolsa/b3/avista/itens-contabeis/historico`
 
-Aqui você escolhe o item contábil e o ticker e recebe o histórico desse item contábil escolhido para a empresa escolhida.
+Este endpoint possibilita a consulta do histórico financeiro de um item contábil específico para uma empresa
+listada na B3, baseado no ticker fornecido.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
-| `ticker`     | `string` | ex: `TRPL4` | obrigatório
-| `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` | obrigatório
-| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+|     Parâmetro      |   Tipo   | Descrição                                                         |             |
+|:------------------:|:--------:|-------------------------------------------------------------------|:-----------:|
+|       `item`       | `string` | Nome do item contábil (ex: `EBIT`). Consulte a lista completa.    | obrigatório |
+|      `ticker`      | `string` | Código de negociação da empresa (ex: `TRPL4`).                    | obrigatório |
+|   `tipoPeriodo`    | `string` | Periodicidade dos dados: `12M`, `TRIMESTRAL` ou `ANUAL`.          | obrigatório |
+| `tipoDemonstracao` | `string` | Tipo de demonstração: `CONSOLIDADO`, `INDIVIDUAL` ou não informe. |  opcional   |
 
-obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
+Observação: Se houver incerteza, é recomendável não informar o parâmetro `tipoDemonstracao`, uma vez que essa é a 
+abordagem padrão para a maioria das situações. Para mais detalhes consulte a explicação deste parâmetro.
 
 **Exemplo de chamada:**
 
@@ -432,24 +485,27 @@ print(res.json())
 ]
 ```
 
-### Item contábil mais recente para todos os tickers
+### Valor Mais Recente de Item Contábil para Todos os Tickers
 
 >**GET** `bolsa/b3/avista/itens-contabeis`
 
-Aqui você escolhe o item contábil e recebe o valor mais recente deste item contábil para todas as empresas.
-
-Na resposta está indicado o ano e trimestre que o dado se refere.
-Algumas empresas atualizam essas informações mais rapidamente que outras, então nem todas estão com a mesma data.
+Este endpoint permite consultar o valor mais recente de um item contábil específico para todas as empresas
+listadas na B3. A resposta inclui o ano e o trimestre aos quais os dados se referem, refletindo que algumas empresas
+podem atualizar as suas informações mais rapidamente que outras.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `item`     | `string` | ex: `EBIT` (ver lista completa) | obrigatório
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
-| `tipoDemonstracao` | `string` | vazio, `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+|     Parâmetro      |   Tipo   | Descrição                                                       |             |
+|:------------------:|:--------:|-----------------------------------------------------------------|:-----------:|
+|       `item`       | `string` | Nome do item contábil (ex: `EBIT`). Consulte a lista completa.  | obrigatório |
+|   `tipoPeriodo`    | `string` | Periodicidade dos dados: `12M`, `TRIMESTRAL` ou `ANUAL`.        |  opcional   |
+| `tipoDemonstracao` | `string` | ipo de demonstração: `CONSOLIDADO`, `INDIVIDUAL` ou não informe |  opcional   |
 
-obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o comportamento esperado na grande maioria dos casos.
+Observação: Se houver incerteza, é recomendável não informar o parâmetro `tipoDemonstracao`, uma vez que essa é a 
+abordagem padrão para a maioria das situações. Para mais detalhes consulte a explicação deste parâmetro.
+
+O parâmetro `tipoPeriodo` é definido como `12M` por padrão. É aconselhável sempre especificar este parâmetro para garantir
+clareza e explicitar o comportamento desejado.
 
 **Exemplo de chamada:**
 
@@ -490,24 +546,34 @@ print(res.json())
 ]
 ```
 
-### Itens contábeis mais recentes por ticker
+### Itens Contábeis Mais Recentes por Ticker
 
 
 >**GET** `bolsa/b3/avista/itens-contabeis/por-ticker`
 
-Aqui você escolhe o ticker e recebe todos os itens contábeis mais recentes para esse ticker.
+Este endpoint permite que você selecione um ticker de empresa listada na B3 e obtenha todos os itens contábeis 
+mais recentes relacionados a esse ticker.
 
-As datas presentes na resposta podem parecer antigas, mas estão corretas. Isso porque a data é a data de entrega do último balanço (última atualização) e é o dado que está válido até hoje.
+As datas na resposta podem parecer antigas, mas refletem a data de referência do último informe trimestral divulgado,
+que é a última atualização disponível. Estes dados permanecem válidos até uma nova atualização.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `ticker`     | `string` | ex: `TAEE11` | obrigatório
-| `tipoPeriodo`    | `string` | `12M` `TRIMESTRAL` ou `ANUAL` | opcional
-| `tipoDemonstracao` | `string` | `CONSOLIDADO` ou `INDIVIDUAL`  | opcional
+|     Parâmetro      |   Tipo   | Descrição                      |             |
+|:------------------:|:--------:|--------------------------------|:-----------:|
+|      `ticker`      | `string` | Código do ativo, ex: TAEE11.   | obrigatório |
+|   `tipoPeriodo`    | `string` | `12M`, `TRIMESTRAL` ou `ANUAL` |  opcional   |
+| `tipoDemonstracao` | `string` | `CONSOLIDADO` ou `INDIVIDUAL`  |  opcional   |
 
-obs: na dúvida, não inclua nem `tipoPeriodo` nem `tipoDemonstracao`, pois assim é o correto na maioria dos casos de uso.
+Observação: Se houver incerteza, é recomendável não informar o parâmetro `tipoDemonstracao`, uma vez que essa é a 
+abordagem padrão para a maioria das situações. Para mais detalhes consulte a explicação deste parâmetro.
+
+Caso o `tipoPeriodo` não seja especificado, a resposta incluirá apenas uma versão de período para cada item
+contábil, com prioridade para `12M`, seguido por `TRIMESTRAL`. Por exemplo, apenas `EBIT 12M` será retornado para o 
+EBIT, enquanto `AtivoTotal TRIMESTRAL` será retornado para o Ativo Total. Se `tipoPeriodo` for especificado, somente
+itens desse período específico serão retornados.
+
+
 
 **Exemplo de chamada:**
 
@@ -591,18 +657,19 @@ Os indicadores disponíveis/selecionáveis para os próximos endpoints são os s
 - L_P
 ```
 
-### Histórico por indicador e ticker
+### Histórico de Indicadores por Ticker
 
 >**GET** `bolsa/b3/avista/indicadores/historico`
 
-Aqui você escolhe o indicador e o ticker e recebe o histórico desse indicador escolhido para a empresa escolhida.
+Este endpoint permite a consulta do histórico de um indicador financeiro específico para uma empresa listada na B3,
+usando seu ticker.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
-| `ticker`     | `string` | ex: `BBAS3` | obrigatório
+|  Parâmetro  |   Tipo   | Descrição                                          |             |
+|:-----------:|:--------:|----------------------------------------------------|:-----------:|
+| `indicador` | `string` | Nome do indicador, ex: ROE. Veja a lista completa. | obrigatório |
+|  `ticker`   | `string` | Código do ativo, ex: BBAS3.                        | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -639,17 +706,22 @@ print(res.json())
 ]
 ```
 
-### Indicador mais recente para todos os tickers
+Observação: As datas na resposta representam a data de referência do documento de origem do indicador. Embora alguns
+indicadores trimestrais possam parecer desatualizados, todos os indicadores estão sempre atualizados,
+com aqueles baseados em preços refletindo as datas mais recentes
+
+### Valor Mais Recente de Indicador para Todos os Tickers
 
 >**GET** `bolsa/b3/avista/indicadores`
 
-Aqui você escolhe o indicador e recebe o valor mais recente deste indicador para todas as empresas.
+Este endpoint oferece a possibilidade de selecionar um indicador financeiro e obter o seu valor mais recente para todas
+as empresas listadas na B3.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
+|  Parâmetro  |   Tipo   | Descrição                                                                         |             |
+|:-----------:|:--------:|-----------------------------------------------------------------------------------|:-----------:|
+| `indicador` | `string` | Nome do indicador, ex: ROE. Consulte a lista completa de indicadores disponíveis. | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -686,23 +758,27 @@ print(res.json())
 ]
 ```
 
-### Indicadores mais recentes por ticker
+Observação: As datas na resposta representam a data de referência do documento de origem do indicador. Embora alguns
+indicadores trimestrais possam parecer desatualizados, todos os indicadores estão sempre atualizados,
+com aqueles baseados em preços refletindo as datas mais recentes.
+
+
+### Indicadores Mais Recentes por Ticker
 
 
 >**GET** `bolsa/b3/avista/indicadores/por-ticker`
 
-Aqui você escolhe o ticker e recebe todos os indicadores mais recentes para esse ticker.
+Este endpoint permite selecionar um ticker de uma empresa listada na B3 e acessar todos os indicadores financeiros mais
+recentes para esse ticker.
 
-Existem indicadores que não fazem sentido para alguns tipos de empresas. 
-Por exemplo: DividaLiquida_EBITDA para financeiros. Assim, quando for o caso, esses indicadores não serão retornados.
-
-As datas presentes na resposta podem parecer antigas para alguns indicadores, como ROE, por exemplo, mas estão corretas. Isso porque ROE utiliza apenas itens contábeis presentes nos balanços, e a data é a data de entrega do último balanço (última atualização) e é o dado que está válido até hoje, por isso você não vai ver a data de hoje para todos os indicadores. Indicadores como P_L utilizam o preço, que varia diariamente, então estará com a data do último fechamento.
+Alguns indicadores podem não ser aplicáveis a certos tipos de empresas, como `DividaLiquida_EBITDA` para empresas
+financeiras. Nestes casos, esses indicadores específicos não serão incluídos na resposta.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `ticker`     | `string` | ex: `TAEE11` | obrigatório
+| Parâmetro |   Tipo   | Descrição                    |             |
+|:---------:|:--------:|------------------------------|:-----------:|
+| `ticker`  | `string` | Código do ativo, ex: TAEE11. | obrigatório |
 
 **Exemplo de chamada:**
 

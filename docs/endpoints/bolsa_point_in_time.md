@@ -276,9 +276,9 @@ O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalha
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `indicador`     | `string` | ex: `ROE` (ver lista completa) | obrigatório
+|  Parâmetro  |   Tipo   | Descrição                      |             |
+|:-----------:|:--------:|--------------------------------|:-----------:|
+| `indicador` | `string` | ex: `ROE` (ver lista completa) | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -287,7 +287,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indicador': 'ROE', 'tipoPeriodo': '12M' }
+PARAMS = { 'indicador': 'ROE' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time/arquivos'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -308,10 +308,10 @@ Aqui você escolhe o indicador e o ticker e recebe o histórico desse indicador 
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `indicador`  | `string` | ex: `ROE`   | obrigatório
-| `ticker`     | `string` | ex: `TRPL4` | obrigatório
+|  Parâmetro  |   Tipo   | Descrição   |             |
+|:-----------:|:--------:|-------------|:-----------:|
+| `indicador` | `string` | ex: `ROE`   | obrigatório |
+|  `ticker`   | `string` | ex: `TRPL4` | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -320,7 +320,7 @@ import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
 HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
-PARAMS = { 'indicador': 'ROE', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
+PARAMS = { 'indicador': 'ROE', 'ticker': 'TRPL4' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time'
 res = req.get(endpoint, headers=HEADERS, params=PARAMS)
@@ -347,14 +347,14 @@ print(res.json())
 ]
 ```
 
-## (antigo) Indicadores
+## (antigo) Indicadores Arquivo
 
 >**GET** `/bolsa/b3/tm/indicadores/arquivos`
 
 !!! info "Atenção"
-    Este endpoint vai parar de funcionar em 01/03/2024. 
-    
-    A nova versão, aprimorada e com mais dados será lançada em 22/12/2023 e será documentada nesta mesma página.
+    A nova versão deste endpoint já está disponível nesta página de documentação, basta olhar os endpoints sem a marcação `(antigo)`
+
+    Este endpoint vai parar de funcionar em 01/03/2024.
 
 Retorna link para um arquivo no formato .parquet (similar a CSV) que contém o histórico do indicador selecionado, para todos os tickers, desde 2010 até o último fechamento de mercado.
 
@@ -365,9 +365,9 @@ Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON
 
 **Parâmetros**
 
-| Parâmetro   | Tipo     | Exemplo | |
-| :-:         | :-:      | - | :-: |
-| `indicador` | `string` | ROE | obrigatório
+|  Parâmetro  |   Tipo   | Exemplo |             |
+|:-----------:|:--------:|---------|:-----------:|
+| `indicador` | `string` | ROE     | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -409,9 +409,9 @@ Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON
 
 **Parâmetros**
 
-| Parâmetro   | Tipo     | Exemplo | |
-| :-:         | :-:      | - | :-: |
-| `item` | `string` | LucroLiquido12m | obrigatório
+| Parâmetro |   Tipo   | Exemplo         |             |
+|:---------:|:--------:|-----------------|:-----------:|
+|  `item`   | `string` | LucroLiquido12m | obrigatório |
 
 **Exemplo de chamada:**
 
@@ -449,12 +449,12 @@ Retorna o histórico referente ao item contábil padronizado.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `item`  | `string` | ex: "LucroLiquido12m" | obrigatório
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+|  Parâmetro   |   Tipo   | Descrição             |             |
+|:------------:|:--------:|-----------------------|:-----------:|
+|    `item`    | `string` | ex: "LucroLiquido12m" | obrigatório |
+|   `ticker`   | `string` | código de negociação  | obrigatório |
+| `dataInicio` | `string` | (yyyy-mm-dd)          |  opcional   |
+|  `dataFim`   | `string` | (yyyy-mm-dd)          |  opcional   |
 
 **Exemplo de chamada:**
 
@@ -533,12 +533,12 @@ Retorna o histórico referente ao indicador requisitado.
 
 **Parâmetros**
 
-| Parâmetro | Tipo | Descrição | |
-| :-: | :-: | - | :-: |
-| `indicador`  | `string` | ex: "ROE" | obrigatório
-| `ticker`     | `string` | código de negociação | obrigatório
-| `dataInicio` | `string` | (yyyy-mm-dd) | opcional
-| `dataFim`    | `string` | (yyyy-mm-dd) | opcional
+|  Parâmetro   |   Tipo   | Descrição            |             |
+|:------------:|:--------:|----------------------|:-----------:|
+| `indicador`  | `string` | ex: "ROE"            | obrigatório |
+|   `ticker`   | `string` | código de negociação | obrigatório |
+| `dataInicio` | `string` | (yyyy-mm-dd)         |  opcional   |
+|  `dataFim`   | `string` | (yyyy-mm-dd)         |  opcional   |
 
 **Exemplo de chamada:**
 
