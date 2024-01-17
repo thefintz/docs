@@ -7,7 +7,7 @@
 !!! success "Lembrete"
     Você tem acesso a uma coleção [Postman][postman].
 
-    Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
+    Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-teste-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
     
     Adquira um de nossos planos para obter sua própria chave [neste link][link_compra]
 
