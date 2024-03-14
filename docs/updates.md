@@ -9,6 +9,19 @@ Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
 
+??? note "Fevereiro 2024 - Proventos de FIIs"
+
+    ## Proventos de FIIs
+    
+    Adicionamos histórico de proventos de FIIs.
+    
+    Mantendo o foco na facilidade e usabilidade, estes proventos estão disponíveis no mesmo endpoint de proventos de ações, ou seja, basta utilizar tickers (código de negociação) de FIIs e terá o histórico de proventos do FII escolhido.
+
+??? note "Janeiro 2024 - Melhorias internas"
+
+    Aproveitamos o mês geralmente mais parado para fazer uma série de melhorias internas, por exemplo no tempo e frequência de execução dos algoritmos dos nossos pipelines de processamento de dados.
+    
+
 ??? note "Dezembro 2023 - Novos indicadores e endpoints"
 
     Esse mês focamos em adicionar mais indicadores e novos endpoints para atender outros casos de usos:
