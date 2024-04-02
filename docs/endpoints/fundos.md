@@ -4,7 +4,7 @@
 
 
 !!! info "Lembrete"
-    Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/02/2024.
+    Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/06/2024.
 
 Os endpoints em beta são
 ```

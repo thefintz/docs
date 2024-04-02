@@ -820,12 +820,12 @@ print(res.json())
 >**GET** `bolsa/b3/demonstracoes/{tipo}`
 
 !!! abstract "Em breve!"
-    Esse endpoint será lançado em 29/01/2024
+    Esse endpoint será lançado em 15/05/2024
 
 ## Aluguel de ações
 
 !!! abstract "Em breve!"
-    Esse endpoint será lançado no primeiro semestre de 2024.
+    Esse endpoint não está em desenvolvimento.
 
     Caso precise com urgência, [entre em contato][contato] para priorizarmos
 
