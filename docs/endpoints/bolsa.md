@@ -617,45 +617,61 @@ print(res.json())
 
 ## Indicadores
 
-Os indicadores disponíveis/selecionáveis para os próximos endpoints são os seguintes:
-```
-- ValorDeMercado
-- EV
-- P_L
-- P_VP
-- VPA
-- LPA
-- DividendYield
-- EV_EBITDA
-- EV_EBIT
-- P_EBITDA
-- P_EBIT
-- P_Ativos
-- P_SR
-- P_CapitalDeGiro
-- P_AtivoCirculanteLiquido
-- ROE
-- ROA
-- ROIC
-- GiroAtivos
-- MargemBruta
-- MargemEBITDA
-- MargemEBIT
-- MargemLiquida
-- DividaLiquida_PatrimonioLiquido
-- DividaLiquida_EBITDA
-- DividaLiquida_EBIT
-- PatrimonioLiquido_Ativos
-- Passivos_Ativos
-- LiquidezCorrente
-- DividaBruta_PatrimonioLiquido
-- EBIT_Ativos
-- EBIT_DespesasFinanceiras
-- EBITDA_DespesasFinanceiras
-- EBITDA_EV
-- EBIT_EV
-- L_P
-```
+Selecione "Ações" ou "FIIs" para ver os indicadores disponíveis para cada classe de ativo.
+
+=== "Ações"
+
+    ```
+    ValorDeMercado 
+    EV 
+    P_L
+    P_VP 
+    VPA
+    LPA
+    DividendYield
+    EV_EBITDA
+    EV_EBIT
+    P_EBITDA 
+    P_EBIT 
+    P_Ativos 
+    P_SR 
+    P_CapitalDeGiro
+    P_AtivoCirculanteLiquido 
+    ROE
+    ROA
+    ROIC 
+    GiroAtivos 
+    MargemBruta
+    MargemEBITDA 
+    MargemEBIT 
+    MargemLiquida
+    DividaLiquida_PatrimonioLiquido
+    DividaLiquida_EBITDA 
+    DividaLiquida_EBIT 
+    PatrimonioLiquido_Ativos 
+    Passivos_Ativos
+    LiquidezCorrente 
+    DividaBruta_PatrimonioLiquido
+    EBIT_Ativos
+    EBIT_DespesasFinanceiras 
+    EBITDA_DespesasFinanceiras 
+    EBITDA_EV
+    EBIT_EV
+    L_P
+    ```
+
+=== "FIIs"
+
+    ```
+    P_VP
+    DividendYield
+    PatrimonioLiquido
+    VP_QuantidadeCotas
+    Caixa
+    Caixa_VP
+    NumeroCotistas
+    QuantidadeCotas
+    ```
 
 ### Histórico de Indicadores por Ticker
 

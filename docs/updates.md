@@ -9,6 +9,25 @@ Aqui você pode acompanhar as novas funcionalidades da API.
 
 Você pode requisitar novas features ou dar feedback pelo nosso email contato@fintz.com.br
 
+??? note "Abril 2024 - Indicadores de FIIs"
+
+    ## Indicadores de FIIs
+    
+    Agora você pode acessar indicadores atuais e históricos de FIIs!
+
+    Os indicadores adicionados são:
+
+    - P_VP
+    - DividendYield
+    - PatrimonioLiquido
+    - VP_QuantidadeCotas
+    - Caixa
+    - Caixa_VP
+    - NumeroCotistas
+    - QuantidadeCotas
+    
+    Você pode buscá-los no mesmo endpoint dos indicadores de ações, basta passar o ticker de um FII.
+
 ??? note "Fevereiro 2024 - Proventos de FIIs"
 
     ## Proventos de FIIs
