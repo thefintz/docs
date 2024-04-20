@@ -738,6 +738,7 @@ as empresas listadas na B3.
 |  Parâmetro  |   Tipo   | Descrição                                                                         |             |
 |:-----------:|:--------:|-----------------------------------------------------------------------------------|:-----------:|
 | `indicador` | `string` | Nome do indicador, ex: ROE. Consulte a lista completa de indicadores disponíveis. | obrigatório |
+| `classe` | `string` | 'ACOES' ou 'FIIS'. Se não colocar, é 'ACOES' |
 
 **Exemplo de chamada:**
 
