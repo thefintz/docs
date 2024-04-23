@@ -71,6 +71,7 @@ IBXX
 ICO2
 ICON
 IDIV
+IDVR
 IEEX
 IFIL
 IFIX
@@ -89,6 +90,86 @@ SMLL
 UTIL
 ```
 
+Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratuitamente.
+
+### Composição
+**/indices/composicao**
+
+Retorna a composição atual da carteira referente ao índice requisitado.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indice`     | `string` | ex: "IBOV" | obrigatório
+| `ordem`      | `string` | "ASC" ou "DESC" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indice': 'IBOV'}
+
+res = req.get(f'{URL_BASE}/indices/composicao', headers=HEADERS, params=PARAMS)
+print(res.json())
+```
+
+**Resposta:**
+
+```json
+[
+  {
+    "indice": "IBOV",
+    "ticker": "VALE3",
+    "participacao": 0.12618,
+    "quantidadeTeorica": 4196924316,
+    "data": "2024-04-22"
+  },
+  {
+    "indice": "IBOV",
+    "ticker": "PETR4",
+    "participacao": 0.08782,
+    "quantidadeTeorica": 4566445852,
+    "data": "2024-04-22"
+  },
+]
+```
+
+
+Os índices atualmente disponíveis são
+```
+AGFS
+BDRX
+GPTW
+IBOV
+IBRA
+IBSD
+IBXL
+IBXX
+ICO2
+ICON
+IDIV
+IDVR
+IEEX
+IFIL
+IFIX
+IFNC
+IGCT
+IGCX
+IGNM
+IMAT
+IMOB
+INDX
+ISEE
+ITAG
+IVBX
+MLCX
+SMLL
+UTIL
+```
 Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratuitamente.
 
 ## Taxas
