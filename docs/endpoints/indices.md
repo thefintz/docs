@@ -2,17 +2,47 @@
 
 # Índices, taxas e câmbio
 
-!!! success "Novidade!"
-    Esses endpoints acabam de ser lançado e estamos adicionando índices continuamente.
-    
-    Tem algum índice, taxa ou câmbio que deseja ser adicionado o quanto antes?
-    Só mandar pelo email contato@fintz.com.br
+Os índices disponíveis são
+```
+Índice  | Histórico | Composição
+--------------------------------
+AGFS    |     ✓     |      ✓
+BDRX    |     ✓     |      ✓
+GPTW    |     ✓     |      ✓
+IBOV    |     ✓     |      ✓
+IBRA    |     ✓     |      ✓
+IBSD    |     ✖     |      ✓
+IBXL    |     ✓     |      ✓
+IBXX    |     ✓     |      ✓
+ICO2    |     ✓     |      ✓
+ICON    |     ✓     |      ✓
+IDIV    |     ✓     |      ✓
+IDVR    |     ✓     |      ✓
+IEEX    |     ✓     |      ✓
+IFIL    |     ✓     |      ✓
+IFIX    |     ✓     |      ✓
+IFNC    |     ✓     |      ✓
+IGCT    |     ✓     |      ✓
+IGCX    |     ✓     |      ✓
+IGNM    |     ✓     |      ✓
+IMAT    |     ✓     |      ✓
+IMOB    |     ✓     |      ✓
+INDX    |     ✓     |      ✓
+ISEE    |     ✓     |      ✓
+ITAG    |     ✓     |      ✓
+IVBX    |     ✓     |      ✓
+MLCX    |     ✓     |      ✓
+SMLL    |     ✓     |      ✓
+UTIL    |     ✓     |      ✓ 
+```
+
+Precisa de algum outro índice? [Entre em contato][contato].
 
 Obs: dados disponíveis desde 2000-01-01.
 
 ## Índices
 
-### histórico
+### Histórico
 **/indices/historico**
 
 Retorna o histórico referente ao índice requisitado.
@@ -58,42 +88,88 @@ print(res.json())
 ]
 ```
 
+### Composição
+**/indices/composicao**
 
-Os índices atualmente disponíveis são
-```
-AGFS
-BDRX
-GPTW
-IBOV
-IBRA
-IBXL
-IBXX
-ICO2
-ICON
-IDIV
-IEEX
-IFIL
-IFIX
-IFNC
-IGCT
-IGCX
-IGNM
-IMAT
-IMOB
-INDX
-ISEE
-ITAG
-IVBX
-MLCX
-SMLL
-UTIL
+Retorna a composição atual da carteira referente ao índice requisitado.
+
+**Parâmetros**
+
+| Parâmetro | Tipo | Descrição | |
+| :-: | :-: | - | :-: |
+| `indice`     | `string` | ex: "IBOV" | obrigatório
+| `ordem`      | `string` | "ASC" ou "DESC" | opcional
+
+**Exemplo de chamada:**
+
+```py
+import requests as req
+
+URL_BASE = 'https://api.fintz.com.br'
+HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+PARAMS = { 'indice': 'IBOV'}
+
+res = req.get(f'{URL_BASE}/indices/composicao', headers=HEADERS, params=PARAMS)
+print(res.json())
 ```
 
-Precisa de algum outro índice? [Entre em contato][contato] e adicionamos gratuitamente.
+**Resposta:**
+
+```json
+[
+  {
+    "indice": "IBOV",
+    "ticker": "VALE3",
+    "participacao": 0.12618,
+    "quantidadeTeorica": 4196924316,
+    "data": "2024-04-22"
+  },
+  {
+    "indice": "IBOV",
+    "ticker": "PETR4",
+    "participacao": 0.08782,
+    "quantidadeTeorica": 4566445852,
+    "data": "2024-04-22"
+  },
+]
+```
+
 
 ## Taxas
 
-### busca
+As taxas atualmente disponíveis são
+```
+Código | Taxa
+12     | CDI
+4391   | CDI acumulada no mês
+4392   | CDI acumulada no mês anualizada base 252
+4389   | CDI anualizada base 252
+27803  | Fator diário Taxa Extramercado
+29251  | FII para TCR e TRFC
+29252  | FII para TFC
+11     | Selic
+4390   | Selic acumulada no mês
+4189   | Selic acumulada no mês anualizada base 252
+1178   | Selic anualizada base 252
+254    | Taxa básica financeira pro-rata (TBF pro-rata)
+253    | Taxa básica financeira (TBF)
+7813   | Taxa básica financeira (TBF) - Primeiro dia do mês
+7814   | Taxa básica financeira (TBF) - Primeiro dia do mês anualizada na base 252
+256    | Taxa de juros de longo prazo - TJLP
+27804  | Taxa Extramercado
+27572  | Taxa Jm para TLP
+25624  | Taxa referencial do Tesouro - Taxa anual
+25623  | Taxa referencial do Tesouro - Taxa diária
+227    | Taxa referencial pro-rata (TR pro-rata)
+226    | Taxa referencial (TR)
+13421  | Taxa referencial (TR) para financiamentos imobiliários prefixados do SFH
+7811   | Taxa referencial (TR) - Primeiro dia do mês
+7812   | Taxa referencial (TR) - Primeiro dia do mês anualizada base 252
+7815   | TJLP mensal
+22161  | TRT - Fator diário
+```
+
+### Busca
 
 **/taxas/busca**
 
@@ -154,7 +230,7 @@ print(res.json())
 ```
 
 
-### histórico
+### Histórico
 
 **/taxas/historico**
 
@@ -211,38 +287,6 @@ print(res.json())
   },
   ...
 ]
-```
-
-As taxas atualmente disponíveis são
-```
-Código | Taxa
-12     | CDI
-4391   | CDI acumulada no mês
-4392   | CDI acumulada no mês anualizada base 252
-4389   | CDI anualizada base 252
-27803  | Fator diário Taxa Extramercado
-29251  | FII para TCR e TRFC
-29252  | FII para TFC
-11     | Selic
-4390   | Selic acumulada no mês
-4189   | Selic acumulada no mês anualizada base 252
-1178   | Selic anualizada base 252
-254    | Taxa básica financeira pro-rata (TBF pro-rata)
-253    | Taxa básica financeira (TBF)
-7813   | Taxa básica financeira (TBF) - Primeiro dia do mês
-7814   | Taxa básica financeira (TBF) - Primeiro dia do mês anualizada na base 252
-256    | Taxa de juros de longo prazo - TJLP
-27804  | Taxa Extramercado
-27572  | Taxa Jm para TLP
-25624  | Taxa referencial do Tesouro - Taxa anual
-25623  | Taxa referencial do Tesouro - Taxa diária
-227    | Taxa referencial pro-rata (TR pro-rata)
-226    | Taxa referencial (TR)
-13421  | Taxa referencial (TR) para financiamentos imobiliários prefixados do SFH
-7811   | Taxa referencial (TR) - Primeiro dia do mês
-7812   | Taxa referencial (TR) - Primeiro dia do mês anualizada base 252
-7815   | TJLP mensal
-22161  | TRT - Fator diário
 ```
 
 ## Câmbio (PTAX)
