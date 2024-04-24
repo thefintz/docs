@@ -11,7 +11,7 @@ BDRX    |     ✓     |      ✓
 GPTW    |     ✓     |      ✓
 IBOV    |     ✓     |      ✓
 IBRA    |     ✓     |      ✓
-IBSD    |     ✖     |      ✓
+IBSD    |     ✓     |      ✓
 IBXL    |     ✓     |      ✓
 IBXX    |     ✓     |      ✓
 ICO2    |     ✓     |      ✓
