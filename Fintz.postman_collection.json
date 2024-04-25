@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5c21d0f5-17de-4080-ab69-d1ed2e885a2b",
+		"_postman_id": "1a6e68dd-3f54-4707-83b1-5330d7e16773",
 		"name": "Fintz API (igual docs)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34503515"
 	},
 	"item": [
 		{
@@ -746,6 +747,44 @@
 								{
 									"key": "dataInicio",
 									"value": "2023-01-01"
+								},
+								{
+									"key": "ordem",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Índices - Composição Atual",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{CHAVE_API}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://api.fintz.com.br/indices/composicao?indice=IBOV&ordem=ASC",
+							"protocol": "https",
+							"host": [
+								"api",
+								"fintz",
+								"com",
+								"br"
+							],
+							"path": [
+								"indices",
+								"composicao"
+							],
+							"query": [
+								{
+									"key": "indice",
+									"value": "IBOV"
 								},
 								{
 									"key": "ordem",
