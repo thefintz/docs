@@ -98,7 +98,7 @@ Retorna a composição atual da carteira referente ao índice requisitado.
 | Parâmetro | Tipo | Descrição | |
 | :-: | :-: | - | :-: |
 | `indice`     | `string` | ex: "IBOV" | obrigatório
-| `ordem`      | `string` | "ASC" ou "DESC" | opcional
+| `ordem`      | `string` | "ASC" ou "DESC" - Ordena por participação | opcional
 
 **Exemplo de chamada:**
 
