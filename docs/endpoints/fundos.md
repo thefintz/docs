@@ -4,7 +4,7 @@
 
 
 !!! info "Lembrete"
-    Esses endpoints estão em fase de beta fechado e vão ser lançados dia 15/06/2024.
+    Esses endpoints já estão disponíveis em beta sob requisição por email: contato@fintz.com.br
 
 Os endpoints em beta são
 ```
