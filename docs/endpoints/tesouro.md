@@ -27,7 +27,7 @@ Retorna a lista de títulos públicos disponíveis paginada.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'pagina': '1', 'tamanho': 40 }
 
 endpoint = URL_BASE + '/titulos-publicos/tesouro'
@@ -68,7 +68,7 @@ Exemplo com o Título de código: `NTNBP20240815`
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 
 endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/informacoes'
 res = req.get(endpoint, headers=HEADERS)
@@ -111,7 +111,7 @@ Retorna histórico paginado de preços e taxas de compra e venda, com filtros po
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'dataInicio': '2016-12-31', 'dataFim': '2021-11-01' }
 
 endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/precos/historico'
@@ -161,7 +161,7 @@ Exclusivo para títulos não vencidos.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 
 endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/precos/atual'
 res = req.get(endpoint, headers=HEADERS)
@@ -204,7 +204,7 @@ Exclusivo para títulos não vencidos.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 
 endpoint = URL_BASE + f'/titulos-publicos/tesouro/{codigo}/cupons'
 res = req.get(endpoint, headers=HEADERS)

@@ -149,7 +149,7 @@ O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalha
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'item': 'EBIT', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time/arquivos'
@@ -186,7 +186,7 @@ obs: na dúvida, deixe o parâmetro `"tipoDemonstracao"` vazio, pois é o compor
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'item': 'EBIT', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/point-in-time'
@@ -286,7 +286,7 @@ O arquivo retornado é no formato `parquet`, similar ao CSV, facilmente trabalha
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indicador': 'ROE' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time/arquivos'
@@ -319,7 +319,7 @@ Aqui você escolhe o indicador e o ticker e recebe o histórico desse indicador 
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indicador': 'ROE', 'ticker': 'TRPL4' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/point-in-time'
@@ -375,7 +375,7 @@ Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indicador': 'ROE' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/indicadores/arquivos'
@@ -419,7 +419,7 @@ Caso não precise de todo o histórico, temos outro endpoint que retorna em JSON
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'item': 'LucroLiquido12m' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/demonstracoes/arquivos'
@@ -462,7 +462,7 @@ Retorna o histórico referente ao item contábil padronizado.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = {
   'ticker': 'BBAS3',
   'item': 'LucroLiquido12m',
@@ -546,7 +546,7 @@ Retorna o histórico referente ao indicador requisitado.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'BBAS3', 'indicador': 'ROE', 'dataInicio': '2023-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/tm/indicadores'

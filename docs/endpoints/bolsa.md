@@ -7,7 +7,7 @@
 !!! success "Lembrete"
     Você tem acesso a uma coleção [Postman][postman].
 
-    Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-teste-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
+    Também não esqueça que você precisa de uma chave de acesso à API. A chave "chave-de-testes-api-fintz" é extremamente limitada e deve ser utilizada apenas para teste inicial. 
     
     Adquira um de nossos planos para obter sua própria chave [neste link][link_compra]
 
@@ -43,7 +43,7 @@ Exchange-Traded Funds (ETFs), Brazilian Depositary Receipts (BDRs), entre outros
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'q': 'BBDC' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/busca'
@@ -89,7 +89,7 @@ bem como o fechamento ajustado por eventos corporativos como proventos, splits e
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-04-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico'
@@ -168,7 +168,7 @@ cotação do dia anterior, evitando lacunas nos dados.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/cotacoes/historico/arquivos'
 res = req.get(endpoint, headers=HEADERS)
@@ -207,7 +207,7 @@ de Fundos de Investimento Imobiliário (FIIs) será adicionada a este endpoint e
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'BBAS3', 'dataInicio': '2023-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/proventos'
@@ -261,7 +261,7 @@ Usando este endpoint, é possível consultar as bonificações por ticker e inte
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'BBDC3', 'dataInicio': '2020-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/bonificacoes'
@@ -317,7 +317,7 @@ da empresa.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'OIBR3', 'dataInicio': '2022-01-01' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/desdobramentos'
@@ -452,7 +452,7 @@ abordagem padrão para a maioria das situações. Para mais detalhes consulte a 
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'item': 'EBIT', 'ticker': 'TRPL4', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/historico'
@@ -513,7 +513,7 @@ clareza e explicitar o comportamento desejado.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'item': 'EBIT', 'tipoPeriodo': '12M' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis'
@@ -581,7 +581,7 @@ itens desse período específico serão retornados.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'TAEE11' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/itens-contabeis/por-ticker'
@@ -693,7 +693,7 @@ usando seu ticker.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indicador': 'ROE', 'ticker': 'BBAS3' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/historico'
@@ -746,7 +746,7 @@ as empresas listadas na B3.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indicador': 'ROE' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores'
@@ -803,7 +803,7 @@ financeiras. Nestes casos, esses indicadores específicos não serão incluídos
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'ticker': 'TAEE11' }
 
 endpoint = URL_BASE + '/bolsa/b3/avista/indicadores/por-ticker'

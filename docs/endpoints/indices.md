@@ -63,7 +63,7 @@ Obs: dados disponíveis desde 2000-01-01.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indice': 'IBOV', 'dataInicio': '2023-01-01' }
 
 res = req.get(f'{URL_BASE}/indices/historico', headers=HEADERS, params=PARAMS)
@@ -106,7 +106,7 @@ Retorna a composição atual da carteira referente ao índice requisitado.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'indice': 'IBOV'}
 
 res = req.get(f'{URL_BASE}/indices/composicao', headers=HEADERS, params=PARAMS)
@@ -191,7 +191,7 @@ Pode-se utilizar filtro.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'q': 'cdi' }
 
 res = req.get(f'{URL_BASE}/taxas/busca', headers=HEADERS, params=PARAMS)
@@ -256,7 +256,7 @@ Obs: dados disponíveis desde 2000-01-01.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'codigo': '12', 'dataInicio': '2023-01-01' }
 
 res = req.get(f'{URL_BASE}/taxas/historico', headers=HEADERS, params=PARAMS)
@@ -313,7 +313,7 @@ Pode-se utilizar filtro.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'q': 'dólar' }
 
 res = req.get(f'{URL_BASE}/cambio/ptax/busca', headers=HEADERS, params=PARAMS)
@@ -370,7 +370,7 @@ Obs: dados disponíveis desde 2000-01-01.
 import requests as req
 
 URL_BASE = 'https://api.fintz.com.br'
-HEADERS = { 'X-API-Key': 'chave-de-teste-api-fintz' }
+HEADERS = { 'X-API-Key': 'chave-de-testes-api-fintz' }
 PARAMS = { 'codigo': 'USD', 'dataInicio': '2020-01-01' }
 
 res = req.get(f'{URL_BASE}/cambio/ptax/historico', headers=HEADERS, params=PARAMS)
